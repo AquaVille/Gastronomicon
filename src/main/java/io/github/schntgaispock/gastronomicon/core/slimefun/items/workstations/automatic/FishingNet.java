@@ -38,15 +38,15 @@ public class FishingNet extends SlimefunItem implements InventoryBlock, MachineP
     public static final int[] OUTPUT_BORDER = new int[] { 3, 12, 21 };
     public static final int STATUS_SLOT = 10;
     public static final ItemStack[] FISH = {
-        GastroStacks.RAW_BASS,
-        GastroStacks.RAW_CARP,
-        GastroStacks.RAW_EEL,
-        GastroStacks.RAW_MACKEREL,
-        GastroStacks.RAW_PIKE,
-        GastroStacks.RAW_SQUID,
-        GastroStacks.RAW_TROUT,
-        GastroStacks.RAW_TUNA,
-        GastroStacks.SHRIMP,
+        GastroStacks.RAW_BASS.item(),
+        GastroStacks.RAW_CARP.item(),
+        GastroStacks.RAW_EEL.item(),
+        GastroStacks.RAW_MACKEREL.item(),
+        GastroStacks.RAW_PIKE.item(),
+        GastroStacks.RAW_SQUID.item(),
+        GastroStacks.RAW_TROUT.item(),
+        GastroStacks.RAW_TUNA.item(),
+        GastroStacks.SHRIMP.item(),
         new ItemStack(Material.COD),
         new ItemStack(Material.SALMON),
         new ItemStack(Material.PUFFERFISH),
@@ -125,7 +125,7 @@ public class FishingNet extends SlimefunItem implements InventoryBlock, MachineP
                     getMachineProcessor().updateProgressBar(inv, STATUS_SLOT, currentOperation);
                     currentOperation.addProgress(1);
                 } else {
-                    inv.replaceExistingItem(STATUS_SLOT, new CustomItemStack(Material.BLACK_STAINED_GLASS_PANE, " "));
+                    inv.replaceExistingItem(STATUS_SLOT, new SlimefunItemStack("STATUS_SLOT",Material.BLACK_STAINED_GLASS_PANE, " ").item());
                     for (ItemStack output : currentOperation.getResults()) {
                         inv.pushItem(output.clone(), getOutputSlots());
                     }

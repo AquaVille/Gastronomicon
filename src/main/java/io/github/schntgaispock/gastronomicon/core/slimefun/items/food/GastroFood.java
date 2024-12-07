@@ -27,7 +27,7 @@ public class GastroFood extends SimpleGastroFood {
 
     private static final @Getter Set<String> gastroFoodIds = new HashSet<>();
 
-    private final @Getter FoodItemStack item;
+    private final @Getter FoodItemStack itemFood;
     private final @Getter boolean perfect;
     private final ItemStack recipeDisplayOutput;
 
@@ -35,7 +35,7 @@ public class GastroFood extends SimpleGastroFood {
         ItemStack topRightDisplayItem, ItemStack recipeDisplayOutput, boolean perfect) {
         super(research, group, item, recipe, topRightDisplayItem, recipeDisplayOutput, !perfect);
 
-        this.item = item;
+        this.itemFood = item;
         this.perfect = perfect;
         this.recipeDisplayOutput = recipeDisplayOutput;
     }
@@ -69,11 +69,11 @@ public class GastroFood extends SimpleGastroFood {
             }
 
             final Player p = e.getPlayer();
-            for (FoodEffect effect : food.getItem().getEffects()) {
+            for (FoodEffect effect : food.getItemFood().getEffects()) {
                 effect.apply(p, food.isPerfect());
             }
-            p.setFoodLevel(Math.min(p.getFoodLevel() + food.getItem().getHunger(), 20));
-            p.setSaturation((float) Math.min(p.getSaturation() + food.getItem().getSaturation(),
+            p.setFoodLevel(Math.min(p.getFoodLevel() + food.getItemFood().getHunger(), 20));
+            p.setSaturation((float) Math.min(p.getSaturation() + food.getItemFood().getSaturation(),
                 p.getFoodLevel()));
             if (getGastroRecipe().getInputs().getContainer().getComponent() instanceof final ItemStack stack) {
                 p.getInventory().addItem(stack); // It should always be an itemstack anyways
@@ -92,7 +92,7 @@ public class GastroFood extends SimpleGastroFood {
         super.register(addon);
         if (!isPerfect()) {
             getGastroFoodIds().add(getId());
-            new GastroFood(getResearch(), getItemGroup(), item.asPerfect(), getGastroRecipe(), topRightDisplayItem,
+            new GastroFood(getResearch(), getItemGroup(), itemFood.asPerfect(), getGastroRecipe(), topRightDisplayItem,
                 recipeDisplayOutput, true).hide()
                     .register(addon);
         }

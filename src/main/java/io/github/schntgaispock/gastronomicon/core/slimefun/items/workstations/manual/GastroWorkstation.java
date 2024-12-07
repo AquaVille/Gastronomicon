@@ -180,7 +180,8 @@ public abstract class GastroWorkstation extends MenuBlock {
             // Calculate the crafting result
             final ItemStack output;
             final ItemStack[] toReturn;
-            if (recipeOutputs.length > 1 && recipeOutputs[0] instanceof final SlimefunItemStack sfItem) {
+            if (recipeOutputs.length > 1) {
+                SlimefunItemStack sfItem = new SlimefunItemStack("RECIPE_OUTPUT_META",recipeOutputs[0]);
                 final AddonConfig playerData = Gastronomicon.getInstance().getPlayerData();
                 final String proficiencyPath = player.getUniqueId() + ".proficiencies." + sfItem.getItemId();
                 final int proficiency = playerData.getInt(proficiencyPath, 0);

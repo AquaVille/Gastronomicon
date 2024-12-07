@@ -5,6 +5,7 @@ import java.util.List;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
+import io.github.thebusybiscuit.slimefun4.utils.itemstack.SlimefunGuideItem;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
@@ -51,22 +52,25 @@ public class MultiStove extends GastroWorkstation implements EnergyNetComponent 
         }
     }
 
-    public static final ItemStack TEMPERATURE_BUTTON_LOW = new CustomItemStack(
+    public static final ItemStack TEMPERATURE_BUTTON_LOW = new SlimefunItemStack(
+            "TEMPERATURE_BUTTON_LOW",
         Material.YELLOW_STAINED_GLASS_PANE,
         "&7Temperature: &eLOW",
         "",
-        "&bLeft-click &7to increase");
-    public static final ItemStack TEMPERATURE_BUTTON_MEDIUM = new CustomItemStack(
+        "&bLeft-click &7to increase").item();
+    public static final ItemStack TEMPERATURE_BUTTON_MEDIUM = new SlimefunItemStack(
+            "TEMPERATURE_BUTTON_MEDIUM",
         Material.ORANGE_STAINED_GLASS_PANE,
         "&7Temperature: &6MEDIUM",
         "",
         "&bLeft-click &7to increase",
-        "&bRight-click &7to decrease");
-    public static final ItemStack TEMPERATURE_BUTTON_HIGH = new CustomItemStack(
+        "&bRight-click &7to decrease").item();
+    public static final ItemStack TEMPERATURE_BUTTON_HIGH = new SlimefunItemStack(
+            "TEMPERATURE_BUTTON_HIGH",
         Material.RED_STAINED_GLASS_PANE,
         "&7Temperature: &cHIGH",
         "",
-        "&bRight-click &7to decrease");
+        "&bRight-click &7to decrease").item();
     public static final int TEMPERATURE_BUTTON_SLOT = 52;
     public static final String TEMPERATURE_KEY = "gastronomicon:multi_stove/temperature";
 

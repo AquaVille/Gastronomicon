@@ -37,7 +37,7 @@ public class DuplicatingSeed extends AbstractSeed {
 
     @ParametersAreNonnullByDefault
     public DuplicatingSeed(SlimefunItemStack item, SlimefunItemStack harvestSource) {
-        this(item, RecipeUtil.singleCenter(harvestSource));
+        this(item, RecipeUtil.singleCenter(harvestSource.item()));
     }
 
     @Override

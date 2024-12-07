@@ -41,7 +41,7 @@ public class CropSeed extends SimpleSeed {
 
     @ParametersAreNonnullByDefault
     public CropSeed(SlimefunItemStack item, Material displayBlock, SlimefunItemStack harvestSource) {
-        this(item, displayBlock, RecipeUtil.singleCenter(harvestSource), harvestSource);
+        this(item, displayBlock, RecipeUtil.singleCenter(harvestSource.item()), harvestSource.item());
     }
 
     @Override
@@ -56,7 +56,7 @@ public class CropSeed extends SimpleSeed {
         }
         
         final int sickleTier = ItemUtil.getSickleTier(item);
-        final int fortuneLevel = item.getEnchantmentLevel(Enchantment.LOOT_BONUS_BLOCKS);
+        final int fortuneLevel = item.getEnchantmentLevel(Enchantment.LOOTING);
 
         final ItemStack seed = getItem().clone();
         seed.setAmount(NumberUtil.getFortuneAmount(fortuneLevel, sickleTier, 1));

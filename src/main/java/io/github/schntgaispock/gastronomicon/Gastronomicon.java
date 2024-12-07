@@ -109,7 +109,7 @@ public class Gastronomicon extends AbstractAddon {
     }
 
     public static NamespacedKey key(@Nonnull String name) {
-        return new NamespacedKey(Gastronomicon.getInstance(), name);
+        return new NamespacedKey(Gastronomicon.getInstance(), name.toUpperCase());
     }
 
     public static boolean isPluginEnabled(String name) {

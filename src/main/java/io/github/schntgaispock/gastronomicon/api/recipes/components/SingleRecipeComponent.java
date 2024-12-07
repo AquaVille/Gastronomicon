@@ -31,8 +31,6 @@ public class SingleRecipeComponent extends RecipeComponent<ItemStack> {
     public boolean matches(@Nullable ItemStack item) {
         if (item == null) {
             return component.getType() == Material.AIR;
-        } else if (component instanceof final SlimefunItemStack sfStack) {
-            return SlimefunItem.getById(sfStack.getItemId()).isItem(item);
         } else {
             return item.isSimilar(component);
         }

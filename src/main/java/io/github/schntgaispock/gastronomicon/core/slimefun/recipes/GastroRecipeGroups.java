@@ -11,7 +11,7 @@ public class GastroRecipeGroups {
     
     public static final GroupRecipeComponent FLOUR = new GroupRecipeComponent(
         Gastronomicon.key("flour"),
-        SlimefunItems.WHEAT_FLOUR,
-        GastroStacks.BARLEY_FLOUR );
+        SlimefunItems.WHEAT_FLOUR.item(),
+        GastroStacks.BARLEY_FLOUR.item() );
 
 }

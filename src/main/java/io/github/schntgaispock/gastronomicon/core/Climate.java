@@ -1,5 +1,6 @@
 package io.github.schntgaispock.gastronomicon.core;
 
+import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Biome;
@@ -12,12 +13,12 @@ import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 public enum Climate {
-    DRY(new CustomItemStack(Material.SAND, "&eDry")),
-    TEMPERATE(new CustomItemStack(Material.GRASS_BLOCK, "&eTemperate")),
-    COLD(new CustomItemStack(Material.ICE, "&eCold")),
-    SNOWY(new CustomItemStack(Material.SNOW, "&eSnowy")),
-    NETHER(new CustomItemStack(Material.CRIMSON_NYLIUM, "&eNether")),
-    END(new CustomItemStack(Material.END_STONE, "&eEnd"));
+    DRY(new SlimefunItemStack("DRY",Material.SAND, "&eDry").item()),
+    TEMPERATE(new SlimefunItemStack("TEMPERATE",Material.GRASS_BLOCK, "&eTemperate").item()),
+    COLD(new SlimefunItemStack("COLD",Material.ICE, "&eCold").item()),
+    SNOWY(new SlimefunItemStack("SNOWY",Material.SNOW, "&eSnowy").item()),
+    NETHER(new SlimefunItemStack("NETHER",Material.CRIMSON_NYLIUM, "&eNether").item()),
+    END(new SlimefunItemStack("END",Material.END_STONE, "&eEnd").item());
 
     private final @Getter ItemStack displayItem;
 

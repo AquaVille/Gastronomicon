@@ -90,7 +90,7 @@ public class ThemedItemStack extends SlimefunItemStack {
     }
 
     public ThemedItemStack glisten() {
-        return enchant(Enchantment.DURABILITY).addFlags(ItemFlag.HIDE_ENCHANTS);
+        return enchant(Enchantment.DENSITY).addFlags(ItemFlag.HIDE_ENCHANTS);
     }
 
     public ThemedItemStack addFlags(ItemFlag... flags) {

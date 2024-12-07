@@ -283,7 +283,7 @@ public class ElectricKitchen extends AContainer {
                     getMachineProcessor().updateProgressBar(inv, STATUS_SLOT, currentOperation);
                     currentOperation.addProgress(1);
                 } else {
-                    inv.replaceExistingItem(STATUS_SLOT, new CustomItemStack(Material.BLACK_STAINED_GLASS_PANE, " "));
+                    inv.replaceExistingItem(STATUS_SLOT, new SlimefunItemStack("STATUS_SLOT",Material.BLACK_STAINED_GLASS_PANE, " ").item());
 
                     for (ItemStack output : currentOperation.getResults()) {
                         inv.pushItem(output.clone(), getOutputSlots());

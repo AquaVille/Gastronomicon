@@ -44,12 +44,12 @@ public class FruitingSeed extends SimpleSeed {
 
     @ParametersAreNonnullByDefault
     public FruitingSeed(SlimefunItemStack item, @Nullable Material displayBlock, SlimefunItemStack harvestSource, String fruitingBodyId) {
-        this(item, displayBlock, RecipeUtil.singleCenter(harvestSource), fruitingBodyId);
+        this(item, displayBlock, RecipeUtil.singleCenter(harvestSource.item()), fruitingBodyId);
     }
 
     @ParametersAreNonnullByDefault
     public FruitingSeed(SlimefunItemStack item, SlimefunItemStack harvestSource, String fruitingBodyId) {
-        this(item, null, RecipeUtil.singleCenter(harvestSource), fruitingBodyId);
+        this(item, null, RecipeUtil.singleCenter(harvestSource.item()), fruitingBodyId);
     }
     
     @Override

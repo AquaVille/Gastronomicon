@@ -7,6 +7,7 @@ import java.util.Set;
 import javax.annotation.Nullable;
 import javax.annotation.ParametersAreNullableByDefault;
 
+import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 
@@ -36,8 +37,8 @@ public abstract class GastroRecipe {
     @Getter
     @RequiredArgsConstructor
     public enum RecipeShape {
-        SHAPED(new CustomItemStack(Material.CRAFTING_TABLE, "&7This recipe is &fshaped")),
-        SHAPELESS(new CustomItemStack(Material.BARREL, "&7This recipe is &fshapeless"));
+        SHAPED(new SlimefunItemStack("SHAPED",Material.CRAFTING_TABLE, "&7This recipe is &fshaped").item()),
+        SHAPELESS(new SlimefunItemStack("SHAPELESS",Material.BARREL, "&7This recipe is &fshapeless").item());
 
         private final ItemStack guideItem;
     }
