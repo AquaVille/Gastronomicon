@@ -9,6 +9,8 @@ import java.util.Set;
 import javax.annotation.Nullable;
 import javax.annotation.ParametersAreNonnullByDefault;
 
+import io.github.schntgaispock.gastronomicon.core.GastroConfig;
+import io.github.schntgaispock.gastronomicon.core.menu.MenuBlock;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
@@ -17,8 +19,6 @@ import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
-import io.github.mooy1.infinitylib.core.AddonConfig;
-import io.github.mooy1.infinitylib.machines.MenuBlock;
 import io.github.schntgaispock.gastronomicon.Gastronomicon;
 import io.github.schntgaispock.gastronomicon.api.events.PlayerGastroFoodCraftEvent;
 import io.github.schntgaispock.gastronomicon.api.recipes.GastroRecipe;
@@ -182,7 +182,7 @@ public abstract class GastroWorkstation extends MenuBlock {
             final ItemStack[] toReturn;
             if (recipeOutputs.length > 1) {
                 SlimefunItemStack sfItem = new SlimefunItemStack("RECIPE_OUTPUT_META",recipeOutputs[0]);
-                final AddonConfig playerData = Gastronomicon.getInstance().getPlayerData();
+                final GastroConfig playerData = Gastronomicon.getInstance().getPlayerData();
                 final String proficiencyPath = player.getUniqueId() + ".proficiencies." + sfItem.getItemId();
                 final int proficiency = playerData.getInt(proficiencyPath, 0);
 

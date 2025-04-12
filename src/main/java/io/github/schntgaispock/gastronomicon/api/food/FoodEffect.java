@@ -471,7 +471,7 @@ public class FoodEffect {
     public static FoodEffect giveSlimefunItem(@Nonnull String id, int amount) {
         final SlimefunItem sfItem = SlimefunItem.getById(id);
         if (sfItem == null) {
-            Gastronomicon.log(Level.WARNING, "Cannot produce a FoodEffect that gives Slimefun item \"" + id +
+            Gastronomicon.getInstance().getLogger().log(Level.WARNING, "Cannot produce a FoodEffect that gives Slimefun item \"" + id +
                 "\" because it doesn't exist. Make sure to keep Slimefun and addons up to date!");
             return giveItem(Material.AIR, 1);
         }
@@ -488,7 +488,7 @@ public class FoodEffect {
     public static FoodEffect giveSlimefunItem(@Nonnull String id) {
         final SlimefunItem sfItem = SlimefunItem.getById(id);
         if (sfItem == null) {
-            Gastronomicon.log(Level.WARNING, "Cannot produce a FoodEffect that gives Slimefun item \"" + id +
+            Gastronomicon.getInstance().getLogger().log(Level.WARNING, "Cannot produce a FoodEffect that gives Slimefun item \"" + id +
                 "\" because it doesn't exist. Make sure to keep Slimefun and addons up to date!");
             return giveItem(Material.AIR, 1);
         }

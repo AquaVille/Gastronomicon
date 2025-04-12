@@ -1,12 +1,12 @@
 package io.github.schntgaispock.gastronomicon.core.command;
 
+import io.github.schntgaispock.gastronomicon.core.GastroConfig;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-import io.github.mooy1.infinitylib.core.AddonConfig;
 import io.github.schntgaispock.gastronomicon.Gastronomicon;
 import io.github.schntgaispock.gastronomicon.api.items.GastroTheme;
 import io.github.schntgaispock.gastronomicon.core.slimefun.items.food.GastroFood;
@@ -187,7 +187,7 @@ public class GastroCommandExecutor implements CommandExecutor {
             Gastronomicon.sendMessage(player, "&cUnknown food!");
             return true;
         }
-        final AddonConfig playerData = Gastronomicon.getInstance().getPlayerData();
+        final GastroConfig playerData = Gastronomicon.getInstance().getPlayerData();
         final int prof = playerData.getInt(player.getUniqueId().toString() + ".proficiencies." + foodId, 0);
         Gastronomicon.sendMessage(player, foodId + ": " + prof);
         return true;
@@ -206,14 +206,14 @@ public class GastroCommandExecutor implements CommandExecutor {
             Gastronomicon.sendMessage(player, "&cUnknown food!");
             return true;
         }
-        final AddonConfig playerData = Gastronomicon.getInstance().getPlayerData();
+        final GastroConfig playerData = Gastronomicon.getInstance().getPlayerData();
         final int prof = playerData.getInt(other.getUniqueId().toString() + ".proficiencies." + foodId, 0);
         Gastronomicon.sendMessage(player, foodId + ": " + prof);
         return true;
     }
 
     private boolean commandProficiencyModify(Player player, Player other, String mode, String foodId, int amount) {
-        final AddonConfig playerData = Gastronomicon.getInstance().getPlayerData();
+        final GastroConfig playerData = Gastronomicon.getInstance().getPlayerData();
         final String proficiencyPath = player.getUniqueId() + ".proficiencies." + foodId;
         switch (mode) {
             case "set":

@@ -4,6 +4,8 @@ import java.util.Arrays;
 
 import javax.annotation.Nonnull;
 
+import io.github.schntgaispock.gastronomicon.core.GastroConfig;
+import io.github.schntgaispock.gastronomicon.core.menu.MenuBlock;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.inventory.ItemStack;
@@ -11,8 +13,6 @@ import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
 
-import io.github.mooy1.infinitylib.core.AddonConfig;
-import io.github.mooy1.infinitylib.machines.MenuBlock;
 import io.github.schntgaispock.gastronomicon.Gastronomicon;
 import io.github.schntgaispock.gastronomicon.core.slimefun.GastroGroups;
 import io.github.schntgaispock.gastronomicon.core.slimefun.GastroStacks;
@@ -120,10 +120,10 @@ public class ChefAndroidTrainer extends MenuBlock {
                         name = food.getItemName();
                         id = food.getId();
                     }
-                    final AddonConfig playerData = Gastronomicon.getInstance().getPlayerData();
+                    final GastroConfig playerData = Gastronomicon.getInstance().getPlayerData();
                     final String proficiencyPath = player.getUniqueId() + ".proficiencies." + id;
                     final int proficiency = playerData.getInt(proficiencyPath, 0);
-                    final int threshold = Gastronomicon.config().getInt("proficiency-threshold");
+                    final int threshold = Gastronomicon.getInstance().getConfig().getInt("proficiency-threshold");
 
                     if (proficiency < threshold) {
                         Gastronomicon.sendMessage(player, "&eYou are not proficient enough in this recipe! Required: " + proficiency + "/" + threshold);

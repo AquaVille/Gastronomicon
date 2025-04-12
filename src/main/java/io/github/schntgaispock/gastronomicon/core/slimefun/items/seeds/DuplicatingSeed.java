@@ -31,7 +31,7 @@ public class DuplicatingSeed extends AbstractSeed {
 
         switch (item.getType()) {
             case CACTUS, SUGAR_CANE -> {}
-            default -> Gastronomicon.log(Level.WARNING, "Registering a DuplicatingSeed that isn't a cactus or sugar cane!");
+            default -> Gastronomicon.getInstance().getLogger().log(Level.WARNING, "Registering a DuplicatingSeed that isn't a cactus or sugar cane!");
         }
     }
 

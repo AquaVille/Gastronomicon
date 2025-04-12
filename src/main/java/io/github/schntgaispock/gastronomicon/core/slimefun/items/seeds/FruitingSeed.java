@@ -36,7 +36,7 @@ public class FruitingSeed extends SimpleSeed {
 
         switch (displayBlock) {
             case PUMPKIN_STEM, MELON_STEM -> {}
-            default -> Gastronomicon.log(Level.WARNING, "Registering a FruitingSeed that isn't a pumpkin or melon seed!");
+            default -> Gastronomicon.getInstance().getLogger().log(Level.WARNING, "Registering a FruitingSeed that isn't a pumpkin or melon seed!");
         }
 
         this.fruitingBody = SlimefunItem.getById(fruitingBodyId);

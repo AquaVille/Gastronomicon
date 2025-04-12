@@ -3,15 +3,14 @@ package io.github.schntgaispock.gastronomicon;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
-import org.bstats.bukkit.Metrics;
-import org.bstats.charts.SimplePie;
+import io.github.schntgaispock.gastronomicon.core.GastroConfig;
+import io.github.thebusybiscuit.slimefun4.api.SlimefunAddon;
 import org.bukkit.Bukkit;
 import org.bukkit.NamespacedKey;
 import org.bukkit.entity.Player;
+import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitTask;
 
-import io.github.mooy1.infinitylib.core.AbstractAddon;
-import io.github.mooy1.infinitylib.core.AddonConfig;
 import io.github.schntgaispock.gastronomicon.api.trees.TreeStructure;
 import io.github.schntgaispock.gastronomicon.core.setup.CommandSetup;
 import io.github.schntgaispock.gastronomicon.core.setup.ListenerSetup;
@@ -20,46 +19,28 @@ import io.github.schntgaispock.gastronomicon.core.setup.ItemSetup;
 import io.github.schntgaispock.gastronomicon.integration.DynaTechSetup;
 import io.github.schntgaispock.gastronomicon.integration.SlimeHUDSetup;
 import io.github.schntgaispock.gastronomicon.util.StringUtil;
-import io.github.thebusybiscuit.slimefun4.libraries.dough.updater.BlobBuildUpdater;
 import lombok.Getter;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.TextColor;
 import net.kyori.adventure.text.format.TextDecoration;
+import org.jetbrains.annotations.NotNull;
 
 @Getter
-public class Gastronomicon extends AbstractAddon {
+public class Gastronomicon extends JavaPlugin implements SlimefunAddon {
 
     private static @Getter Gastronomicon instance;
 
-    private AddonConfig playerData;
-    private AddonConfig customFood;
-
-    public Gastronomicon() {
-        super("SchnTgaiSpock", "Gastronomicon", "master", "options.auto-update");
-    }
+    private GastroConfig playerData;
+    private GastroConfig customFood;
 
     @Override
     @SuppressWarnings("deprecation")
-    public void enable() {
+    public void onEnable() {
         instance = this;
 
         info("#======================================#");
         info("#    Gastronomicon by SchnTgaiSpock    #");
         info("#======================================#");
-
-        if (getConfig().getBoolean("options.auto-update")) {
-            if (getDescription().getVersion().startsWith("Dev - ")) {
-                new BlobBuildUpdater(this, getFile(), "Gastronomicon", "Dev").start();
-            } else {
-                info("This is an unofficial build of Gastronomicon, so auto updates are disabled!");
-                info("You can download the official build here: https://blob.build/project/Gastronomicon");
-            }
-        }
-
-        final Metrics metrics = new Metrics(this, 16941);
-
-        metrics.addCustomChart(
-            new SimplePie("exoticgardenInstalled", () -> Boolean.toString(isPluginEnabled("ExoticGarden"))));
 
         ItemSetup.setup();
         ResearchSetup.setup();
@@ -96,14 +77,14 @@ public class Gastronomicon extends AbstractAddon {
             }
         }
 
-        playerData = new AddonConfig("player.yml");
-        customFood = new AddonConfig("custom-food.yml");
+        playerData = new GastroConfig("player.yml");
+        customFood = new GastroConfig("custom-food.yml");
 
         TreeStructure.loadTrees();
     }
 
     @Override
-    public void disable() {
+    public void onDisable() {
         instance = null;
         getPlayerData().save();
     }
@@ -164,5 +145,23 @@ public class Gastronomicon extends AbstractAddon {
                 .asComponent())
             .asComponent();
         player.sendMessage(text);
+    }
+
+    @Override
+    public @NotNull JavaPlugin getJavaPlugin() {
+        return instance;
+    }
+
+    @Override
+    public @org.jetbrains.annotations.Nullable String getBugTrackerURL() {
+        return "";
+    }
+
+    /**
+     * Creates a NameSpacedKey from the given string
+     */
+    @Nonnull
+    public NamespacedKey createKey(String s) {
+        return new NamespacedKey(getInstance(), s);
     }
 }
