@@ -47,6 +47,7 @@ import me.mrCookieSlime.Slimefun.api.inventory.BlockMenu;
 import me.mrCookieSlime.Slimefun.api.inventory.BlockMenuPreset;
 import me.mrCookieSlime.Slimefun.api.inventory.DirtyChestMenu;
 import me.mrCookieSlime.Slimefun.api.item_transport.ItemTransportFlow;
+import org.jetbrains.annotations.NotNull;
 
 @Getter
 @SuppressWarnings("deprecation")
@@ -116,7 +117,7 @@ public class ElectricKitchen extends AContainer {
             }
 
             @Override
-            public boolean canOpen(Block b, Player p) {
+            public boolean canOpen(@NotNull Block b, @NotNull Player p) {
                 if (p.hasPermission("slimefun.inventory.bypass")) {
                     return true;
                 } else {
@@ -141,7 +142,7 @@ public class ElectricKitchen extends AContainer {
         return new SimpleBlockBreakHandler() {
 
             @Override
-            public void onBlockBreak(Block b) {
+            public void onBlockBreak(@NotNull Block b) {
                 BlockMenu inv = BlockStorage.getInventory(b);
 
                 if (inv != null) {

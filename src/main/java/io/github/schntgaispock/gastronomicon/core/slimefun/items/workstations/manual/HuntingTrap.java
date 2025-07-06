@@ -27,6 +27,7 @@ import lombok.Getter;
 import me.mrCookieSlime.CSCoreLibPlugin.Configuration.Config;
 import me.mrCookieSlime.Slimefun.Objects.handlers.BlockTicker;
 import me.mrCookieSlime.Slimefun.api.BlockStorage;
+import org.jetbrains.annotations.NotNull;
 
 @Getter
 @SuppressWarnings("deprecation")
@@ -45,12 +46,12 @@ public abstract class HuntingTrap extends SimpleSlimefunItem<BlockUseHandler> {
         addItemHandler(new BlockPlaceHandler(true) {
 
             @Override
-            public void onBlockPlacerPlace(BlockPlacerPlaceEvent e) {
+            public void onBlockPlacerPlace(@NotNull BlockPlacerPlaceEvent e) {
                 startCatch(e.getBlock().getLocation());
             }
 
             @Override
-            public void onPlayerPlace(BlockPlaceEvent e) {
+            public void onPlayerPlace(@NotNull BlockPlaceEvent e) {
                 startCatch(e.getBlock().getLocation());
             }
 
@@ -58,7 +59,7 @@ public abstract class HuntingTrap extends SimpleSlimefunItem<BlockUseHandler> {
 
         addItemHandler(new SimpleBlockBreakHandler() {
             @Override
-            public void onBlockBreak(Block b) {
+            public void onBlockBreak(@NotNull Block b) {
                 BlockStorage.clearBlockInfo(b);
                 if (triggeredTraps.containsKey(b.getLocation()) && triggeredTraps.get(b.getLocation()))
                     dropCatch(b.getLocation());
@@ -100,7 +101,7 @@ public abstract class HuntingTrap extends SimpleSlimefunItem<BlockUseHandler> {
     }
 
     @Override
-    public BlockUseHandler getItemHandler() {
+    public @NotNull BlockUseHandler getItemHandler() {
         return e -> {
             e.cancel();
             if (e.getClickedBlock().isEmpty())

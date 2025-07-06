@@ -36,7 +36,7 @@ public class UtilTests {
         for (Map.Entry<R, T> test : tests.entrySet()) {
             i++;
             T result = null;
-            String resultString = "";
+            String resultString;
 
             try {
                 result = toTest.apply(test.getKey());

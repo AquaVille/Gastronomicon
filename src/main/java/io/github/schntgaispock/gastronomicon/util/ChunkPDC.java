@@ -18,11 +18,6 @@ public class ChunkPDC {
         return l.getBlockX() + " " + l.getBlockY() + " " + l.getBlockZ();
     }
 
-    // private static Location locationFromString(World w, String s) {
-    //     final String[] locations = s.split(" ");
-    //     return new Location(w, Integer.parseInt(locations[0]), Integer.parseInt(locations[1]), Integer.parseInt(locations[2]));
-    // }
-    
     public static JsonElement get(Block b, NamespacedKey key) {
         final JsonObject obj = PersistentDataAPI.getJsonObject(b.getChunk(), key);
         return obj == null ? null : obj.get(locationToString(b));

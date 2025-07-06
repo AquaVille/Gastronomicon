@@ -5,7 +5,6 @@ import java.util.List;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
-import io.github.thebusybiscuit.slimefun4.utils.itemstack.SlimefunGuideItem;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
@@ -18,12 +17,12 @@ import io.github.schntgaispock.gastronomicon.core.slimefun.recipes.GastroRecipeT
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
 import io.github.thebusybiscuit.slimefun4.core.attributes.EnergyNetComponent;
 import io.github.thebusybiscuit.slimefun4.core.networks.energy.EnergyNetComponentType;
-import io.github.thebusybiscuit.slimefun4.libraries.dough.items.CustomItemStack;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import me.mrCookieSlime.Slimefun.api.BlockStorage;
 import me.mrCookieSlime.Slimefun.api.inventory.BlockMenu;
 import me.mrCookieSlime.Slimefun.api.inventory.BlockMenuPreset;
+import org.jetbrains.annotations.NotNull;
 
 @Getter
 @SuppressWarnings("deprecation")
@@ -85,14 +84,14 @@ public class MultiStove extends GastroWorkstation implements EnergyNetComponent 
     }
 
     @Override
-    protected void setup(BlockMenuPreset preset) {
+    protected void setup(@NotNull BlockMenuPreset preset) {
         super.setup(preset);
 
         preset.drawBackground(TEMPERATURE_BUTTON_LOW, new int[] { TEMPERATURE_BUTTON_SLOT });
     }
 
     @Override
-    protected void onNewInstance(BlockMenu menu, Block b) {
+    protected void onNewInstance(@NotNull BlockMenu menu, @NotNull Block b) {
         super.onNewInstance(menu, b);
 
         menu.addMenuOpeningHandler(player -> {
@@ -122,14 +121,14 @@ public class MultiStove extends GastroWorkstation implements EnergyNetComponent 
     }
 
     @Override
-    public EnergyNetComponentType getEnergyComponentType() {
+    public @NotNull EnergyNetComponentType getEnergyComponentType() {
         return EnergyNetComponentType.CONSUMER;
     }
 
     @Override
     @Nullable
-    protected GastroRecipe findRecipe(ItemStack[] ingredients, List<ItemStack> containers, List<ItemStack> tools,
-        Player player, BlockMenu menu) {
+    protected GastroRecipe findRecipe(ItemStack @NotNull [] ingredients, @NotNull List<ItemStack> containers, @NotNull List<ItemStack> tools,
+                                      @NotNull Player player, @NotNull BlockMenu menu) {
         final GastroRecipe recipe = super.findRecipe(ingredients, containers, tools, player, menu);
         if (recipe instanceof final MultiStoveRecipe msRecipe) {
             if (msRecipe.getTemperature().getItem().isSimilar(menu.getItemInSlot(TEMPERATURE_BUTTON_SLOT))) {

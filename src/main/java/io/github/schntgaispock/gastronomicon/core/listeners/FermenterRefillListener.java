@@ -10,6 +10,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
+import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.PotionMeta;
 import org.bukkit.potion.PotionType;
 
@@ -57,7 +58,7 @@ public class FermenterRefillListener implements Listener {
                 ret = Material.BUCKET;
                 break;
             case POTION:
-                if (((PotionMeta) e.getItem().getItemMeta()).getBasePotionData().getType() == PotionType.WATER) {
+                if (((PotionMeta) e.getItem().getItemMeta()).getBasePotionType() == PotionType.WATER) {
                     refill = 333;
                     ret = Material.GLASS_BOTTLE;
                     break;

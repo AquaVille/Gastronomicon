@@ -68,7 +68,7 @@ public final class GastroConfig extends YamlConfiguration {
             save(file);
         }
         catch (IOException e) {
-            e.printStackTrace();
+            Gastronomicon.error(e.getMessage());
         }
     }
 
@@ -83,7 +83,7 @@ public final class GastroConfig extends YamlConfiguration {
                 load(file);
             }
             catch (Throwable e) {
-                e.printStackTrace();
+                Gastronomicon.error(e.getMessage());
             }
         }
         save();
@@ -102,14 +102,8 @@ public final class GastroConfig extends YamlConfiguration {
 
     @Nonnull
     @Override
-    protected String buildHeader() {
-        return "";
-    }
-
-    @Nonnull
-    @Override
     public String saveToString() {
-        options().copyDefaults(true).copyHeader(false).indent(2);
+        options().copyDefaults(true).copyDefaults(false).indent(2);
         String defaultSave = super.saveToString();
 
         try {
@@ -130,7 +124,7 @@ public final class GastroConfig extends YamlConfiguration {
 
         }
         catch (Exception e) {
-            e.printStackTrace();
+            Gastronomicon.error(e.getMessage());
             return defaultSave;
         }
     }
@@ -147,7 +141,7 @@ public final class GastroConfig extends YamlConfiguration {
                 defaults.loadFromString(def);
             }
             catch (Throwable e) {
-                e.printStackTrace();
+                Gastronomicon.error(e.getMessage());
             }
         }
 

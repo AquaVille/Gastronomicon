@@ -46,7 +46,7 @@ public final class PathBuilder {
 
     public String build() {
         StringBuilder builder = new StringBuilder();
-        if (path.size() > 0) {
+        if (!path.isEmpty()) {
             builder.append(path.get(0));
             for (int i = 1; i < path.size(); i++) {
                 builder.append('.').append(path.get(i));

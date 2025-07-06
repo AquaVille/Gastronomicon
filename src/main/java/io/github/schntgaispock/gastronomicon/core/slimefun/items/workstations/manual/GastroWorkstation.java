@@ -36,6 +36,7 @@ import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
 import me.mrCookieSlime.Slimefun.api.inventory.BlockMenu;
 import me.mrCookieSlime.Slimefun.api.inventory.BlockMenuPreset;
 import net.kyori.adventure.text.Component;
+import org.jetbrains.annotations.NotNull;
 
 @SuppressWarnings("deprecation")
 public abstract class GastroWorkstation extends MenuBlock {
@@ -52,7 +53,7 @@ public abstract class GastroWorkstation extends MenuBlock {
     protected static final int[] OUTPUT_BORDER_SLOTS = { 32 };
     protected static final int[] TOOL_BORDER_SLOTS = { 45 };
     protected static final int CRAFT_BUTTON_SLOT = 53;
-    private static Map<Location, Pair<Integer, GastroRecipe>> lastInputHashAndRecipe = new HashMap<>();
+    private static final Map<Location, Pair<Integer, GastroRecipe>> lastInputHashAndRecipe = new HashMap<>();
 
     public GastroWorkstation(SlimefunItemStack item, ItemStack[] recipe) {
         super(GastroGroups.BASIC_MACHINES, item, RecipeType.ENHANCED_CRAFTING_TABLE, recipe);
@@ -79,7 +80,7 @@ public abstract class GastroWorkstation extends MenuBlock {
     public abstract GastroRecipeType getGastroRecipeType();
 
     @Override
-    protected void setup(BlockMenuPreset preset) {
+    protected void setup(@NotNull BlockMenuPreset preset) {
         preset.drawBackground(BACKGROUND_ITEM, BACKGROUND_SLOTS);
         preset.drawBackground(GastroStacks.MENU_INGREDIENT_BORDER, INGREDIENT_BORDER_SLOTS);
         preset.drawBackground(GastroStacks.MENU_CONTAINER_BORDER, CONTAINER_BORDER_SLOTS);
@@ -89,7 +90,7 @@ public abstract class GastroWorkstation extends MenuBlock {
     }
 
     @Override
-    protected void onBreak(BlockBreakEvent e, BlockMenu menu) {
+    protected void onBreak(@NotNull BlockBreakEvent e, @NotNull BlockMenu menu) {
         super.onBreak(e, menu);
         final Location l = menu.getLocation();
         menu.dropItems(l, getToolSlots());
@@ -99,7 +100,7 @@ public abstract class GastroWorkstation extends MenuBlock {
     protected void onSuccessfulCraft(Block b) {}
 
     @Override
-    protected void onNewInstance(BlockMenu menu, Block b) {
+    protected void onNewInstance(@NotNull BlockMenu menu, @NotNull Block b) {
         super.onNewInstance(menu, b);
 
         menu.addMenuClickHandler(CRAFT_BUTTON_SLOT, (player, slot, item, action) -> {

@@ -24,7 +24,7 @@ public class StringUtil {
 
     public static boolean isBlank(String string) {
         // Is default blank if null or length = 0
-        if (string == null || string.length() == 0) {
+        if (string == null || string.isEmpty()) {
             return true;
         }
 

@@ -14,7 +14,7 @@ import lombok.ToString;
 /**
  * Stores information about the input of a {@link GastroRecipe}. Does not
  * include tools.
- * 
+ *
  * @author SchnTgaiSpock
  */
 @Getter
@@ -34,9 +34,7 @@ public class RecipeInput {
             Arrays.sort(ingredients, RecipeUtil::compareComponents);
         }
         this.ingredients = new RecipeComponent<?>[9];
-        for (int i = 0; i < Math.min(ingredients.length, 9); i++) {
-            this.ingredients[i] = ingredients[i];
-        }
+        System.arraycopy(ingredients, 0, this.ingredients, 0, Math.min(ingredients.length, 9));
 
         this.container = container;
     }

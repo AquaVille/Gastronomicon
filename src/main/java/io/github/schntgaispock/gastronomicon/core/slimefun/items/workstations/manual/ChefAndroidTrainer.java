@@ -29,6 +29,7 @@ import lombok.Getter;
 import me.mrCookieSlime.Slimefun.api.BlockStorage;
 import me.mrCookieSlime.Slimefun.api.inventory.BlockMenu;
 import me.mrCookieSlime.Slimefun.api.inventory.BlockMenuPreset;
+import org.jetbrains.annotations.NotNull;
 
 @Getter
 public class ChefAndroidTrainer extends MenuBlock {
@@ -57,7 +58,7 @@ public class ChefAndroidTrainer extends MenuBlock {
         return new SimpleBlockBreakHandler() {
 
             @Override
-            public void onBlockBreak(Block b) {
+            public void onBlockBreak(@NotNull Block b) {
                 BlockMenu inv = BlockStorage.getInventory(b);
 
                 if (inv != null) {
@@ -71,7 +72,7 @@ public class ChefAndroidTrainer extends MenuBlock {
     }
 
     @Override
-    protected void setup(BlockMenuPreset preset) {
+    protected void setup(@NotNull BlockMenuPreset preset) {
         preset.drawBackground(BACKGROUND_ITEM, BACKGROUND_SLOTS);
         preset.drawBackground(GastroStacks.MENU_ANDROID_BORDER, INPUT_BORDER_SLOTS);
         preset.drawBackground(OUTPUT_BORDER, OUTPUT_BORDER_SLOTS);
@@ -81,7 +82,7 @@ public class ChefAndroidTrainer extends MenuBlock {
 
     @Override
     @SuppressWarnings("deprecation")
-    protected void onNewInstance(BlockMenu menu, Block b) {
+    protected void onNewInstance(@NotNull BlockMenu menu, @NotNull Block b) {
         super.onNewInstance(menu, b);
 
         menu.addMenuClickHandler(TRAIN_SLOT, (player, slot, item, action) -> {

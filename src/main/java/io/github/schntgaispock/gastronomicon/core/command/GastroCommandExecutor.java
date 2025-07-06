@@ -10,6 +10,7 @@ import org.bukkit.entity.Player;
 import io.github.schntgaispock.gastronomicon.Gastronomicon;
 import io.github.schntgaispock.gastronomicon.api.items.GastroTheme;
 import io.github.schntgaispock.gastronomicon.core.slimefun.items.food.GastroFood;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * Functionality for the '/gastronomicon' command
@@ -17,7 +18,7 @@ import io.github.schntgaispock.gastronomicon.core.slimefun.items.food.GastroFood
 public class GastroCommandExecutor implements CommandExecutor {
 
     @Override
-    public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+    public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, String[] args) {
 
         if (!(sender instanceof final Player player))
             return false;

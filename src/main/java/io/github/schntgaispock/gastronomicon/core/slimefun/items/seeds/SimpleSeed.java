@@ -27,6 +27,7 @@ import io.github.thebusybiscuit.slimefun4.implementation.Slimefun;
 import io.github.thebusybiscuit.slimefun4.libraries.dough.protection.Interaction;
 import lombok.Getter;
 import me.mrCookieSlime.Slimefun.api.BlockStorage;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * A SimpleSeed only drops itself when harvested.
@@ -58,7 +59,7 @@ public class SimpleSeed extends AbstractSeed {
         if (ItemUtil.isSeed(getItem().getType())) {
             addItemHandler(new BlockPlaceHandler(true) {
                 @Override
-                public void onBlockPlacerPlace(BlockPlacerPlaceEvent e) {
+                public void onBlockPlacerPlace(@NotNull BlockPlacerPlaceEvent e) {
                     if (e.getBlock().getState().getLightLevel() <= 7) {
                         e.setCancelled(true);
                         BlockStorage.clearBlockInfo(e.getBlock(), true);
@@ -68,7 +69,7 @@ public class SimpleSeed extends AbstractSeed {
                 }
 
                 @Override
-                public void onPlayerPlace(BlockPlaceEvent e) {
+                public void onPlayerPlace(@NotNull BlockPlaceEvent e) {
                     if (e.getBlock().getState().getLightLevel() <= 7 ||
                         !e.canBuild()) {
                         e.setCancelled(true);
@@ -135,7 +136,7 @@ public class SimpleSeed extends AbstractSeed {
 
         final ItemStack seed = getItem().clone();
         seed.setAmount(NumberUtil.getFortuneAmount(fortuneLevel, sickleTier, 2));
-        return Arrays.asList(seed);
+        return List.of(seed);
     }
 
     @Override

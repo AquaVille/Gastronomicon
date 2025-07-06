@@ -3,6 +3,7 @@ package io.github.schntgaispock.gastronomicon.api.trees;
 import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -32,12 +33,12 @@ public final class TreeStructure {
 
     public static void loadTrees() {
         final File treePath = new File(TREE_SCHEMATIC_PATH);
-        for (File treeFile : treePath.listFiles()) {
+        for (File treeFile : Objects.requireNonNull(treePath.listFiles())) {
             try {
                 final TreeStructure tree = JSONObjectMapper.readValue(treeFile, TreeStructure.class);
                 loadedTrees.put(tree.getSapling(), tree);
             } catch (Exception e) {
-                e.printStackTrace();
+                Gastronomicon.error(e.getMessage());
             }
         }
 

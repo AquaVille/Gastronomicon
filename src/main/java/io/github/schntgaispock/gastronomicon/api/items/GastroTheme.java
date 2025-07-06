@@ -13,8 +13,8 @@ public enum GastroTheme {
     REGULAR_FOOD("#1d90f4"),
     PERFECT_FOOD("#c91df4");
 
-    private @Getter ChatColor color;
-    private @Getter ChatColor loreColor;
+    private final @Getter ChatColor color;
+    private final @Getter ChatColor loreColor;
 
     GastroTheme(String color, String loreColor) {
         this.color = ChatColor.of(color);

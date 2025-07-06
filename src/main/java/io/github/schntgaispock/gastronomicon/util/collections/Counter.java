@@ -13,13 +13,13 @@ import lombok.Getter;
 
 public class Counter<T> {
 
-    private Map<Integer, Pair<T, Integer>> map = new HashMap<>();
+    private final Map<Integer, Pair<T, Integer>> map = new HashMap<>();
     private final @Nullable Function<T, Integer> hashFunction;
     private Integer max;
     private Integer min;
     private @Getter int total = 0;
 
-    public Counter(Function<T, Integer> hashFunction) {
+    public Counter(@org.jetbrains.annotations.Nullable Function<T, Integer> hashFunction) {
         this.hashFunction = hashFunction;
     }
 
@@ -131,7 +131,7 @@ public class Counter<T> {
         int minHash = 0;
         int minAmount = Integer.MAX_VALUE;
 
-        if (map.size() == 0) {
+        if (map.isEmpty()) {
             return new Pair<Integer, Integer>(null, null);
         }
 
@@ -166,7 +166,7 @@ public class Counter<T> {
     public String toString() {
         final StringBuilder string = new StringBuilder("{");
         for (Map.Entry<Integer, Pair<T, Integer>> key : map.entrySet()) {
-            string.append(key.getValue().first() + ": " + key.getValue().second() + ", ");
+            string.append(key.getValue().first()).append(": ").append(key.getValue().second()).append(", ");
         }
         string.delete(string.length() - 2, string.length()).append("}");
         return string.toString();

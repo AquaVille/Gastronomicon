@@ -12,6 +12,7 @@ import io.github.thebusybiscuit.slimefun4.core.networks.energy.EnergyNetComponen
 import lombok.Getter;
 import me.mrCookieSlime.Slimefun.api.inventory.BlockMenu;
 import me.mrCookieSlime.Slimefun.api.inventory.BlockMenuPreset;
+import org.jetbrains.annotations.NotNull;
 
 @Getter
 public class Refrigerator extends GastroWorkstation implements EnergyNetComponent {
@@ -27,7 +28,7 @@ public class Refrigerator extends GastroWorkstation implements EnergyNetComponen
     }
 
     @Override
-    protected void setup(BlockMenuPreset preset) {
+    protected void setup(@NotNull BlockMenuPreset preset) {
         super.setup(preset);
         preset.drawBackground(BACKGROUND_ITEM, new int[] { 52 });
     }
@@ -38,7 +39,7 @@ public class Refrigerator extends GastroWorkstation implements EnergyNetComponen
     }
 
     @Override
-    public EnergyNetComponentType getEnergyComponentType() {
+    public @NotNull EnergyNetComponentType getEnergyComponentType() {
         return EnergyNetComponentType.CONSUMER;
     }
 

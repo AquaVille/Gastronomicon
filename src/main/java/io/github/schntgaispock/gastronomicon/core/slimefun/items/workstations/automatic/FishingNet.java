@@ -25,6 +25,7 @@ import me.mrCookieSlime.Slimefun.Objects.handlers.BlockTicker;
 import me.mrCookieSlime.Slimefun.api.BlockStorage;
 import me.mrCookieSlime.Slimefun.api.inventory.BlockMenu;
 import me.mrCookieSlime.Slimefun.api.inventory.BlockMenuPreset;
+import org.jetbrains.annotations.NotNull;
 
 @Getter
 @SuppressWarnings("deprecation")
@@ -89,7 +90,7 @@ public class FishingNet extends SlimefunItem implements InventoryBlock, MachineP
 
         addItemHandler(new SimpleBlockBreakHandler() {
             @Override
-            public void onBlockBreak(Block b) {
+            public void onBlockBreak(@NotNull Block b) {
                 final BlockMenu inv = BlockStorage.getInventory(b);
                 if (inv != null)
                     inv.dropItems(b.getLocation(), getOutputSlots());

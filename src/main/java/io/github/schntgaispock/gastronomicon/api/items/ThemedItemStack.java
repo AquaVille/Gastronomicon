@@ -28,7 +28,8 @@ public class ThemedItemStack extends SlimefunItemStack {
         return (type == null) ? Material.BARRIER : type;
     }
 
-    public @Nonnull String getDisplayName() {
+
+    public @Nonnull String getItemName() {
         String name = getDisplayName();
         return (name == null) ? "NO NAME GIVEN" : name;
     }
@@ -75,22 +76,6 @@ public class ThemedItemStack extends SlimefunItemStack {
     @ParametersAreNonnullByDefault
     public static ThemedItemStack ingredient(String id, String texture, String name, String... lore) {
         return of(GastroTheme.INGREDIENT, id, texture, name, lore);
-    }
-
-    public ThemedItemStack enchant(Enchantment... enchantments) {
-        for (Enchantment enchantment : enchantments) {
-            enchant(enchantment, 1);
-        }
-        return this;
-    }
-
-    public ThemedItemStack enchant(Enchantment enchantment, int level) {
-        addUnsafeEnchantment(enchantment, level);
-        return this;
-    }
-
-    public ThemedItemStack glisten() {
-        return enchant(Enchantment.DENSITY).addFlags(ItemFlag.HIDE_ENCHANTS);
     }
 
     public ThemedItemStack addFlags(ItemFlag... flags) {

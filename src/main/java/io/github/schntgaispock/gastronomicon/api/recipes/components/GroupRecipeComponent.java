@@ -2,6 +2,7 @@ package io.github.schntgaispock.gastronomicon.api.recipes.components;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 
 import javax.annotation.Nullable;
@@ -42,7 +43,7 @@ public class GroupRecipeComponent extends RecipeComponent<Set<ItemStack>> {
     }
 
     public GroupRecipeComponent(NamespacedKey id, Material... component) {
-        this(id, Set.of(Arrays.stream(component).map(material -> new ItemStack(material)).toArray(ItemStack[]::new)));
+        this(id, Set.of(Arrays.stream(component).map(ItemStack::new).toArray(ItemStack[]::new)));
     }
 
     @Override
@@ -60,15 +61,19 @@ public class GroupRecipeComponent extends RecipeComponent<Set<ItemStack>> {
 
     @Override
     public ItemStack getDisplayItem() {
-        final ItemStack displayitem = component.stream().findFirst().get().clone();
-        final List<Component> lore = displayitem.lore();
-        lore.add(Component.text(""));
-        for (final ItemStack itemStack : component) {
-            lore.add(Component.text("§8‑ §f").append(itemStack.getItemMeta().displayName()));
+        if (component.stream().findFirst().isPresent()) {
+            final ItemStack displayItem = component.stream().findFirst().get().clone();
+            final List<Component> lore = displayItem.lore();
+            if (lore != null) {
+                lore.add(Component.text(""));
+                for (final ItemStack itemStack : component) {
+                    lore.add(Component.text("§8‑ §f").append(Objects.requireNonNull(itemStack.getItemMeta().displayName())));
+                }
+                displayItem.lore(lore);
+            }
+            return displayItem;
         }
-        displayitem.lore(lore);
-
-        return displayitem;
+        return null;
     }
 
     @Override
