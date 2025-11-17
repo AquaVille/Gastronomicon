@@ -9,9 +9,7 @@ import java.util.Set;
 import javax.annotation.Nullable;
 import javax.annotation.ParametersAreNonnullByDefault;
 
-import io.github.schntgaispock.gastronomicon.core.GastroConfig;
-import io.github.schntgaispock.gastronomicon.core.menu.MenuBlock;
-import org.bukkit.Bukkit;
+import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
@@ -20,6 +18,8 @@ import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
+import io.github.mooy1.infinitylib.core.AddonConfig;
+import io.github.mooy1.infinitylib.machines.MenuBlock;
 import io.github.schntgaispock.gastronomicon.Gastronomicon;
 import io.github.schntgaispock.gastronomicon.api.events.PlayerGastroFoodCraftEvent;
 import io.github.schntgaispock.gastronomicon.api.recipes.GastroRecipe;
@@ -36,7 +36,7 @@ import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
 import me.mrCookieSlime.Slimefun.api.inventory.BlockMenu;
 import me.mrCookieSlime.Slimefun.api.inventory.BlockMenuPreset;
-import org.jetbrains.annotations.NotNull;
+import net.kyori.adventure.text.Component;
 
 @SuppressWarnings("deprecation")
 public abstract class GastroWorkstation extends MenuBlock {
@@ -53,7 +53,7 @@ public abstract class GastroWorkstation extends MenuBlock {
     protected static final int[] OUTPUT_BORDER_SLOTS = { 32 };
     protected static final int[] TOOL_BORDER_SLOTS = { 45 };
     protected static final int CRAFT_BUTTON_SLOT = 53;
-    private static final Map<Location, Pair<Integer, GastroRecipe>> lastInputHashAndRecipe = new HashMap<>();
+    private static Map<Location, Pair<Integer, GastroRecipe>> lastInputHashAndRecipe = new HashMap<>();
 
     public GastroWorkstation(SlimefunItemStack item, ItemStack[] recipe) {
         super(GastroGroups.BASIC_MACHINES, item, RecipeType.ENHANCED_CRAFTING_TABLE, recipe);
@@ -80,7 +80,7 @@ public abstract class GastroWorkstation extends MenuBlock {
     public abstract GastroRecipeType getGastroRecipeType();
 
     @Override
-    protected void setup(@NotNull BlockMenuPreset preset) {
+    protected void setup(BlockMenuPreset preset) {
         preset.drawBackground(BACKGROUND_ITEM, BACKGROUND_SLOTS);
         preset.drawBackground(GastroStacks.MENU_INGREDIENT_BORDER, INGREDIENT_BORDER_SLOTS);
         preset.drawBackground(GastroStacks.MENU_CONTAINER_BORDER, CONTAINER_BORDER_SLOTS);
@@ -90,7 +90,7 @@ public abstract class GastroWorkstation extends MenuBlock {
     }
 
     @Override
-    protected void onBreak(@NotNull BlockBreakEvent e, @NotNull BlockMenu menu) {
+    protected void onBreak(BlockBreakEvent e, BlockMenu menu) {
         super.onBreak(e, menu);
         final Location l = menu.getLocation();
         menu.dropItems(l, getToolSlots());
@@ -100,7 +100,7 @@ public abstract class GastroWorkstation extends MenuBlock {
     protected void onSuccessfulCraft(Block b) {}
 
     @Override
-    protected void onNewInstance(@NotNull BlockMenu menu, @NotNull Block b) {
+    protected void onNewInstance(BlockMenu menu, Block b) {
         super.onNewInstance(menu, b);
 
         menu.addMenuClickHandler(CRAFT_BUTTON_SLOT, (player, slot, item, action) -> {
@@ -123,21 +123,15 @@ public abstract class GastroWorkstation extends MenuBlock {
             // Get the items in the menu
             final ItemStack[] ingredients = Arrays.stream(getInputSlots()).mapToObj(s -> {
                 final ItemStack i = menu.getItemInSlot(s);
-                final ItemStack clone = i.clone();
-                clone.setAmount(1);
-                return i == null ? null : clone;
+                return i == null ? null : i.asOne();
             }).toArray(ItemStack[]::new);
             final List<ItemStack> containers = Arrays.stream(getContainerSlots()).mapToObj(s -> {
                 final ItemStack i = menu.getItemInSlot(s);
-                final ItemStack clone = i.clone();
-                clone.setAmount(1);
-                return i == null ? null : clone;
+                return i == null ? null : i.asOne();
             }).toList();
             final List<ItemStack> tools = Arrays.stream(getToolSlots()).mapToObj(s -> {
                 final ItemStack i = menu.getItemInSlot(s);
-                final ItemStack clone = i.clone();
-                clone.setAmount(1);
-                return i == null ? null : clone;
+                return i == null ? null : i.asOne();
             }).toList();
 
             int hash = 1;
@@ -176,10 +170,9 @@ public abstract class GastroWorkstation extends MenuBlock {
 
             // Call the event
             final PlayerGastroFoodCraftEvent craftEvent = new PlayerGastroFoodCraftEvent(player, recipe);
-            Bukkit.getPluginManager().callEvent(craftEvent);
-
-            if (!craftEvent.isCancelled() && craftEvent.getMessage() != null) {
-                Gastronomicon.sendMessage(player, craftEvent.getMessage());
+            if (!craftEvent.callEvent()) {
+                if (craftEvent.getMessage() != null)
+                    Gastronomicon.sendMessage(player, Component.text(craftEvent.getMessage()));
                 return false;
             }
 
@@ -188,10 +181,12 @@ public abstract class GastroWorkstation extends MenuBlock {
             // Calculate the crafting result
             final ItemStack output;
             final ItemStack[] toReturn;
-            if (recipeOutputs.length > 1) {
-                SlimefunItemStack sfItem = new SlimefunItemStack("RECIPE_OUTPUT_META",recipeOutputs[0]);
-                final GastroConfig playerData = Gastronomicon.getInstance().getPlayerData();
-                final String proficiencyPath = player.getUniqueId() + ".proficiencies." + sfItem.getItemId();
+
+            final SlimefunItem sf = SlimefunItem.getByItem(recipeOutputs[0]);
+
+            if (recipeOutputs.length > 1 && sf != null) {
+                final AddonConfig playerData = Gastronomicon.getInstance().getPlayerData();
+                final String proficiencyPath = player.getUniqueId() + ".proficiencies." + sf.getId();
                 final int proficiency = playerData.getInt(proficiencyPath, 0);
 
                 // Add 1 to proficiency
@@ -221,7 +216,7 @@ public abstract class GastroWorkstation extends MenuBlock {
                 final ItemStack i = menu.getItemInSlot(containerSlot);
                 if (i != null && hashRecipePair.second() != null
                     && hashRecipePair.second().getInputs().getContainer().matches(i)) {
-                    i.setAmount(i.getAmount() - 1);
+                    i.subtract();
                     break;
                 }
             }
@@ -239,7 +234,7 @@ public abstract class GastroWorkstation extends MenuBlock {
                     if (currentlyInOutput.getMaxStackSize() == currentlyInOutput.getAmount()) {
                         continue;
                     } else {
-                        currentlyInOutput.setAmount(currentlyInOutput.getAmount() + 1);
+                        currentlyInOutput.add();
                         break;
                     }
                 }

@@ -24,7 +24,7 @@ public class TreeGrowthListener implements Listener {
         try {
             tree.build(e.getLocation(), sapling);
         } catch (NullPointerException | IllegalArgumentException err) {
-            Gastronomicon.error(err.getMessage());
+            err.printStackTrace();
         }
     }
     

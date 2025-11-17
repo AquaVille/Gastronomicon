@@ -3,14 +3,13 @@ package io.github.schntgaispock.gastronomicon;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
-import io.github.schntgaispock.gastronomicon.core.GastroConfig;
-import io.github.thebusybiscuit.slimefun4.api.SlimefunAddon;
 import org.bukkit.Bukkit;
 import org.bukkit.NamespacedKey;
 import org.bukkit.entity.Player;
-import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitTask;
 
+import io.github.mooy1.infinitylib.core.AbstractAddon;
+import io.github.mooy1.infinitylib.core.AddonConfig;
 import io.github.schntgaispock.gastronomicon.api.trees.TreeStructure;
 import io.github.schntgaispock.gastronomicon.core.setup.CommandSetup;
 import io.github.schntgaispock.gastronomicon.core.setup.ListenerSetup;
@@ -19,25 +18,41 @@ import io.github.schntgaispock.gastronomicon.core.setup.ItemSetup;
 import io.github.schntgaispock.gastronomicon.integration.DynaTechSetup;
 import io.github.schntgaispock.gastronomicon.integration.SlimeHUDSetup;
 import io.github.schntgaispock.gastronomicon.util.StringUtil;
+import io.github.thebusybiscuit.slimefun4.libraries.dough.updater.BlobBuildUpdater;
 import lombok.Getter;
-import org.jetbrains.annotations.NotNull;
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.format.TextColor;
+import net.kyori.adventure.text.format.TextDecoration;
 
 @Getter
-public class Gastronomicon extends JavaPlugin implements SlimefunAddon {
+public class Gastronomicon extends AbstractAddon {
 
     private static @Getter Gastronomicon instance;
 
-    private GastroConfig playerData;
-    private GastroConfig customFood;
+    private AddonConfig playerData;
+    private AddonConfig customFood;
+
+    public Gastronomicon() {
+        super("SchnTgaiSpock", "Gastronomicon", "master", "options.auto-update");
+    }
 
     @Override
     @SuppressWarnings("deprecation")
-    public void onEnable() {
+    public void enable() {
         instance = this;
 
         info("#======================================#");
         info("#    Gastronomicon by SchnTgaiSpock    #");
         info("#======================================#");
+
+        if (getConfig().getBoolean("options.auto-update")) {
+            if (getDescription().getVersion().startsWith("Dev - ")) {
+                new BlobBuildUpdater(this, getFile(), "Gastronomicon", "Dev").start();
+            } else {
+                info("This is an unofficial build of Gastronomicon, so auto updates are disabled!");
+                info("You can download the official build here: https://blob.build/project/Gastronomicon");
+            }
+        }
 
         ItemSetup.setup();
         ResearchSetup.setup();
@@ -74,20 +89,20 @@ public class Gastronomicon extends JavaPlugin implements SlimefunAddon {
             }
         }
 
-        playerData = new GastroConfig("player.yml");
-        customFood = new GastroConfig("custom-food.yml");
+        playerData = new AddonConfig("player.yml");
+        customFood = new AddonConfig("custom-food.yml");
 
         TreeStructure.loadTrees();
     }
 
     @Override
-    public void onDisable() {
+    public void disable() {
         instance = null;
         getPlayerData().save();
     }
 
     public static NamespacedKey key(@Nonnull String name) {
-        return new NamespacedKey(Gastronomicon.getInstance(), name.toUpperCase());
+        return new NamespacedKey(Gastronomicon.getInstance(), name);
     }
 
     public static boolean isPluginEnabled(String name) {
@@ -129,21 +144,18 @@ public class Gastronomicon extends JavaPlugin implements SlimefunAddon {
         player.sendMessage(/* ChatColor.of("#c91df4") + "§lGastronomicon§7§l> §7" + */ StringUtil.formatColors(message));
     }
 
-    @Override
-    public @NotNull JavaPlugin getJavaPlugin() {
-        return instance;
-    }
-
-    @Override
-    public @org.jetbrains.annotations.Nullable String getBugTrackerURL() {
-        return "";
-    }
-
-    /**
-     * Creates a NameSpacedKey from the given string
-     */
-    @Nonnull
-    public NamespacedKey createKey(String s) {
-        return new NamespacedKey(getInstance(), s);
+    public static void sendMessage(Player player, Component message) {
+        final Component text = Component.text()
+            .content("Gastronomicon")
+            .color(TextColor.color(0xc9, 0x1d, 0xf4))
+            .decorate(TextDecoration.BOLD)
+            .append(Component.text()
+                .content(">")
+                .color(TextColor.color(0xaa, 0xaa, 0xaa))
+                .decorate(TextDecoration.BOLD)
+                .appendSpace()
+                .asComponent())
+            .asComponent();
+        player.sendMessage(text);
     }
 }

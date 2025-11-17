@@ -48,8 +48,6 @@ import io.github.thebusybiscuit.slimefun4.implementation.SlimefunItems;
 import io.github.thebusybiscuit.slimefun4.implementation.items.blocks.UnplaceableBlock;
 import lombok.experimental.UtilityClass;
 
-import static org.bukkit.block.Biome.*;
-
 @UtilityClass
 public class ItemSetup {
 
@@ -158,7 +156,7 @@ public class ItemSetup {
             RecipeType.ENHANCED_CRAFTING_TABLE,
             new ItemStack[] {
                 null, null, null,
-                null, SlimefunItems.STEEL_INGOT.item(), null,
+                null, SlimefunItems.STEEL_INGOT.item().clone(), null,
                 null, STICK, null
             }).register(gn);
         new UnplaceableSolid(
@@ -166,7 +164,7 @@ public class ItemSetup {
             GastroStacks.BLENDER,
             RecipeType.ENHANCED_CRAFTING_TABLE,
             new ItemStack[] {
-                null, SlimefunItems.ELECTRIC_MOTOR.item(), null,
+                null, SlimefunItems.ELECTRIC_MOTOR.item().clone(), null,
                 null, IRON_BARS, null,
                 null, BUCKET, null
             }).register(gn);
@@ -176,7 +174,7 @@ public class ItemSetup {
             RecipeType.ENHANCED_CRAFTING_TABLE,
             new ItemStack[] {
                 null, null, null,
-                null, SlimefunItems.STEEL_INGOT.item(), null,
+                null, SlimefunItems.STEEL_INGOT.item().clone(), null,
                 null, BOWL, null
             }).register(gn);
         new UnplaceableSolid(
@@ -193,8 +191,8 @@ public class ItemSetup {
             GastroStacks.WHISK,
             RecipeType.ENHANCED_CRAFTING_TABLE,
             new ItemStack[] {
-                null, GastroStacks.STEEL_WIRE.item(), null,
-                null, GastroStacks.STEEL_WIRE.item(), null,
+                null, GastroStacks.STEEL_WIRE.item().clone(), null,
+                null, GastroStacks.STEEL_WIRE.item().clone(), null,
                 null, STICK, null
             }).register(gn);
         // Enhanced Oven
@@ -204,7 +202,7 @@ public class ItemSetup {
             RecipeType.ENHANCED_CRAFTING_TABLE,
             new ItemStack[] {
                 null, null, null,
-                SlimefunItems.STEEL_INGOT.item(), SlimefunItems.STEEL_PLATE.item(), SlimefunItems.STEEL_INGOT.item(),
+                SlimefunItems.STEEL_INGOT.item().clone(), SlimefunItems.STEEL_PLATE.item().clone(), SlimefunItems.STEEL_INGOT.item().clone(),
                 null, null, null
             }).register(gn);
         new UnplaceableSolid(
@@ -213,7 +211,7 @@ public class ItemSetup {
             RecipeType.ENHANCED_CRAFTING_TABLE,
             new ItemStack[] {
                 null, null, null,
-                SlimefunItems.STEEL_INGOT.item(), SlimefunItems.STEEL_PLATE.item(), SlimefunItems.STEEL_PLATE.item(),
+                SlimefunItems.STEEL_INGOT.item().clone(), SlimefunItems.STEEL_PLATE.item().clone(), SlimefunItems.STEEL_PLATE.item().clone(),
                 null, null, null
             }).register(gn);
         new UnplaceableSolid(
@@ -221,18 +219,18 @@ public class ItemSetup {
             GastroStacks.STEEL_POT,
             RecipeType.ENHANCED_CRAFTING_TABLE,
             new ItemStack[] {
-                SlimefunItems.STEEL_INGOT.item(), null, SlimefunItems.STEEL_INGOT.item(),
-                SlimefunItems.STEEL_PLATE.item(), null, SlimefunItems.STEEL_PLATE.item(),
-                SlimefunItems.STEEL_PLATE.item(), SlimefunItems.STEEL_PLATE.item(), SlimefunItems.STEEL_PLATE.item()
+                SlimefunItems.STEEL_INGOT.item().clone(), null, SlimefunItems.STEEL_INGOT.item().clone(),
+                SlimefunItems.STEEL_PLATE.item().clone(), null, SlimefunItems.STEEL_PLATE.item().clone(),
+                SlimefunItems.STEEL_PLATE.item().clone(), SlimefunItems.STEEL_PLATE.item().clone(), SlimefunItems.STEEL_PLATE.item().clone()
             }).register(gn);
         new UnplaceableSolid(
             GastroGroups.TOOLS,
             GastroStacks.DISTILLATION_CHAMBER,
             RecipeType.ENHANCED_CRAFTING_TABLE,
             new ItemStack[] {
-                SlimefunItems.STEEL_PLATE.item(), SlimefunItems.STEEL_PLATE.item(), SlimefunItems.STEEL_PLATE.item(),
-                SlimefunItems.STEEL_PLATE.item(), null, SlimefunItems.STEEL_PLATE.item(),
-                SlimefunItems.STEEL_PLATE.item(), SlimefunItems.STEEL_PLATE.item(), SlimefunItems.STEEL_PLATE.item()
+                SlimefunItems.STEEL_PLATE.item().clone(), SlimefunItems.STEEL_PLATE.item().clone(), SlimefunItems.STEEL_PLATE.item().clone(),
+                SlimefunItems.STEEL_PLATE.item().clone(), null, SlimefunItems.STEEL_PLATE.item().clone(),
+                SlimefunItems.STEEL_PLATE.item().clone(), SlimefunItems.STEEL_PLATE.item().clone(), SlimefunItems.STEEL_PLATE.item().clone()
             }).register(gn);
 
         // -- Containers --
@@ -243,8 +241,8 @@ public class ItemSetup {
             RecipeType.ENHANCED_CRAFTING_TABLE,
             new ItemStack[] {
                 null, null, null,
-                SlimefunItems.STEEL_INGOT.item(), null, SlimefunItems.STEEL_INGOT.item(),
-                null, SlimefunItems.STEEL_INGOT.item(), null
+                SlimefunItems.STEEL_INGOT.item().clone(), null, SlimefunItems.STEEL_INGOT.item().clone(),
+                null, SlimefunItems.STEEL_INGOT.item().clone(), null
             },
             GastroStacks.STEEL_BOWL.asQuantity(4)).register(gn);
 
@@ -254,21 +252,21 @@ public class ItemSetup {
             GastroGroups.TOOLS,
             GastroStacks.STEEL_WIRE,
             RecipeType.ENHANCED_CRAFTING_TABLE,
-            RecipeUtil.row(SlimefunItems.STEEL_INGOT.item(), 1),
+            RecipeUtil.row(SlimefunItems.STEEL_INGOT.item().clone(), 1),
             GastroStacks.STEEL_WIRE.asQuantity(8))
                 .register(gn);
         new SlimefunItem(
             GastroGroups.TOOLS,
             GastroStacks.STEEL_SPRING,
             RecipeType.ENHANCED_CRAFTING_TABLE,
-            RecipeUtil.cyclicAlternating(null, GastroStacks.STEEL_WIRE.item()))
+            RecipeUtil.cyclicAlternating(null, GastroStacks.STEEL_WIRE.item().clone()))
                 .register(gn);
         new HuntingTrap(
             GastroStacks.HUNTING_TRAP,
             new ItemStack[] {
-                null, SlimefunItems.STEEL_INGOT.item(), null,
-                SlimefunItems.STEEL_INGOT.item(), IRON_PP, SlimefunItems.STEEL_INGOT.item(),
-                GastroStacks.STEEL_SPRING.item(), GastroStacks.STEEL_SPRING.item(), GastroStacks.STEEL_SPRING.item()
+                null, SlimefunItems.STEEL_INGOT.item().clone(), null,
+                SlimefunItems.STEEL_INGOT.item().clone(), IRON_PP, SlimefunItems.STEEL_INGOT.item().clone(),
+                GastroStacks.STEEL_SPRING.item().clone(), GastroStacks.STEEL_SPRING.item().clone(), GastroStacks.STEEL_SPRING.item().clone()
             }) {
 
             private static final Map<Biome, List<ItemStack>> dropsByBiome = new HashMap<>();
@@ -279,7 +277,7 @@ public class ItemSetup {
                     new ItemStack(Material.CHICKEN),
                     new ItemStack(Material.BEEF),
                     new ItemStack(Material.RABBIT),
-                    GastroStacks.RAW_TURKEY.item());
+                    GastroStacks.RAW_TURKEY.item().clone());
 
                 final List<ItemStack> plainsDrops = Arrays.asList(
                     new ItemStack(Material.MUTTON),
@@ -316,19 +314,32 @@ public class ItemSetup {
             GastroStacks.CRAB_TRAP,
             new ItemStack[] {
                 STICK, STICK, STICK,
-                STICK, GastroStacks.STEEL_WIRE.item(), STICK,
+                STICK, GastroStacks.STEEL_WIRE.item().clone(), STICK,
                 OAK_SLAB, OAK_SLAB, OAK_SLAB
             }) {
 
             @Override
             protected ItemStack getCatch(Location l) {
-                return GastroStacks.CRAB.item();
+                return GastroStacks.CRAB.item().clone();
             }
+
+            private static final Set<Biome> WATER_BIOMES = Set.of(
+                    Biome.RIVER,
+                    Biome.BEACH,
+                    Biome.OCEAN,
+                    Biome.COLD_OCEAN,
+                    Biome.DEEP_OCEAN,
+                    Biome.WARM_OCEAN,
+                    Biome.FROZEN_OCEAN,
+                    Biome.LUKEWARM_OCEAN,
+                    Biome.DEEP_COLD_OCEAN,
+                    Biome.DEEP_FROZEN_OCEAN,
+                    Biome.DEEP_LUKEWARM_OCEAN
+            );
 
             @Override
             protected boolean canCatch(Location l) {
-                Biome biome = l.getBlock().getBiome();
-                return biome.equals(RIVER) || biome.equals(BEACH) || biome.equals(OCEAN) || biome.equals(COLD_OCEAN) || biome.equals(DEEP_OCEAN) || biome.equals(WARM_OCEAN) || biome.equals(FROZEN_OCEAN) || biome.equals(LUKEWARM_OCEAN) || biome.equals(DEEP_COLD_OCEAN) || biome.equals(DEEP_FROZEN_OCEAN) || biome.equals(DEEP_LUKEWARM_OCEAN);
+                return WATER_BIOMES.contains(l.getBlock().getBiome());
             }
         }.register(gn);
 
@@ -339,9 +350,9 @@ public class ItemSetup {
             GastroStacks.CHEFS_HAT,
             RecipeType.ARMOR_FORGE,
             new ItemStack[] {
-                SlimefunItems.CLOTH.item(), SlimefunItems.CLOTH.item(), SlimefunItems.CLOTH.item(),
-                SlimefunItems.CLOTH.item(), SlimefunItems.CLOTH.item(), SlimefunItems.CLOTH.item(),
-                SlimefunItems.CLOTH.item(), null, SlimefunItems.CLOTH.item()
+                SlimefunItems.CLOTH.item().clone(), SlimefunItems.CLOTH.item().clone(), SlimefunItems.CLOTH.item().clone(),
+                SlimefunItems.CLOTH.item().clone(), SlimefunItems.CLOTH.item().clone(), SlimefunItems.CLOTH.item().clone(),
+                SlimefunItems.CLOTH.item().clone(), null, SlimefunItems.CLOTH.item().clone()
             }).register(gn);
 
         new UnplaceableItem(
@@ -359,7 +370,7 @@ public class ItemSetup {
             GastroStacks.STEEL_SICKLE,
             RecipeType.ENHANCED_CRAFTING_TABLE,
             new ItemStack[] {
-                null, SlimefunItems.STEEL_PLATE.item(), SlimefunItems.STEEL_PLATE.item(),
+                null, SlimefunItems.STEEL_PLATE.item().clone(), SlimefunItems.STEEL_PLATE.item().clone(),
                 null, STICK, null,
                 STICK, null, null
             }).register(gn);
@@ -369,7 +380,7 @@ public class ItemSetup {
             GastroStacks.REINFORCED_SICKLE,
             RecipeType.ENHANCED_CRAFTING_TABLE,
             new ItemStack[] {
-                null, SlimefunItems.REINFORCED_PLATE.item(), SlimefunItems.REINFORCED_PLATE.item(),
+                null, SlimefunItems.REINFORCED_PLATE.item().clone(), SlimefunItems.REINFORCED_PLATE.item().clone(),
                 null, STICK, null,
                 STICK, null, null
             }).register(gn);
@@ -388,17 +399,17 @@ public class ItemSetup {
             GastroStacks.MULTI_STOVE,
             new ItemStack[] {
                 IRON_PP, IRON_PP, IRON_PP,
-                SlimefunItems.HEATING_COIL.item(), BLAST_FURNACE, SlimefunItems.HEATING_COIL.item(),
-                SlimefunItems.HEATING_COIL.item(), SlimefunItems.SMALL_CAPACITOR.item(), SlimefunItems.HEATING_COIL.item()
+                SlimefunItems.HEATING_COIL.item().clone(), BLAST_FURNACE, SlimefunItems.HEATING_COIL.item().clone(),
+                SlimefunItems.HEATING_COIL.item().clone(), SlimefunItems.SMALL_CAPACITOR.item().clone(), SlimefunItems.HEATING_COIL.item().clone()
             },
             256, 16).register(gn);
 
         new Refrigerator(
             GastroStacks.REFRIGERATOR,
             new ItemStack[] {
-                SlimefunItems.STEEL_INGOT.item(), SlimefunItems.STEEL_INGOT.item(), SlimefunItems.STEEL_INGOT.item(),
-                SlimefunItems.COOLING_UNIT.item(), IRON_TRAPDOOR, SlimefunItems.COOLING_UNIT.item(),
-                SlimefunItems.STEEL_INGOT.item(), SlimefunItems.SMALL_CAPACITOR.item(), SlimefunItems.STEEL_INGOT.item()
+                SlimefunItems.STEEL_INGOT.item().clone(), SlimefunItems.STEEL_INGOT.item().clone(), SlimefunItems.STEEL_INGOT.item().clone(),
+                SlimefunItems.COOLING_UNIT.item().clone(), IRON_TRAPDOOR, SlimefunItems.COOLING_UNIT.item().clone(),
+                SlimefunItems.STEEL_INGOT.item().clone(), SlimefunItems.SMALL_CAPACITOR.item().clone(), SlimefunItems.STEEL_INGOT.item().clone()
             },
             256, 16).register(gn);
 
@@ -406,7 +417,7 @@ public class ItemSetup {
             GastroStacks.MILL,
             new ItemStack[] {
                 null, HOPPER, null,
-                IRON_BARS, SlimefunItems.DAMASCUS_STEEL_INGOT.item(), IRON_BARS,
+                IRON_BARS, SlimefunItems.DAMASCUS_STEEL_INGOT.item().clone(), IRON_BARS,
                 null, ANDESITE_SLAB, null
             }).register(gn);
 
@@ -422,9 +433,9 @@ public class ItemSetup {
         new Fermenter(
             GastroStacks.LARGE_FERMENTER,
             new ItemStack[] {
-                SlimefunItems.STEEL_PLATE.item(), OAK_SLAB, SlimefunItems.STEEL_PLATE.item(),
-                SlimefunItems.STEEL_PLATE.item(), GastroStacks.FERMENTER.item(), SlimefunItems.STEEL_PLATE.item(),
-                SlimefunItems.STEEL_PLATE.item(), GastroStacks.FERMENTER.item(), SlimefunItems.STEEL_PLATE.item()
+                SlimefunItems.STEEL_PLATE.item().clone(), OAK_SLAB, SlimefunItems.STEEL_PLATE.item().clone(),
+                SlimefunItems.STEEL_PLATE.item().clone(), GastroStacks.FERMENTER.item().clone(), SlimefunItems.STEEL_PLATE.item().clone(),
+                SlimefunItems.STEEL_PLATE.item().clone(), GastroStacks.FERMENTER.item().clone(), SlimefunItems.STEEL_PLATE.item().clone()
             },
             16000, 125).register(gn);
 
@@ -433,57 +444,57 @@ public class ItemSetup {
             GastroStacks.CHEF_ANDROID,
             RecipeType.ENHANCED_CRAFTING_TABLE,
             new ItemStack[] {
-                null, GastroStacks.CHEFS_HAT.item(), null,
-                GastroStacks.KITCHEN_KNIFE.item(), SlimefunItems.PROGRAMMABLE_ANDROID_2.item(), GastroStacks.ROLLING_PIN.item(),
-                null, SlimefunItems.ELECTRIC_MOTOR.item(), null
+                null, GastroStacks.CHEFS_HAT.item().clone(), null,
+                GastroStacks.KITCHEN_KNIFE.item().clone(), SlimefunItems.PROGRAMMABLE_ANDROID_2.item().clone(), GastroStacks.ROLLING_PIN.item().clone(),
+                null, SlimefunItems.ELECTRIC_MOTOR.item().clone(), null
             }).register(gn);
 
         new ChefAndroidTrainer(
             GastroStacks.CHEF_ANDROID_TRAINER,
             new ItemStack[] {
-                SlimefunItems.STEEL_PLATE.item(), SlimefunItems.STEEL_PLATE.item(), SlimefunItems.STEEL_PLATE.item(),
-                OAK_PLANKS, SlimefunItems.CARGO_MOTOR.item(), OAK_PLANKS,
-                OAK_PLANKS, SlimefunItems.MEDIUM_CAPACITOR.item(), OAK_PLANKS
+                SlimefunItems.STEEL_PLATE.item().clone(), SlimefunItems.STEEL_PLATE.item().clone(), SlimefunItems.STEEL_PLATE.item().clone(),
+                OAK_PLANKS, SlimefunItems.CARGO_MOTOR.item().clone(), OAK_PLANKS,
+                OAK_PLANKS, SlimefunItems.MEDIUM_CAPACITOR.item().clone(), OAK_PLANKS
             }).register(gn);
 
         // ---- Electric Machines ----
 
         new FishingNet(
             GastroStacks.FISHING_NET_I, 1,
-            RecipeUtil.block(GastroStacks.STEEL_WIRE.item())).register(gn);
+            RecipeUtil.block(GastroStacks.STEEL_WIRE.item().clone())).register(gn);
         new FishingNet(
             GastroStacks.FISHING_NET_II, 2,
-            RecipeUtil.cyclicAlternating(null, SlimefunItems.REINFORCED_ALLOY_INGOT.item(), GastroStacks.FISHING_NET_I.item()))
+            RecipeUtil.cyclicAlternating(null, SlimefunItems.REINFORCED_ALLOY_INGOT.item().clone(), GastroStacks.FISHING_NET_I.item().clone()))
                 .register(gn);
         new FishingNet(
             GastroStacks.FISHING_NET_III, 4,
-            RecipeUtil.cyclic(SlimefunItems.REINFORCED_ALLOY_INGOT.item(), GastroStacks.FISHING_NET_II.item())).register(gn);
+            RecipeUtil.cyclic(SlimefunItems.REINFORCED_ALLOY_INGOT.item().clone(), GastroStacks.FISHING_NET_II.item().clone())).register(gn);
 
         new ElectricKitchen(
             GastroStacks.ELECTRIC_KITCHEN_I,
             256, 16, 1,
             new ItemStack[] {
-                GastroStacks.CULINARY_WORKBENCH.item(), SlimefunItems.CARBONADO_EDGED_CAPACITOR.item(), GastroStacks.MULTI_STOVE.item(),
-                GastroStacks.REFRIGERATOR.item(), GastroStacks.MILL.item(), GastroStacks.FERMENTER.item(),
-                SlimefunItems.BLISTERING_INGOT_3.item(), SlimefunItems.CARGO_MOTOR.item(), SlimefunItems.BLISTERING_INGOT_3.item()
+                GastroStacks.CULINARY_WORKBENCH.item().clone(), SlimefunItems.CARBONADO_EDGED_CAPACITOR.item().clone(), GastroStacks.MULTI_STOVE.item().clone(),
+                GastroStacks.REFRIGERATOR.item().clone(), GastroStacks.MILL.item().clone(), GastroStacks.FERMENTER.item().clone(),
+                SlimefunItems.BLISTERING_INGOT_3.item().clone(), SlimefunItems.CARGO_MOTOR.item().clone(), SlimefunItems.BLISTERING_INGOT_3.item().clone()
             }).register(gn);
 
         new ElectricKitchen(
             GastroStacks.ELECTRIC_KITCHEN_II,
             1024, 64, 3,
             new ItemStack[] {
-                BRICKS, SlimefunItems.POWER_CRYSTAL.item(), BRICKS,
-                SlimefunItems.ELECTRIC_MOTOR.item(), GastroStacks.ELECTRIC_KITCHEN_I.item(), SlimefunItems.ELECTRIC_MOTOR.item(),
-                SlimefunItems.DAMASCUS_STEEL_INGOT.item(), SlimefunItems.HEATING_COIL.item(), SlimefunItems.DAMASCUS_STEEL_INGOT.item()
+                BRICKS, SlimefunItems.POWER_CRYSTAL.item().clone(), BRICKS,
+                SlimefunItems.ELECTRIC_MOTOR.item().clone(), GastroStacks.ELECTRIC_KITCHEN_I.item().clone(), SlimefunItems.ELECTRIC_MOTOR.item().clone(),
+                SlimefunItems.DAMASCUS_STEEL_INGOT.item().clone(), SlimefunItems.HEATING_COIL.item().clone(), SlimefunItems.DAMASCUS_STEEL_INGOT.item().clone()
             }).register(gn);
 
         new ElectricKitchen(
             GastroStacks.ELECTRIC_KITCHEN_III,
             4096, 256, 10,
             new ItemStack[] {
-                SlimefunItems.REINFORCED_PLATE.item(), GastroStacks.CHEF_ANDROID.item(), SlimefunItems.REINFORCED_PLATE.item(),
-                SlimefunItems.ELECTRIC_MOTOR.item(), GastroStacks.ELECTRIC_KITCHEN_II.item(), SlimefunItems.ELECTRIC_MOTOR.item(),
-                SlimefunItems.REINFORCED_PLATE.item(), SlimefunItems.REINFORCED_PLATE.item(), SlimefunItems.REINFORCED_PLATE.item()
+                SlimefunItems.REINFORCED_PLATE.item().clone(), GastroStacks.CHEF_ANDROID.item().clone(), SlimefunItems.REINFORCED_PLATE.item().clone(),
+                SlimefunItems.ELECTRIC_MOTOR.item().clone(), GastroStacks.ELECTRIC_KITCHEN_II.item().clone(), SlimefunItems.ELECTRIC_MOTOR.item().clone(),
+                SlimefunItems.REINFORCED_PLATE.item().clone(), SlimefunItems.REINFORCED_PLATE.item().clone(), SlimefunItems.REINFORCED_PLATE.item().clone()
             }).register(gn);
 
         // ---- Raw Ingredients ----
@@ -491,334 +502,334 @@ public class ItemSetup {
         new SimpleSeed(
             GastroStacks.RICE,
             Material.POTATOES,
-            RecipeUtil.singleCenter(Material.SHORT_GRASS))
+            RecipeUtil.singleCenter(Material.GRASS_BLOCK))
                 .register(gn);
 
         new SimpleSeed(
             GastroStacks.QUINOA,
             Material.WHEAT,
-            RecipeUtil.singleCenter(Material.SHORT_GRASS))
+            RecipeUtil.singleCenter(Material.GRASS_BLOCK))
                 .register(gn);
 
         new SimpleSeed(
             GastroStacks.OATS,
             Material.WHEAT,
-            RecipeUtil.singleCenter(Material.SHORT_GRASS))
+            RecipeUtil.singleCenter(Material.GRASS_BLOCK))
                 .register(gn);
 
         new SimpleSeed(
             GastroStacks.SOYBEANS,
             Material.POTATOES,
-            RecipeUtil.singleCenter(Material.SHORT_GRASS))
+            RecipeUtil.singleCenter(Material.GRASS_BLOCK))
                 .register(gn);
 
         new SlimefunItem(
             GastroGroups.RAW_INGREDIENTS,
             GastroStacks.BARLEY,
             GastroRecipeType.HARVEST,
-            RecipeUtil.singleCenter(GastroStacks.BARLEY_SEEDS.item()))
+            RecipeUtil.singleCenter(GastroStacks.BARLEY_SEEDS.item().clone()))
                 .register(gn);
 
         new CropSeed(
             GastroStacks.BARLEY_SEEDS,
             Material.WHEAT,
-            RecipeUtil.singleCenter(Material.SHORT_GRASS),
-            GastroStacks.BARLEY.item())
+            RecipeUtil.singleCenter(Material.GRASS_BLOCK),
+            GastroStacks.BARLEY.item().clone())
                 .register(gn);
 
         new SlimefunItem(
             GastroGroups.RAW_INGREDIENTS,
             GastroStacks.RYE,
             GastroRecipeType.HARVEST,
-            RecipeUtil.singleCenter(GastroStacks.RYE_SEEDS.item()))
+            RecipeUtil.singleCenter(GastroStacks.RYE_SEEDS.item().clone()))
                 .register(gn);
 
         new CropSeed(
             GastroStacks.RYE_SEEDS,
             Material.WHEAT,
-            RecipeUtil.singleCenter(Material.SHORT_GRASS),
-            GastroStacks.RYE.item())
+            RecipeUtil.singleCenter(Material.GRASS_BLOCK),
+            GastroStacks.RYE.item().clone())
                 .register(gn);
 
         new SlimefunItem(
             GastroGroups.RAW_INGREDIENTS,
             GastroStacks.SORGHUM,
             GastroRecipeType.HARVEST,
-            RecipeUtil.singleCenter(GastroStacks.SORGHUM_SEEDS.item()))
+            RecipeUtil.singleCenter(GastroStacks.SORGHUM_SEEDS.item().clone()))
                 .register(gn);
 
         new CropSeed(
             GastroStacks.SORGHUM_SEEDS,
             Material.WHEAT,
-            RecipeUtil.singleCenter(Material.SHORT_GRASS),
-            GastroStacks.SORGHUM.item())
+            RecipeUtil.singleCenter(Material.GRASS_BLOCK),
+            GastroStacks.SORGHUM.item().clone())
                 .register(gn);
 
         new SlimefunItem(
             GastroGroups.RAW_INGREDIENTS,
             GastroStacks.TURNIP,
             GastroRecipeType.HARVEST,
-            RecipeUtil.singleCenter(GastroStacks.TURNIP_SEEDS.item()))
+            RecipeUtil.singleCenter(GastroStacks.TURNIP_SEEDS.item().clone()))
                 .register(gn);
 
         new CropSeed(
             GastroStacks.TURNIP_SEEDS,
             Material.BEETROOTS,
-            RecipeUtil.singleCenter(Material.SHORT_GRASS),
-            GastroStacks.TURNIP.item())
+            RecipeUtil.singleCenter(Material.GRASS_BLOCK),
+            GastroStacks.TURNIP.item().clone())
                 .register(gn);
 
         new SlimefunItem(
             GastroGroups.RAW_INGREDIENTS,
             GastroStacks.SQUASH,
             GastroRecipeType.HARVEST,
-            RecipeUtil.singleCenter(GastroStacks.SQUASH_SEEDS.item()))
+            RecipeUtil.singleCenter(GastroStacks.SQUASH_SEEDS.item().clone()))
                 .register(gn);
 
         new FruitingSeed(
             GastroStacks.SQUASH_SEEDS,
             Material.MELON_STEM,
-            RecipeUtil.singleCenter(Material.SHORT_GRASS),
+            RecipeUtil.singleCenter(Material.GRASS_BLOCK),
             "GN_SQUASH")
                 .register(gn);
 
         new DuplicatingSeed(
             GastroStacks.CELERY,
-            RecipeUtil.singleCenter(Material.SHORT_GRASS))
+            RecipeUtil.singleCenter(Material.GRASS_BLOCK))
                 .register(gn);
 
         new SlimefunItem(
             GastroGroups.RAW_INGREDIENTS,
             GastroStacks.BOK_CHOY,
             GastroRecipeType.HARVEST,
-            RecipeUtil.singleCenter(GastroStacks.BOK_CHOY_SEEDS.item()))
+            RecipeUtil.singleCenter(GastroStacks.BOK_CHOY_SEEDS.item().clone()))
                 .register(gn);
 
         new CropSeed(
             GastroStacks.BOK_CHOY_SEEDS,
             Material.POTATOES,
-            RecipeUtil.singleCenter(Material.SHORT_GRASS),
-            GastroStacks.BOK_CHOY.item())
+            RecipeUtil.singleCenter(Material.GRASS_BLOCK),
+            GastroStacks.BOK_CHOY.item().clone())
                 .register(gn);
 
         new SlimefunItem(
             GastroGroups.RAW_INGREDIENTS,
             GastroStacks.BROCCOLI,
             GastroRecipeType.HARVEST,
-            RecipeUtil.singleCenter(GastroStacks.BROCCOLI_SEEDS.item()))
+            RecipeUtil.singleCenter(GastroStacks.BROCCOLI_SEEDS.item().clone()))
                 .register(gn);
 
         new CropSeed(
             GastroStacks.BROCCOLI_SEEDS,
             Material.POTATOES,
-            RecipeUtil.singleCenter(Material.SHORT_GRASS),
-            GastroStacks.BROCCOLI.item())
+            RecipeUtil.singleCenter(Material.GRASS_BLOCK),
+            GastroStacks.BROCCOLI.item().clone())
                 .register(gn);
 
         new SlimefunItem(
             GastroGroups.RAW_INGREDIENTS,
             GastroStacks.CUCUMBER,
             GastroRecipeType.HARVEST,
-            RecipeUtil.singleCenter(GastroStacks.CUCUMBER_SEEDS.item()))
+            RecipeUtil.singleCenter(GastroStacks.CUCUMBER_SEEDS.item().clone()))
                 .register(gn);
 
         new CropSeed(
             GastroStacks.CUCUMBER_SEEDS,
             Material.POTATOES,
-            RecipeUtil.singleCenter(Material.SHORT_GRASS),
-            GastroStacks.CUCUMBER.item())
+            RecipeUtil.singleCenter(Material.GRASS_BLOCK),
+            GastroStacks.CUCUMBER.item().clone())
                 .register(gn);
 
         new SlimefunItem(
             GastroGroups.RAW_INGREDIENTS,
             GastroStacks.BASIL,
             GastroRecipeType.HARVEST,
-            RecipeUtil.singleCenter(GastroStacks.BASIL_SEEDS.item()))
+            RecipeUtil.singleCenter(GastroStacks.BASIL_SEEDS.item().clone()))
                 .register(gn);
 
         new CropSeed(
             GastroStacks.BASIL_SEEDS,
             Material.POTATOES,
-            RecipeUtil.singleCenter(Material.SHORT_GRASS),
-            GastroStacks.BASIL.item())
+            RecipeUtil.singleCenter(Material.GRASS_BLOCK),
+            GastroStacks.BASIL.item().clone())
                 .register(gn);
 
         new SlimefunItem(
             GastroGroups.RAW_INGREDIENTS,
             GastroStacks.SPINACH,
             GastroRecipeType.HARVEST,
-            RecipeUtil.singleCenter(GastroStacks.SPINACH_SEEDS.item()))
+            RecipeUtil.singleCenter(GastroStacks.SPINACH_SEEDS.item().clone()))
                 .register(gn);
 
         new CropSeed(
             GastroStacks.SPINACH_SEEDS,
             Material.POTATOES,
-            RecipeUtil.singleCenter(Material.SHORT_GRASS),
-            GastroStacks.SPINACH.item())
+            RecipeUtil.singleCenter(Material.GRASS_BLOCK),
+            GastroStacks.SPINACH.item().clone())
                 .register(gn);
 
         new SimpleSeed(
             GastroStacks.BRUSSLES_SPROUTS,
             Material.POTATOES,
-            RecipeUtil.singleCenter(Material.SHORT_GRASS))
+            RecipeUtil.singleCenter(Material.GRASS_BLOCK))
                 .register(gn);
 
         new SlimefunItem(
             GastroGroups.RAW_INGREDIENTS,
             GastroStacks.MINT,
             GastroRecipeType.HARVEST,
-            RecipeUtil.singleCenter(GastroStacks.MINT_SEEDS.item()))
+            RecipeUtil.singleCenter(GastroStacks.MINT_SEEDS.item().clone()))
                 .register(gn);
 
         new CropSeed(
             GastroStacks.MINT_SEEDS,
             Material.POTATOES,
-            RecipeUtil.singleCenter(Material.SHORT_GRASS),
-            GastroStacks.MINT.item())
+            RecipeUtil.singleCenter(Material.GRASS_BLOCK),
+            GastroStacks.MINT.item().clone())
                 .register(gn);
 
         new SlimefunItem(
             GastroGroups.RAW_INGREDIENTS,
             GastroStacks.CHILI_PEPPER,
             GastroRecipeType.HARVEST,
-            RecipeUtil.singleCenter(GastroStacks.CHILI_PEPPER_SEEDS.item()))
+            RecipeUtil.singleCenter(GastroStacks.CHILI_PEPPER_SEEDS.item().clone()))
                 .register(gn);
 
         new CropSeed(
             GastroStacks.CHILI_PEPPER_SEEDS,
             Material.POTATOES,
-            RecipeUtil.singleCenter(Material.SHORT_GRASS),
-            GastroStacks.CHILI_PEPPER.item())
+            RecipeUtil.singleCenter(Material.GRASS_BLOCK),
+            GastroStacks.CHILI_PEPPER.item().clone())
                 .register(gn);
 
         new SlimefunItem(
             GastroGroups.RAW_INGREDIENTS,
             GastroStacks.PARSLEY,
             GastroRecipeType.HARVEST,
-            RecipeUtil.singleCenter(GastroStacks.PARSLEY_SEEDS.item()))
+            RecipeUtil.singleCenter(GastroStacks.PARSLEY_SEEDS.item().clone()))
                 .register(gn);
 
         new CropSeed(
             GastroStacks.PARSLEY_SEEDS,
             Material.POTATOES,
-            RecipeUtil.singleCenter(Material.SHORT_GRASS),
-            GastroStacks.PARSLEY.item())
+            RecipeUtil.singleCenter(Material.GRASS_BLOCK),
+            GastroStacks.PARSLEY.item().clone())
                 .register(gn);
 
         new SimpleSeed(
             GastroStacks.CASSAVA,
             Material.BEETROOTS,
-            RecipeUtil.singleCenter(Material.SHORT_GRASS))
+            RecipeUtil.singleCenter(Material.GRASS_BLOCK))
                 .register(gn);
 
         new SimpleSeed(
             GastroStacks.LENTILS,
             Material.CARROTS,
-            RecipeUtil.singleCenter(Material.SHORT_GRASS))
+            RecipeUtil.singleCenter(Material.GRASS_BLOCK))
                 .register(gn);
 
         new SimpleSeed(
             GastroStacks.PEANUTS,
             Material.POTATOES,
-            RecipeUtil.singleCenter(Material.SHORT_GRASS))
+            RecipeUtil.singleCenter(Material.GRASS_BLOCK))
                 .register(gn);
 
         new SimpleSeed(
             GastroStacks.BEANS,
             Material.POTATOES,
-            RecipeUtil.singleCenter(Material.SHORT_GRASS))
+            RecipeUtil.singleCenter(Material.GRASS_BLOCK))
                 .register(gn);
 
         new SimpleSeed(
             GastroStacks.PEAS,
             Material.BEETROOTS,
-            RecipeUtil.singleCenter(Material.SHORT_GRASS))
+            RecipeUtil.singleCenter(Material.GRASS_BLOCK))
                 .register(gn);
 
         new SlimefunItem(
             GastroGroups.RAW_INGREDIENTS,
             GastroStacks.ASPARAGUS,
             GastroRecipeType.HARVEST,
-            RecipeUtil.singleCenter(GastroStacks.ASPARAGUS_SEEDS.item()))
+            RecipeUtil.singleCenter(GastroStacks.ASPARAGUS_SEEDS.item().clone()))
                 .register(gn);
 
         new CropSeed(
             GastroStacks.ASPARAGUS_SEEDS,
             Material.CARROTS,
-            RecipeUtil.singleCenter(Material.SHORT_GRASS),
-            GastroStacks.ASPARAGUS.item())
+            RecipeUtil.singleCenter(Material.GRASS_BLOCK),
+            GastroStacks.ASPARAGUS.item().clone())
                 .register(gn);
 
         new SlimefunItem(
             GastroGroups.RAW_INGREDIENTS,
             GastroStacks.GREEN_ONION,
             GastroRecipeType.HARVEST,
-            RecipeUtil.singleCenter(GastroStacks.GREEN_ONION_SEEDS.item()))
+            RecipeUtil.singleCenter(GastroStacks.GREEN_ONION_SEEDS.item().clone()))
                 .register(gn);
 
         new CropSeed(
             GastroStacks.GREEN_ONION_SEEDS,
             Material.POTATOES,
-            RecipeUtil.singleCenter(Material.SHORT_GRASS),
-            GastroStacks.GREEN_ONION.item())
+            RecipeUtil.singleCenter(Material.GRASS_BLOCK),
+            GastroStacks.GREEN_ONION.item().clone())
                 .register(gn);
 
         new SlimefunItem(
             GastroGroups.RAW_INGREDIENTS,
             GastroStacks.CAULIFLOWER,
             GastroRecipeType.HARVEST,
-            RecipeUtil.singleCenter(GastroStacks.CAULIFLOWER_SEEDS.item()))
+            RecipeUtil.singleCenter(GastroStacks.CAULIFLOWER_SEEDS.item().clone()))
                 .register(gn);
 
         new CropSeed(
             GastroStacks.CAULIFLOWER_SEEDS,
             Material.POTATOES,
-            RecipeUtil.singleCenter(Material.SHORT_GRASS),
-            GastroStacks.CAULIFLOWER.item())
+            RecipeUtil.singleCenter(Material.GRASS_BLOCK),
+            GastroStacks.CAULIFLOWER.item().clone())
                 .register(gn);
 
         new SlimefunItem(
             GastroGroups.RAW_INGREDIENTS,
             GastroStacks.AVOCADO,
             GastroRecipeType.HARVEST,
-            RecipeUtil.singleCenter(GastroStacks.AVOCADO_PIT.item()))
+            RecipeUtil.singleCenter(GastroStacks.AVOCADO_PIT.item().clone()))
                 .register(gn);
 
         new CropSeed(
             GastroStacks.AVOCADO_PIT,
             Material.POTATOES,
-            RecipeUtil.singleCenter(Material.SHORT_GRASS),
-            GastroStacks.AVOCADO.item())
+            RecipeUtil.singleCenter(Material.GRASS_BLOCK),
+            GastroStacks.AVOCADO.item().clone())
                 .register(gn);
 
         new SimpleSeed(
             GastroStacks.TURMERIC,
-            RecipeUtil.singleCenter(Material.SHORT_GRASS))
+            RecipeUtil.singleCenter(Material.GRASS_BLOCK))
                 .register(gn);
 
         new SimpleSeed(
             GastroStacks.CUMIN_SEEDS,
             Material.POTATOES,
-            RecipeUtil.singleCenter(Material.SHORT_GRASS))
+            RecipeUtil.singleCenter(Material.GRASS_BLOCK))
                 .register(gn);
 
         new SimpleSeed(
             GastroStacks.RED_BEANS,
             Material.POTATOES,
-            RecipeUtil.singleCenter(Material.SHORT_GRASS))
+            RecipeUtil.singleCenter(Material.GRASS_BLOCK))
                 .register(gn);
 
         new SlimefunItem(
             GastroGroups.RAW_INGREDIENTS,
             GastroStacks.CANTALOUPE,
             GastroRecipeType.HARVEST,
-            RecipeUtil.singleCenter(GastroStacks.CANTALOUPE_SEEDS.item()))
+            RecipeUtil.singleCenter(GastroStacks.CANTALOUPE_SEEDS.item().clone()))
                 .register(gn);
 
         new FruitingSeed(
             GastroStacks.CANTALOUPE_SEEDS,
             Material.MELON_STEM,
-            RecipeUtil.singleCenter(Material.SHORT_GRASS),
+            RecipeUtil.singleCenter(Material.GRASS_BLOCK),
             "GN_CANTALOUPE")
                 .register(gn);
 
@@ -826,33 +837,33 @@ public class ItemSetup {
             GastroGroups.RAW_INGREDIENTS,
             GastroStacks.HONEYDEW_MELON,
             GastroRecipeType.HARVEST,
-            RecipeUtil.singleCenter(GastroStacks.HONEYDEW_MELON_SEEDS.item()))
+            RecipeUtil.singleCenter(GastroStacks.HONEYDEW_MELON_SEEDS.item().clone()))
                 .register(gn);
 
         new FruitingSeed(
             GastroStacks.HONEYDEW_MELON_SEEDS,
             Material.MELON_STEM,
-            RecipeUtil.singleCenter(Material.SHORT_GRASS),
+            RecipeUtil.singleCenter(Material.GRASS_BLOCK),
             "GN_HONEYDEW_MELON")
                 .register(gn);
 
         new SimpleSeed(
             GastroStacks.SESAME_SEEDS,
             Material.POTATOES,
-            RecipeUtil.singleCenter(Material.SHORT_GRASS))
+            RecipeUtil.singleCenter(Material.GRASS_BLOCK))
                 .register(gn);
 
         new UnplaceableSolid(
             GastroGroups.RAW_INGREDIENTS,
             GastroStacks.VANILLA_BEANS,
             GastroRecipeType.BREAK,
-            RecipeUtil.singleCenter(GastroStacks.VANILLA_PLANT.item()))
+            RecipeUtil.singleCenter(GastroStacks.VANILLA_PLANT.item().clone()))
                 .register(gn);
 
         new VineSeed(
             GastroStacks.VANILLA_PLANT,
-            RecipeUtil.singleCenter(Material.SHORT_GRASS),
-            GastroStacks.VANILLA_BEANS.item())
+            RecipeUtil.singleCenter(Material.GRASS_BLOCK),
+            GastroStacks.VANILLA_BEANS.item().clone())
                 .register(gn);
 
         // -- Grown from trees
@@ -861,28 +872,28 @@ public class ItemSetup {
             GastroGroups.RAW_INGREDIENTS,
             GastroStacks.LYCHEE,
             GastroRecipeType.BREAK,
-            RecipeUtil.singleCenter(GastroStacks.LYCHEE_SAPLING.item()))
+            RecipeUtil.singleCenter(GastroStacks.LYCHEE_SAPLING.item().clone()))
                 .register(gn);
 
         new SimpleSapling(
             GastroGroups.RAW_INGREDIENTS,
             GastroStacks.LYCHEE_SAPLING,
             GastroRecipeType.BREAK,
-            RecipeUtil.singleCenter(Material.SHORT_GRASS))
+            RecipeUtil.singleCenter(Material.GRASS_BLOCK))
                 .register(gn);
 
         new UnplaceableSolid(
             GastroGroups.RAW_INGREDIENTS,
             GastroStacks.BANANA,
             GastroRecipeType.BREAK,
-            RecipeUtil.singleCenter(GastroStacks.BANANA_SAPLING.item()))
+            RecipeUtil.singleCenter(GastroStacks.BANANA_SAPLING.item().clone()))
                 .register(gn);
 
         new SimpleSapling(
             GastroGroups.RAW_INGREDIENTS,
             GastroStacks.BANANA_SAPLING,
             GastroRecipeType.BREAK,
-            RecipeUtil.singleCenter(Material.SHORT_GRASS))
+            RecipeUtil.singleCenter(Material.GRASS_BLOCK))
                 .register(gn);
 
         // -- Harvested --
@@ -943,7 +954,7 @@ public class ItemSetup {
             .group(GastroGroups.RAW_INGREDIENTS)
             .item(GastroStacks.COOKED_CHEVON)
             .ingredients(GastroStacks.RAW_CHEVON)
-            .tools(GastroStacks.FRYING_PAN.item())
+            .tools(GastroStacks.FRYING_PAN.item().clone())
             .register(gn);
 
         new UnplaceableSolid(
@@ -972,7 +983,7 @@ public class ItemSetup {
             .group(GastroGroups.RAW_INGREDIENTS)
             .item(GastroStacks.COOKED_SQUID)
             .ingredients(GastroStacks.RAW_SQUID)
-            .tools(GastroStacks.FRYING_PAN.item())
+            .tools(GastroStacks.FRYING_PAN.item().clone())
             .register(gn);
 
         // -- From Fishing --
@@ -989,7 +1000,7 @@ public class ItemSetup {
             .group(GastroGroups.RAW_INGREDIENTS)
             .item(GastroStacks.COOKED_MACKEREL)
             .ingredients(GastroStacks.RAW_MACKEREL)
-            .tools(GastroStacks.FRYING_PAN.item())
+            .tools(GastroStacks.FRYING_PAN.item().clone())
             .register(gn);
 
         new UnplaceableSolid(
@@ -1004,7 +1015,7 @@ public class ItemSetup {
             .group(GastroGroups.RAW_INGREDIENTS)
             .item(GastroStacks.COOKED_EEL)
             .ingredients(GastroStacks.RAW_EEL)
-            .tools(GastroStacks.FRYING_PAN.item())
+            .tools(GastroStacks.FRYING_PAN.item().clone())
             .register(gn);
 
         new UnplaceableSolid(
@@ -1019,7 +1030,7 @@ public class ItemSetup {
             .group(GastroGroups.RAW_INGREDIENTS)
             .item(GastroStacks.COOKED_TROUT)
             .ingredients(GastroStacks.RAW_TROUT)
-            .tools(GastroStacks.FRYING_PAN.item())
+            .tools(GastroStacks.FRYING_PAN.item().clone())
             .register(gn);
 
         new UnplaceableSolid(
@@ -1034,7 +1045,7 @@ public class ItemSetup {
             .group(GastroGroups.RAW_INGREDIENTS)
             .item(GastroStacks.COOKED_BASS)
             .ingredients(GastroStacks.RAW_BASS)
-            .tools(GastroStacks.FRYING_PAN.item())
+            .tools(GastroStacks.FRYING_PAN.item().clone())
             .register(gn);
 
         new UnplaceableSolid(
@@ -1049,7 +1060,7 @@ public class ItemSetup {
             .group(GastroGroups.RAW_INGREDIENTS)
             .item(GastroStacks.COOKED_CARP)
             .ingredients(GastroStacks.RAW_CARP)
-            .tools(GastroStacks.FRYING_PAN.item())
+            .tools(GastroStacks.FRYING_PAN.item().clone())
             .register(gn);
 
         new UnplaceableSolid(
@@ -1064,7 +1075,7 @@ public class ItemSetup {
             .group(GastroGroups.RAW_INGREDIENTS)
             .item(GastroStacks.COOKED_PIKE)
             .ingredients(GastroStacks.RAW_PIKE)
-            .tools(GastroStacks.FRYING_PAN.item())
+            .tools(GastroStacks.FRYING_PAN.item().clone())
             .register(gn);
 
         new UnplaceableSolid(
@@ -1079,7 +1090,7 @@ public class ItemSetup {
             .group(GastroGroups.RAW_INGREDIENTS)
             .item(GastroStacks.COOKED_TUNA)
             .ingredients(GastroStacks.RAW_TUNA)
-            .tools(GastroStacks.FRYING_PAN.item())
+            .tools(GastroStacks.FRYING_PAN.item().clone())
             .register(gn);
 
         new UnplaceableSolid(
@@ -1095,14 +1106,14 @@ public class ItemSetup {
             GastroGroups.RAW_INGREDIENTS,
             GastroStacks.CRAB,
             GastroRecipeType.TRAP,
-            RecipeUtil.singleCenter(GastroStacks.CRAB_TRAP.item()))
+            RecipeUtil.singleCenter(GastroStacks.CRAB_TRAP.item().clone()))
                 .register(gn);
 
         new UnplaceableSolid(
             GastroGroups.RAW_INGREDIENTS,
             GastroStacks.RAW_TURKEY,
             GastroRecipeType.TRAP,
-            RecipeUtil.singleCenter(GastroStacks.HUNTING_TRAP.item()))
+            RecipeUtil.singleCenter(GastroStacks.HUNTING_TRAP.item().clone()))
                 .register(gn);
 
         new SimpleGastroFoodBuilder()
@@ -1110,7 +1121,7 @@ public class ItemSetup {
             .group(GastroGroups.RAW_INGREDIENTS)
             .item(GastroStacks.COOKED_TURKEY)
             .ingredients(GastroStacks.RAW_TURKEY)
-            .tools(GastroStacks.FRYING_PAN.item())
+            .tools(GastroStacks.FRYING_PAN.item().clone())
             .register(gn);
 
         // ---- Food ----
@@ -1121,7 +1132,7 @@ public class ItemSetup {
             .item(GastroStacks.COOKED_RICE)
             .type(GastroRecipeType.MULTI_STOVE)
             .ingredients(GastroStacks.RICE)
-            .tools(GastroStacks.STEEL_POT.item())
+            .tools(GastroStacks.STEEL_POT.item().clone())
             .register(gn);
 
         new SimpleGastroFoodBuilder()
@@ -1150,20 +1161,20 @@ public class ItemSetup {
             .register(gn);
         RecipeRegistry.registerRecipe(new ShapedGastroRecipe(
             GastroRecipeType.CULINARY_WORKBENCH,
-            RecipeUtil.collection(GastroStacks.BARLEY_FLOUR.item(), GastroStacks.WATER_BOTTLE),
+            RecipeUtil.collection(GastroStacks.BARLEY_FLOUR.item().clone(), GastroStacks.WATER_BOTTLE),
             new HashSet<>(), // I don't know how to get shapeless recipes to work with groups, so this is the
                              // best I can do
-            GastroStacks.DOUGH.item()));
+            GastroStacks.DOUGH.item().clone()));
         RecipeRegistry.registerRecipe(new ShapedGastroRecipe(
             GastroRecipeType.CULINARY_WORKBENCH,
-            RecipeUtil.collection(GastroStacks.RYE_FLOUR.item(), GastroStacks.WATER_BOTTLE),
+            RecipeUtil.collection(GastroStacks.RYE_FLOUR.item().clone(), GastroStacks.WATER_BOTTLE),
             new HashSet<>(),
-            GastroStacks.DOUGH.item()));
+            GastroStacks.DOUGH.item().clone()));
         RecipeRegistry.registerRecipe(new ShapedGastroRecipe(
             GastroRecipeType.CULINARY_WORKBENCH,
-            RecipeUtil.collection(GastroStacks.SORGHUM_FLOUR.item(), GastroStacks.WATER_BOTTLE),
+            RecipeUtil.collection(GastroStacks.SORGHUM_FLOUR.item().clone(), GastroStacks.WATER_BOTTLE),
             new HashSet<>(),
-            GastroStacks.DOUGH.item()));
+            GastroStacks.DOUGH.item().clone()));
 
         new SimpleGastroFoodBuilder()
             .type(GastroRecipeType.MULTI_STOVE)
@@ -1176,7 +1187,7 @@ public class ItemSetup {
             .type(GastroRecipeType.MULTI_STOVE)
             .item(GastroStacks.NAAN_BREAD)
             .ingredients(GastroStacks.DOUGH)
-            .tools(GastroStacks.ROLLING_PIN.item())
+            .tools(GastroStacks.ROLLING_PIN.item().clone())
             .register(gn);
 
         new SimpleGastroFoodBuilder()
@@ -1191,7 +1202,7 @@ public class ItemSetup {
             .item(GastroStacks.FRIED_EGG)
             .ingredients(EGG)
             .temperature(Temperature.LOW)
-            .tools(GastroStacks.FRYING_PAN.item())
+            .tools(GastroStacks.FRYING_PAN.item().clone())
             .register(gn);
 
         new SimpleGastroFoodBuilder()
@@ -1199,21 +1210,21 @@ public class ItemSetup {
             .item(GastroStacks.HARD_BOILED_EGG)
             .ingredients(EGG, WATER_BUCKET)
             .temperature(Temperature.LOW)
-            .tools(GastroStacks.STEEL_POT.item())
+            .tools(GastroStacks.STEEL_POT.item().clone())
             .register(gn);
 
         new SimpleGastroFoodBuilder()
             .type(GastroRecipeType.MULTI_STOVE)
             .item(GastroStacks.SCRAMBLED_EGGS)
             .ingredients(EGG)
-            .tools(GastroStacks.FRYING_PAN.item(), GastroStacks.WHISK.item())
+            .tools(GastroStacks.FRYING_PAN.item().clone(), GastroStacks.WHISK.item().clone())
             .register(gn);
 
         new SimpleGastroFoodBuilder()
             .type(GastroRecipeType.MULTI_STOVE)
             .item(GastroStacks.CUSTARD)
             .ingredients(EGG, MILK_BUCKET, SUGAR)
-            .tools(GastroStacks.FRYING_PAN.item())
+            .tools(GastroStacks.FRYING_PAN.item().clone())
             .register(gn);
 
         new SimpleGastroFoodBuilder()
@@ -1221,7 +1232,7 @@ public class ItemSetup {
             .item(GastroStacks.CARAMEL)
             .ingredients(SUGAR)
             .temperature(Temperature.LOW)
-            .tools(GastroStacks.FRYING_PAN.item())
+            .tools(GastroStacks.FRYING_PAN.item().clone())
             .register(gn);
 
         if (egAvailable) {
@@ -1259,7 +1270,7 @@ public class ItemSetup {
             .item(GastroStacks.BAKED_BEANS)
             .ingredients(GastroStacks.BEANS)
             .temperature(Temperature.LOW)
-            .tools(GastroStacks.BAKING_TRAY.item())
+            .tools(GastroStacks.BAKING_TRAY.item().clone())
             .register(gn);
 
         new SimpleGastroFoodBuilder()
@@ -1272,7 +1283,7 @@ public class ItemSetup {
             .type(GastroRecipeType.MULTI_STOVE)
             .item(GastroStacks.TOFU)
             .ingredients(GastroStacks.SOYBEANS, WATER_BUCKET)
-            .tools(GastroStacks.BLENDER.item())
+            .tools(GastroStacks.BLENDER.item().clone())
             .register(gn);
 
         new SimpleGastroFoodBuilder()
@@ -1285,28 +1296,28 @@ public class ItemSetup {
             .type(GastroRecipeType.CULINARY_WORKBENCH)
             .item(GastroStacks.TURMERIC_POWDER)
             .ingredients(GastroStacks.TURMERIC)
-            .tools(GastroStacks.MORTAR_AND_PESTLE.item())
+            .tools(GastroStacks.MORTAR_AND_PESTLE.item().clone())
             .register(gn);
 
         new SimpleGastroFoodBuilder()
             .type(GastroRecipeType.CULINARY_WORKBENCH)
             .item(GastroStacks.RED_BEAN_PASTE)
             .ingredients(GastroStacks.RED_BEANS)
-            .tools(GastroStacks.MORTAR_AND_PESTLE.item())
+            .tools(GastroStacks.MORTAR_AND_PESTLE.item().clone())
             .register(gn);
 
         new SimpleGastroFoodBuilder()
             .type(GastroRecipeType.CULINARY_WORKBENCH)
             .item(GastroStacks.TAPIOCA_STARCH)
             .ingredients(GastroStacks.CASSAVA)
-            .tools(GastroStacks.MORTAR_AND_PESTLE.item())
+            .tools(GastroStacks.MORTAR_AND_PESTLE.item().clone())
             .register(gn);
 
         new SimpleGastroFoodBuilder()
             .type(GastroRecipeType.CULINARY_WORKBENCH)
             .item(GastroStacks.TAPIOCA_PEARLS)
             .ingredients(GastroStacks.TAPIOCA_STARCH, WATER_BUCKET)
-            .tools(GastroStacks.MULTI_STOVE.item())
+            .tools(GastroStacks.MULTI_STOVE.item().clone())
             .temperature(Temperature.LOW)
             .register(gn);
 
@@ -1412,7 +1423,7 @@ public class ItemSetup {
                 .shape(RecipeShape.SHAPELESS)
                 .ingredients(TOMATO, GastroStacks.CUCUMBER, ONION, SlimefunItems.CHEESE)
                 .container(BOWL)
-                .tools(GastroStacks.KITCHEN_KNIFE.item())
+                .tools(GastroStacks.KITCHEN_KNIFE.item().clone())
                 .register(gn);
 
             new GastroFoodBuilder()
@@ -1421,7 +1432,7 @@ public class ItemSetup {
                 .shape(RecipeShape.SHAPELESS)
                 .ingredients(LETTUCE, GastroStacks.TOAST, BACON, SlimefunItems.CHEESE)
                 .container(BOWL)
-                .tools(GastroStacks.KITCHEN_KNIFE.item())
+                .tools(GastroStacks.KITCHEN_KNIFE.item().clone())
                 .register(gn);
         }
 
@@ -1431,35 +1442,35 @@ public class ItemSetup {
             .shape(RecipeShape.SHAPELESS)
             .ingredients(GastroStacks.FIDDLEHEADS, GastroStacks.MINT, GastroStacks.ASPARAGUS)
             .container(BOWL)
-            .tools(GastroStacks.KITCHEN_KNIFE.item())
+            .tools(GastroStacks.KITCHEN_KNIFE.item().clone())
             .register(gn);
 
         new GastroFoodBuilder()
             .type(GastroRecipeType.MULTI_STOVE)
             .item(GastroStacks.PAN_SEARED_SALMON)
             .ingredients(SALMON)
-            .tools(GastroStacks.FRYING_PAN.item())
+            .tools(GastroStacks.FRYING_PAN.item().clone())
             .register(gn);
 
         new GastroFoodBuilder()
             .type(GastroRecipeType.MULTI_STOVE)
             .item(GastroStacks.FRIED_SHRIMP)
             .ingredients(GastroStacks.SHRIMP)
-            .tools(GastroStacks.FRYING_PAN.item())
+            .tools(GastroStacks.FRYING_PAN.item().clone())
             .register(gn);
 
         new GastroFoodBuilder()
             .type(GastroRecipeType.MULTI_STOVE)
             .item(GastroStacks.TEMPURA_SHRIMP)
             .ingredients(GastroStacks.SHRIMP, BREAD)
-            .tools(GastroStacks.FRYING_PAN.item())
+            .tools(GastroStacks.FRYING_PAN.item().clone())
             .register(gn);
 
         new GastroFoodBuilder()
             .type(GastroRecipeType.MULTI_STOVE)
             .item(GastroStacks.TEMPURA_BROCCOLI)
             .ingredients(GastroStacks.BROCCOLI, BREAD)
-            .tools(GastroStacks.FRYING_PAN.item())
+            .tools(GastroStacks.FRYING_PAN.item().clone())
             .register(gn);
 
         new GastroFoodBuilder()
@@ -1467,7 +1478,7 @@ public class ItemSetup {
             .item(GastroStacks.CHICKEN_PESTO_PASTA)
             .ingredients(GastroStacks.DOUGH, GastroStacks.BASIL, CHICKEN, SlimefunItems.CHEESE, WATER_BUCKET)
             .container(BOWL)
-            .tools(GastroStacks.STEEL_POT.item(), GastroStacks.ROLLING_PIN.item(), GastroStacks.MORTAR_AND_PESTLE.item())
+            .tools(GastroStacks.STEEL_POT.item().clone(), GastroStacks.ROLLING_PIN.item().clone(), GastroStacks.MORTAR_AND_PESTLE.item().clone())
             .register(gn);
 
         new GastroFoodBuilder()
@@ -1475,7 +1486,7 @@ public class ItemSetup {
             .item(GastroStacks.SQUID_INK_PASTA)
             .ingredients(GastroStacks.DOUGH, GastroStacks.BASIL, INK_SAC, SlimefunItems.CHEESE, WATER_BUCKET)
             .container(BOWL)
-            .tools(GastroStacks.FRYING_PAN.item(), GastroStacks.ROLLING_PIN.item())
+            .tools(GastroStacks.FRYING_PAN.item().clone(), GastroStacks.ROLLING_PIN.item().clone())
             .register(gn);
 
         new GastroFoodBuilder()
@@ -1483,7 +1494,7 @@ public class ItemSetup {
             .item(GastroStacks.GLOWING_SQUID_INK_PASTA)
             .ingredients(GastroStacks.DOUGH, GastroStacks.BASIL, GLOW_INK_SAC, SlimefunItems.CHEESE, WATER_BUCKET)
             .container(BOWL)
-            .tools(GastroStacks.FRYING_PAN.item(), GastroStacks.ROLLING_PIN.item())
+            .tools(GastroStacks.FRYING_PAN.item().clone(), GastroStacks.ROLLING_PIN.item().clone())
             .register(gn);
 
         new GastroFoodBuilder()
@@ -1491,7 +1502,7 @@ public class ItemSetup {
             .item(GastroStacks.TUNA_CASSEROLE)
             .ingredients(GastroStacks.DOUGH, GastroStacks.RAW_TUNA, GastroStacks.CREAM_OF_MUSHROOM_SOUP,
                 GastroStacks.PEAS)
-            .tools(GastroStacks.ROLLING_PIN.item(), GastroStacks.BAKING_TRAY.item())
+            .tools(GastroStacks.ROLLING_PIN.item().clone(), GastroStacks.BAKING_TRAY.item().clone())
             .register(gn);
 
         if (egAvailable) {
@@ -1501,7 +1512,7 @@ public class ItemSetup {
                 .ingredients(GastroStacks.DOUGH, GastroStacks.BASIL, CHICKEN, SlimefunItems.CHEESE, TOMATO,
                     WATER_BUCKET)
                 .container(BOWL)
-                .tools(GastroStacks.FRYING_PAN.item(), GastroStacks.ROLLING_PIN.item())
+                .tools(GastroStacks.FRYING_PAN.item().clone(), GastroStacks.ROLLING_PIN.item().clone())
                 .register(gn);
 
             new GastroFoodBuilder()
@@ -1510,7 +1521,7 @@ public class ItemSetup {
                 .ingredients(GastroStacks.DOUGH, GastroStacks.BASIL, GastroStacks.BUTTON_MUSHROOM, SlimefunItems.CHEESE,
                     TOMATO, WATER_BUCKET)
                 .container(BOWL)
-                .tools(GastroStacks.STEEL_POT.item(), GastroStacks.ROLLING_PIN.item())
+                .tools(GastroStacks.STEEL_POT.item().clone(), GastroStacks.ROLLING_PIN.item().clone())
                 .register(gn);
         }
 
@@ -1520,14 +1531,14 @@ public class ItemSetup {
             .ingredients(WATER_BUCKET, GastroStacks.OATS)
             .container(BOWL)
             .temperature(Temperature.LOW)
-            .tools(GastroStacks.STEEL_POT.item())
+            .tools(GastroStacks.STEEL_POT.item().clone())
             .register(gn);
         RecipeRegistry.registerRecipe(new MultiStoveRecipe(
-            RecipeUtil.collection(MILK_BUCKET, GastroStacks.OATS.item()),
+            RecipeUtil.collection(MILK_BUCKET, GastroStacks.OATS.item().clone()),
             BOWL,
-            Set.of(GastroStacks.STEEL_POT.item()),
+            Set.of(GastroStacks.STEEL_POT.item().clone()),
             Temperature.LOW,
-            GastroStacks.OATMEAL.item()));
+            GastroStacks.OATMEAL.item().clone()));
 
         new GastroFoodBuilder()
             .type(GastroRecipeType.MULTI_STOVE)
@@ -1535,14 +1546,14 @@ public class ItemSetup {
             .ingredients(WATER_BUCKET, GastroStacks.BARLEY)
             .container(BOWL)
             .temperature(Temperature.LOW)
-            .tools(GastroStacks.STEEL_POT.item())
+            .tools(GastroStacks.STEEL_POT.item().clone())
             .register(gn);
         RecipeRegistry.registerRecipe(new MultiStoveRecipe(
-            RecipeUtil.collection(MILK_BUCKET, GastroStacks.BARLEY.item()),
+            RecipeUtil.collection(MILK_BUCKET, GastroStacks.BARLEY.item().clone()),
             BOWL,
-            Set.of(GastroStacks.STEEL_POT.item()),
+            Set.of(GastroStacks.STEEL_POT.item().clone()),
             Temperature.LOW,
-            GastroStacks.BARLEY_PORRIDGE.item()));
+            GastroStacks.BARLEY_PORRIDGE.item().clone()));
 
         new GastroFoodBuilder()
             .type(GastroRecipeType.MULTI_STOVE)
@@ -1550,21 +1561,21 @@ public class ItemSetup {
             .ingredients(WATER_BUCKET, GastroStacks.RICE)
             .container(BOWL)
             .temperature(Temperature.LOW)
-            .tools(GastroStacks.STEEL_POT.item())
+            .tools(GastroStacks.STEEL_POT.item().clone())
             .register(gn);
         RecipeRegistry.registerRecipe(new MultiStoveRecipe(
-            RecipeUtil.collection(MILK_BUCKET, GastroStacks.RICE.item()),
+            RecipeUtil.collection(MILK_BUCKET, GastroStacks.RICE.item().clone()),
             BOWL,
-            Set.of(GastroStacks.STEEL_POT.item()),
+            Set.of(GastroStacks.STEEL_POT.item().clone()),
             Temperature.LOW,
-            GastroStacks.CONGEE.item()));
+            GastroStacks.CONGEE.item().clone()));
 
         new GastroFoodBuilder()
             .type(GastroRecipeType.MULTI_STOVE)
             .item(GastroStacks.CHICKEN_SOUP)
             .ingredients(WATER_BUCKET, CHICKEN, CARROT, GastroStacks.PEAS)
             .container(BOWL)
-            .tools(GastroStacks.STEEL_POT.item(), GastroStacks.KITCHEN_KNIFE.item(), GastroStacks.PEELER.item())
+            .tools(GastroStacks.STEEL_POT.item().clone(), GastroStacks.KITCHEN_KNIFE.item().clone(), GastroStacks.PEELER.item().clone())
             .register(gn);
 
         new GastroFoodBuilder()
@@ -1572,7 +1583,7 @@ public class ItemSetup {
             .item(GastroStacks.CHICKEN_AND_QUINOA_SOUP)
             .ingredients(WATER_BUCKET, CHICKEN, CARROT, GastroStacks.PEAS, GastroStacks.QUINOA)
             .container(BOWL)
-            .tools(GastroStacks.STEEL_POT.item(), GastroStacks.KITCHEN_KNIFE.item(), GastroStacks.PEELER.item())
+            .tools(GastroStacks.STEEL_POT.item().clone(), GastroStacks.KITCHEN_KNIFE.item().clone(), GastroStacks.PEELER.item().clone())
             .register(gn);
 
         new GastroFoodBuilder()
@@ -1580,7 +1591,7 @@ public class ItemSetup {
             .item(GastroStacks.CHICKEN_NOODLE_SOUP)
             .ingredients(WATER_BUCKET, CHICKEN, CARROT, GastroStacks.PEAS, GastroStacks.DOUGH)
             .container(BOWL)
-            .tools(GastroStacks.STEEL_POT.item(), GastroStacks.KITCHEN_KNIFE.item(), GastroStacks.PEELER.item())
+            .tools(GastroStacks.STEEL_POT.item().clone(), GastroStacks.KITCHEN_KNIFE.item().clone(), GastroStacks.PEELER.item().clone())
             .register(gn);
 
         new GastroFoodBuilder()
@@ -1588,7 +1599,7 @@ public class ItemSetup {
             .item(GastroStacks.CHICKEN_NOODLE_SOUP_WITH_BOK_HOY)
             .ingredients(WATER_BUCKET, CHICKEN, CARROT, GastroStacks.PEAS, GastroStacks.DOUGH, GastroStacks.BOK_CHOY)
             .container(BOWL)
-            .tools(GastroStacks.STEEL_POT.item(), GastroStacks.KITCHEN_KNIFE.item(), GastroStacks.PEELER.item())
+            .tools(GastroStacks.STEEL_POT.item().clone(), GastroStacks.KITCHEN_KNIFE.item().clone(), GastroStacks.PEELER.item().clone())
             .register(gn);
 
         if (egAvailable) {
@@ -1597,7 +1608,7 @@ public class ItemSetup {
                 .item(GastroStacks.SPLIT_PEA_SOUP)
                 .ingredients(WATER_BUCKET, CARROT, GastroStacks.PEAS, ONION)
                 .container(BOWL)
-                .tools(GastroStacks.STEEL_POT.item(), GastroStacks.KITCHEN_KNIFE.item(), GastroStacks.PEELER.item())
+                .tools(GastroStacks.STEEL_POT.item().clone(), GastroStacks.KITCHEN_KNIFE.item().clone(), GastroStacks.PEELER.item().clone())
                 .register(gn);
 
             new GastroFoodBuilder()
@@ -1605,7 +1616,7 @@ public class ItemSetup {
                 .item(GastroStacks.HAM_AND_SPLIT_PEA_SOUP)
                 .ingredients(WATER_BUCKET, CARROT, GastroStacks.PEAS, ONION, PORKCHOP)
                 .container(BOWL)
-                .tools(GastroStacks.STEEL_POT.item(), GastroStacks.KITCHEN_KNIFE.item(), GastroStacks.PEELER.item())
+                .tools(GastroStacks.STEEL_POT.item().clone(), GastroStacks.KITCHEN_KNIFE.item().clone(), GastroStacks.PEELER.item().clone())
                 .register(gn);
         }
 
@@ -1614,7 +1625,7 @@ public class ItemSetup {
             .item(GastroStacks.LENTIL_SOUP)
             .ingredients(WATER_BUCKET, CARROT, GastroStacks.LENTILS, GastroStacks.CELERY, GastroStacks.BASIL)
             .container(BOWL)
-            .tools(GastroStacks.STEEL_POT.item(), GastroStacks.KITCHEN_KNIFE.item(), GastroStacks.PEELER.item())
+            .tools(GastroStacks.STEEL_POT.item().clone(), GastroStacks.KITCHEN_KNIFE.item().clone(), GastroStacks.PEELER.item().clone())
             .register(gn);
 
         new GastroFoodBuilder()
@@ -1622,7 +1633,7 @@ public class ItemSetup {
             .item(GastroStacks.BEEF_AND_LENTIL_SOUP)
             .ingredients(WATER_BUCKET, CARROT, GastroStacks.LENTILS, GastroStacks.CELERY, GastroStacks.BASIL, BEEF)
             .container(BOWL)
-            .tools(GastroStacks.STEEL_POT.item(), GastroStacks.KITCHEN_KNIFE.item(), GastroStacks.PEELER.item())
+            .tools(GastroStacks.STEEL_POT.item().clone(), GastroStacks.KITCHEN_KNIFE.item().clone(), GastroStacks.PEELER.item().clone())
             .register(gn);
 
         new GastroFoodBuilder()
@@ -1630,7 +1641,7 @@ public class ItemSetup {
             .item(GastroStacks.CARROT_SOUP)
             .ingredients(WATER_BUCKET, CARROT, POTATO, GastroStacks.PEAS, GastroStacks.CELERY)
             .container(BOWL)
-            .tools(GastroStacks.STEEL_POT.item(), GastroStacks.KITCHEN_KNIFE.item(), GastroStacks.PEELER.item())
+            .tools(GastroStacks.STEEL_POT.item().clone(), GastroStacks.KITCHEN_KNIFE.item().clone(), GastroStacks.PEELER.item().clone())
             .register(gn);
 
         new GastroFoodBuilder()
@@ -1639,7 +1650,7 @@ public class ItemSetup {
             .ingredients(WATER_BUCKET, GastroStacks.BARLEY, GastroStacks.BUTTON_MUSHROOM, GastroStacks.PEAS,
                 GastroStacks.CELERY)
             .container(BOWL)
-            .tools(GastroStacks.STEEL_POT.item(), GastroStacks.KITCHEN_KNIFE.item())
+            .tools(GastroStacks.STEEL_POT.item().clone(), GastroStacks.KITCHEN_KNIFE.item().clone())
             .register(gn);
 
         new GastroFoodBuilder()
@@ -1647,7 +1658,7 @@ public class ItemSetup {
             .item(GastroStacks.CHICKEN_BARLEY_SOUP)
             .ingredients(WATER_BUCKET, GastroStacks.BARLEY, CHICKEN, GastroStacks.PEAS, CARROT)
             .container(BOWL)
-            .tools(GastroStacks.STEEL_POT.item(), GastroStacks.KITCHEN_KNIFE.item(), GastroStacks.PEELER.item())
+            .tools(GastroStacks.STEEL_POT.item().clone(), GastroStacks.KITCHEN_KNIFE.item().clone(), GastroStacks.PEELER.item().clone())
             .register(gn);
 
         new GastroFoodBuilder()
@@ -1655,7 +1666,7 @@ public class ItemSetup {
             .item(GastroStacks.BEEF_BARLEY_SOUP)
             .ingredients(WATER_BUCKET, GastroStacks.BARLEY, COOKED_BEEF, GastroStacks.BROCCOLI, GastroStacks.CELERY)
             .container(BOWL)
-            .tools(GastroStacks.STEEL_POT.item(), GastroStacks.KITCHEN_KNIFE.item())
+            .tools(GastroStacks.STEEL_POT.item().clone(), GastroStacks.KITCHEN_KNIFE.item().clone())
             .register(gn);
 
         new GastroFoodBuilder()
@@ -1663,7 +1674,7 @@ public class ItemSetup {
             .item(GastroStacks.CREAM_OF_MUSHROOM_SOUP)
             .ingredients(MILK_BUCKET, SlimefunItems.BUTTER, GastroStacks.BUTTON_MUSHROOM, GastroStacks.CELERY)
             .container(BOWL)
-            .tools(GastroStacks.STEEL_POT.item(), GastroStacks.KITCHEN_KNIFE.item())
+            .tools(GastroStacks.STEEL_POT.item().clone(), GastroStacks.KITCHEN_KNIFE.item().clone())
             .register(gn);
 
         new GastroFoodBuilder()
@@ -1671,7 +1682,7 @@ public class ItemSetup {
             .item(GastroStacks.CREAM_OF_BROCCOLI_SOUP)
             .ingredients(MILK_BUCKET, SlimefunItems.BUTTER, GastroStacks.BROCCOLI, GastroStacks.CELERY)
             .container(BOWL)
-            .tools(GastroStacks.STEEL_POT.item(), GastroStacks.KITCHEN_KNIFE.item())
+            .tools(GastroStacks.STEEL_POT.item().clone(), GastroStacks.KITCHEN_KNIFE.item().clone())
             .register(gn);
 
         new GastroFoodBuilder()
@@ -1679,7 +1690,7 @@ public class ItemSetup {
             .item(GastroStacks.CREAM_OF_ASPARAGUS_SOUP)
             .ingredients(MILK_BUCKET, SlimefunItems.BUTTER, GastroStacks.ASPARAGUS, GastroStacks.CELERY)
             .container(BOWL)
-            .tools(GastroStacks.STEEL_POT.item(), GastroStacks.KITCHEN_KNIFE.item())
+            .tools(GastroStacks.STEEL_POT.item().clone(), GastroStacks.KITCHEN_KNIFE.item().clone())
             .register(gn);
 
         new GastroFoodBuilder()
@@ -1687,7 +1698,7 @@ public class ItemSetup {
             .item(GastroStacks.CREAM_OF_CAULIFLOWER_SOUP)
             .ingredients(MILK_BUCKET, SlimefunItems.BUTTER, GastroStacks.CAULIFLOWER, GastroStacks.CELERY)
             .container(BOWL)
-            .tools(GastroStacks.STEEL_POT.item(), GastroStacks.KITCHEN_KNIFE.item())
+            .tools(GastroStacks.STEEL_POT.item().clone(), GastroStacks.KITCHEN_KNIFE.item().clone())
             .register(gn);
 
         new GastroFoodBuilder()
@@ -1695,7 +1706,7 @@ public class ItemSetup {
             .item(GastroStacks.MISO_SOUP)
             .ingredients(WATER_BUCKET, KELP, GastroStacks.MISO)
             .container(BOWL)
-            .tools(GastroStacks.STEEL_POT.item(), GastroStacks.KITCHEN_KNIFE.item())
+            .tools(GastroStacks.STEEL_POT.item().clone(), GastroStacks.KITCHEN_KNIFE.item().clone())
             .register(gn);
 
         new GastroFoodBuilder()
@@ -1703,7 +1714,7 @@ public class ItemSetup {
             .item(GastroStacks.GUARDIAN_FIN_SOUP)
             .ingredients(WATER_BUCKET, CARROT, GastroStacks.PEAS, GastroStacks.GUARDIAN_FIN)
             .container(BOWL)
-            .tools(GastroStacks.STEEL_POT.item(), GastroStacks.KITCHEN_KNIFE.item())
+            .tools(GastroStacks.STEEL_POT.item().clone(), GastroStacks.KITCHEN_KNIFE.item().clone())
             .register(gn);
 
         new GastroFoodBuilder()
@@ -1712,7 +1723,7 @@ public class ItemSetup {
             .ingredients(MILK_BUCKET, SlimefunItems.HEAVY_CREAM, GastroStacks.SHRIMP, GastroStacks.BASIL,
                 GastroStacks.BROCCOLI)
             .container(BOWL)
-            .tools(GastroStacks.STEEL_POT.item(), GastroStacks.KITCHEN_KNIFE.item())
+            .tools(GastroStacks.STEEL_POT.item().clone(), GastroStacks.KITCHEN_KNIFE.item().clone())
             .register(gn);
 
         new GastroFoodBuilder()
@@ -1720,7 +1731,7 @@ public class ItemSetup {
             .item(GastroStacks.SALMON_CHOWDER)
             .ingredients(MILK_BUCKET, SlimefunItems.HEAVY_CREAM, GastroStacks.SHRIMP, GastroStacks.BASIL, SALMON)
             .container(BOWL)
-            .tools(GastroStacks.STEEL_POT.item(), GastroStacks.KITCHEN_KNIFE.item())
+            .tools(GastroStacks.STEEL_POT.item().clone(), GastroStacks.KITCHEN_KNIFE.item().clone())
             .register(gn);
 
         new GastroFoodBuilder()
@@ -1728,7 +1739,7 @@ public class ItemSetup {
             .item(GastroStacks.POTATO_CHOWDER)
             .ingredients(MILK_BUCKET, SlimefunItems.HEAVY_CREAM, GastroStacks.SHRIMP, GastroStacks.BASIL, POTATO)
             .container(BOWL)
-            .tools(GastroStacks.STEEL_POT.item(), GastroStacks.KITCHEN_KNIFE.item(), GastroStacks.PEELER.item())
+            .tools(GastroStacks.STEEL_POT.item().clone(), GastroStacks.KITCHEN_KNIFE.item().clone(), GastroStacks.PEELER.item().clone())
             .register(gn);
 
         if (egAvailable)
@@ -1737,7 +1748,7 @@ public class ItemSetup {
                 .item(GastroStacks.CORN_CHOWDER)
                 .ingredients(MILK_BUCKET, SlimefunItems.HEAVY_CREAM, GastroStacks.SHRIMP, GastroStacks.BASIL, CORN)
                 .container(BOWL)
-                .tools(GastroStacks.STEEL_POT.item(), GastroStacks.KITCHEN_KNIFE.item())
+                .tools(GastroStacks.STEEL_POT.item().clone(), GastroStacks.KITCHEN_KNIFE.item().clone())
                 .register(gn);
 
         new GastroFoodBuilder()
@@ -1745,7 +1756,7 @@ public class ItemSetup {
             .item(GastroStacks.BEEF_STEW)
             .ingredients(WATER_BUCKET, POTATO, CARROT, BEEF, GastroStacks.CELERY)
             .container(BOWL)
-            .tools(GastroStacks.STEEL_POT.item(), GastroStacks.KITCHEN_KNIFE.item(), GastroStacks.PEELER.item())
+            .tools(GastroStacks.STEEL_POT.item().clone(), GastroStacks.KITCHEN_KNIFE.item().clone(), GastroStacks.PEELER.item().clone())
             .register(gn);
 
         new GastroFoodBuilder()
@@ -1753,7 +1764,7 @@ public class ItemSetup {
             .item(GastroStacks.CLAM_STEW)
             .ingredients(WATER_BUCKET, POTATO, CARROT, GastroStacks.CLAM, GastroStacks.CELERY)
             .container(BOWL)
-            .tools(GastroStacks.STEEL_POT.item(), GastroStacks.KITCHEN_KNIFE.item(), GastroStacks.PEELER.item())
+            .tools(GastroStacks.STEEL_POT.item().clone(), GastroStacks.KITCHEN_KNIFE.item().clone(), GastroStacks.PEELER.item().clone())
             .register(gn);
 
         new GastroFoodBuilder()
@@ -1762,7 +1773,7 @@ public class ItemSetup {
             .ingredients(WATER_BUCKET, GastroStacks.ENOKI_MUSHROOMS, GastroStacks.KING_OYSTER_MUSHROOM, CARROT,
                 GastroStacks.CRAB, EGG, GastroStacks.GREEN_ONION)
             .container(BOWL)
-            .tools(GastroStacks.STEEL_POT.item(), GastroStacks.KITCHEN_KNIFE.item(), GastroStacks.PEELER.item())
+            .tools(GastroStacks.STEEL_POT.item().clone(), GastroStacks.KITCHEN_KNIFE.item().clone(), GastroStacks.PEELER.item().clone())
             .register(gn);
 
         if (egAvailable) {
@@ -1800,7 +1811,7 @@ public class ItemSetup {
                 .ingredients(CHICKEN, CARROT, GastroStacks.TURMERIC_POWDER, GARLIC, TOMATO, GastroStacks.CUMIN_SEEDS,
                     GastroStacks.CHILI_PEPPER)
                 .container(BOWL)
-                .tools(GastroStacks.STEEL_POT.item(), GastroStacks.KITCHEN_KNIFE.item(), GastroStacks.PEELER.item())
+                .tools(GastroStacks.STEEL_POT.item().clone(), GastroStacks.KITCHEN_KNIFE.item().clone(), GastroStacks.PEELER.item().clone())
                 .register(gn);
 
             new GastroFoodBuilder()
@@ -1815,7 +1826,7 @@ public class ItemSetup {
                 .ingredients(GastroStacks.SHRIMP, GastroStacks.COOKED_RICE, CARROT, GastroStacks.PEAS, CORN,
                     GastroStacks.GREEN_ONION)
                 .container(BOWL)
-                .tools(GastroStacks.FRYING_PAN.item(), GastroStacks.KITCHEN_KNIFE.item(), GastroStacks.PEELER.item())
+                .tools(GastroStacks.FRYING_PAN.item().clone(), GastroStacks.KITCHEN_KNIFE.item().clone(), GastroStacks.PEELER.item().clone())
                 .register(gn);
 
             new GastroFoodBuilder()
@@ -1823,7 +1834,7 @@ public class ItemSetup {
                 .item(GastroStacks.CURRY_RICE)
                 .ingredients(POTATO, GastroStacks.COOKED_RICE, CARROT, CURRY_LEAF, COOKED_BEEF)
                 .container(BOWL)
-                .tools(GastroStacks.FRYING_PAN.item(), GastroStacks.KITCHEN_KNIFE.item(), GastroStacks.PEELER.item())
+                .tools(GastroStacks.FRYING_PAN.item().clone(), GastroStacks.KITCHEN_KNIFE.item().clone(), GastroStacks.PEELER.item().clone())
                 .register(gn);
 
             new GastroFoodBuilder()
@@ -1831,7 +1842,7 @@ public class ItemSetup {
                 .item(GastroStacks.RICE_OMELETTE)
                 .ingredients(GastroStacks.COOKED_RICE, EGG, GastroStacks.KETCHUP)
                 .container(BOWL)
-                .tools(GastroStacks.FRYING_PAN.item(), GastroStacks.KITCHEN_KNIFE.item(), GastroStacks.PEELER.item())
+                .tools(GastroStacks.FRYING_PAN.item().clone(), GastroStacks.KITCHEN_KNIFE.item().clone(), GastroStacks.PEELER.item().clone())
                 .register(gn);
         }
 
@@ -1847,7 +1858,7 @@ public class ItemSetup {
             .item(GastroStacks.BEEF_UDON)
             .ingredients(GastroStacks.DOUGH, BEEF, GastroStacks.SOY_SAUCE, GastroStacks.GREEN_ONION)
             .container(BOWL)
-            .tools(GastroStacks.FRYING_PAN.item())
+            .tools(GastroStacks.FRYING_PAN.item().clone())
             .register(gn);
 
         new GastroFoodBuilder()
@@ -1855,7 +1866,7 @@ public class ItemSetup {
             .item(GastroStacks.CHICKEN_UDON)
             .ingredients(GastroStacks.DOUGH, CHICKEN, GastroStacks.SOY_SAUCE, GastroStacks.GREEN_ONION)
             .container(BOWL)
-            .tools(GastroStacks.FRYING_PAN.item())
+            .tools(GastroStacks.FRYING_PAN.item().clone())
             .register(gn);
 
         new GastroFoodBuilder()
@@ -1864,7 +1875,7 @@ public class ItemSetup {
             .ingredients(GastroStacks.DOUGH, GastroStacks.BROCCOLI, CARROT, GastroStacks.SOY_SAUCE,
                 GastroStacks.GREEN_ONION)
             .container(BOWL)
-            .tools(GastroStacks.FRYING_PAN.item(), GastroStacks.PEELER.item())
+            .tools(GastroStacks.FRYING_PAN.item().clone(), GastroStacks.PEELER.item().clone())
             .register(gn);
 
         new GastroFoodBuilder()
@@ -1873,35 +1884,35 @@ public class ItemSetup {
             .ingredients(GastroStacks.DOUGH, CHICKEN, GastroStacks.BROCCOLI, CARROT, GastroStacks.BUTTON_MUSHROOM,
                 GastroStacks.GREEN_ONION)
             .container(BOWL)
-            .tools(GastroStacks.FRYING_PAN.item(), GastroStacks.PEELER.item())
+            .tools(GastroStacks.FRYING_PAN.item().clone(), GastroStacks.PEELER.item().clone())
             .register(gn);
 
         new GastroFoodBuilder()
             .type(GastroRecipeType.MULTI_STOVE)
             .item(GastroStacks.SHRIMP_DUMPLINGS)
             .ingredients(GastroStacks.COOKED_RICE, GastroStacks.SHRIMP, GastroStacks.GREEN_ONION)
-            .tools(GastroStacks.ROLLING_PIN.item(), GastroStacks.STEEL_POT.item())
+            .tools(GastroStacks.ROLLING_PIN.item().clone(), GastroStacks.STEEL_POT.item().clone())
             .register(gn);
 
         new GastroFoodBuilder()
             .type(GastroRecipeType.MULTI_STOVE)
             .item(GastroStacks.CHICKEN_POTSTICKERS)
             .ingredients(CHICKEN, GastroStacks.DOUGH, GastroStacks.SOY_SAUCE, GastroStacks.GREEN_ONION)
-            .tools(GastroStacks.ROLLING_PIN.item(), GastroStacks.FRYING_PAN.item())
+            .tools(GastroStacks.ROLLING_PIN.item().clone(), GastroStacks.FRYING_PAN.item().clone())
             .register(gn);
 
         new GastroFoodBuilder()
             .type(GastroRecipeType.MULTI_STOVE)
             .item(GastroStacks.BEEF_POTSTICKERS)
             .ingredients(BEEF, GastroStacks.DOUGH, GastroStacks.SOY_SAUCE, GastroStacks.GREEN_ONION)
-            .tools(GastroStacks.ROLLING_PIN.item(), GastroStacks.FRYING_PAN.item())
+            .tools(GastroStacks.ROLLING_PIN.item().clone(), GastroStacks.FRYING_PAN.item().clone())
             .register(gn);
 
         new GastroFoodBuilder()
             .type(GastroRecipeType.MULTI_STOVE)
             .item(GastroStacks.PIEROGIES)
             .ingredients(POTATO, GastroStacks.DOUGH, SlimefunItems.BUTTER)
-            .tools(GastroStacks.ROLLING_PIN.item(), GastroStacks.PEELER.item(), GastroStacks.BAKING_TRAY.item())
+            .tools(GastroStacks.ROLLING_PIN.item().clone(), GastroStacks.PEELER.item().clone(), GastroStacks.BAKING_TRAY.item().clone())
             .register(gn);
 
         if (egAvailable)
@@ -1909,7 +1920,7 @@ public class ItemSetup {
                 .type(GastroRecipeType.MULTI_STOVE)
                 .item(GastroStacks.BACON_PIEROGIES)
                 .ingredients(BACON, POTATO, GastroStacks.DOUGH, SlimefunItems.BUTTER)
-                .tools(GastroStacks.ROLLING_PIN.item(), GastroStacks.PEELER.item(), GastroStacks.BAKING_TRAY.item())
+                .tools(GastroStacks.ROLLING_PIN.item().clone(), GastroStacks.PEELER.item().clone(), GastroStacks.BAKING_TRAY.item().clone())
                 .register(gn);
 
         new GastroFoodBuilder()
@@ -1928,7 +1939,7 @@ public class ItemSetup {
             .type(GastroRecipeType.MULTI_STOVE)
             .item(GastroStacks.TAIYAKI)
             .ingredients(GastroStacks.DOUGH, GastroStacks.RED_BEAN_PASTE, SUGAR)
-            .tools(GastroStacks.BAKING_TRAY.item())
+            .tools(GastroStacks.BAKING_TRAY.item().clone())
             .temperature(Temperature.LOW)
             .register(gn);
 
@@ -1941,7 +1952,7 @@ public class ItemSetup {
                 GastroStacks.TEMPURA_SHRIMP, GastroStacks.TEMPURA_SHRIMP, GastroStacks.TEMPURA_SHRIMP,
                 GastroStacks.COOKED_RICE, GastroStacks.COOKED_RICE, GastroStacks.COOKED_RICE,
                 DRIED_KELP, DRIED_KELP, DRIED_KELP)
-            .tools(GastroStacks.KITCHEN_KNIFE.item())
+            .tools(GastroStacks.KITCHEN_KNIFE.item().clone())
             .register(gn);
 
         new GastroFoodBuilder()
@@ -1953,7 +1964,7 @@ public class ItemSetup {
                 GastroStacks.TEMPURA_SHRIMP, GastroStacks.AVOCADO, GastroStacks.CUCUMBER,
                 GastroStacks.COOKED_RICE, GastroStacks.COOKED_RICE, GastroStacks.COOKED_RICE,
                 DRIED_KELP, DRIED_KELP, DRIED_KELP)
-            .tools(GastroStacks.KITCHEN_KNIFE.item())
+            .tools(GastroStacks.KITCHEN_KNIFE.item().clone())
             .register(gn);
 
         new GastroFoodBuilder()
@@ -1965,7 +1976,7 @@ public class ItemSetup {
                 GastroStacks.CUCUMBER, GastroStacks.AVOCADO, GastroStacks.CUCUMBER,
                 GastroStacks.COOKED_RICE, GastroStacks.COOKED_RICE, GastroStacks.COOKED_RICE,
                 DRIED_KELP, DRIED_KELP, DRIED_KELP)
-            .tools(GastroStacks.KITCHEN_KNIFE.item())
+            .tools(GastroStacks.KITCHEN_KNIFE.item().clone())
             .register(gn);
 
         new GastroFoodBuilder()
@@ -1977,7 +1988,7 @@ public class ItemSetup {
                 GastroStacks.CRAB, GastroStacks.AVOCADO, GastroStacks.CUCUMBER,
                 GastroStacks.COOKED_RICE, GastroStacks.COOKED_RICE, GastroStacks.COOKED_RICE,
                 DRIED_KELP, DRIED_KELP, DRIED_KELP)
-            .tools(GastroStacks.KITCHEN_KNIFE.item())
+            .tools(GastroStacks.KITCHEN_KNIFE.item().clone())
             .register(gn);
 
         new GastroFoodBuilder()
@@ -1989,7 +2000,7 @@ public class ItemSetup {
                 null, null, null,
                 GastroStacks.SALMON_ROE, GastroStacks.SALMON_ROE, GastroStacks.SALMON_ROE,
                 DRIED_KELP, DRIED_KELP, DRIED_KELP)
-            .tools(GastroStacks.KITCHEN_KNIFE.item())
+            .tools(GastroStacks.KITCHEN_KNIFE.item().clone())
             .register(gn);
 
         new GastroFoodBuilder()
@@ -1998,7 +2009,7 @@ public class ItemSetup {
             .amount(3)
             .ingredients(
                 WATER_BUCKET, GastroStacks.COOKED_RICE, GastroStacks.RED_BEAN_PASTE, SUGAR)
-            .tools(GastroStacks.STEEL_POT.item())
+            .tools(GastroStacks.STEEL_POT.item().clone())
             .temperature(Temperature.LOW)
             .register(gn);
 
@@ -2008,7 +2019,7 @@ public class ItemSetup {
             .amount(3)
             .ingredients(
                 WATER_BUCKET, GastroStacks.COOKED_RICE, GastroStacks.PEANUTS, SUGAR)
-            .tools(GastroStacks.STEEL_POT.item())
+            .tools(GastroStacks.STEEL_POT.item().clone())
             .temperature(Temperature.LOW)
             .register(gn);
 
@@ -2018,7 +2029,7 @@ public class ItemSetup {
             .amount(3)
             .ingredients(
                 WATER_BUCKET, GastroStacks.COOKED_RICE, GastroStacks.SESAME_SEEDS, SUGAR)
-            .tools(GastroStacks.STEEL_POT.item())
+            .tools(GastroStacks.STEEL_POT.item().clone())
             .temperature(Temperature.LOW)
             .register(gn);
 
@@ -2026,14 +2037,14 @@ public class ItemSetup {
             .type(GastroRecipeType.CULINARY_WORKBENCH)
             .item(GastroStacks.MASHED_POTATOES)
             .ingredients(POTATO, MILK_BUCKET)
-            .tools(GastroStacks.MORTAR_AND_PESTLE.item())
+            .tools(GastroStacks.MORTAR_AND_PESTLE.item().clone())
             .register(gn);
 
         new GastroFoodBuilder()
             .type(GastroRecipeType.CULINARY_WORKBENCH)
             .item(GastroStacks.MASHED_TURNIPS)
             .ingredients(GastroStacks.TURNIP, MILK_BUCKET)
-            .tools(GastroStacks.MORTAR_AND_PESTLE.item())
+            .tools(GastroStacks.MORTAR_AND_PESTLE.item().clone())
             .register(gn);
 
         new GastroFoodBuilder()
@@ -2059,7 +2070,7 @@ public class ItemSetup {
             .type(GastroRecipeType.MULTI_STOVE)
             .item(GastroStacks.DOUBLE_CHOCOLATE_MUFFIN)
             .ingredients(GastroStacks.DOUGH, MILK_BUCKET, SlimefunItems.BUTTER, EGG, SUGAR, COCOA_BEANS, COCOA_BEANS)
-            .tools(GastroStacks.BAKING_TRAY.item(), GastroStacks.WHISK.item())
+            .tools(GastroStacks.BAKING_TRAY.item().clone(), GastroStacks.WHISK.item().clone())
             .amount(3)
             .register(gn);
 
@@ -2067,7 +2078,7 @@ public class ItemSetup {
             .type(GastroRecipeType.MULTI_STOVE)
             .item(GastroStacks.CARROT_MUFFIN)
             .ingredients(GastroStacks.DOUGH, MILK_BUCKET, SlimefunItems.BUTTER, EGG, SUGAR, CARROT)
-            .tools(GastroStacks.BAKING_TRAY.item(), GastroStacks.WHISK.item())
+            .tools(GastroStacks.BAKING_TRAY.item().clone(), GastroStacks.WHISK.item().clone())
             .amount(3)
             .register(gn);
 
@@ -2076,7 +2087,7 @@ public class ItemSetup {
                 .type(GastroRecipeType.MULTI_STOVE)
                 .item(GastroStacks.CRANBERRY_MUFFIN)
                 .ingredients(GastroStacks.DOUGH, MILK_BUCKET, SlimefunItems.BUTTER, EGG, SUGAR, CRANBERRY)
-                .tools(GastroStacks.BAKING_TRAY.item(), GastroStacks.WHISK.item())
+                .tools(GastroStacks.BAKING_TRAY.item().clone(), GastroStacks.WHISK.item().clone())
                 .amount(3)
                 .register(gn);
 
@@ -2084,7 +2095,7 @@ public class ItemSetup {
                 .type(GastroRecipeType.MULTI_STOVE)
                 .item(GastroStacks.RAISIN_MUFFIN)
                 .ingredients(GastroStacks.DOUGH, MILK_BUCKET, SlimefunItems.BUTTER, EGG, SUGAR, GRAPE)
-                .tools(GastroStacks.BAKING_TRAY.item(), GastroStacks.WHISK.item())
+                .tools(GastroStacks.BAKING_TRAY.item().clone(), GastroStacks.WHISK.item().clone())
                 .amount(3)
                 .register(gn);
         }
@@ -2228,8 +2239,8 @@ public class ItemSetup {
             .type(GastroRecipeType.CULINARY_WORKBENCH)
             .item(GastroStacks.SHAVED_ICE)
             .ingredients(ICE)
-            .container(GastroStacks.STEEL_BOWL.item())
-            .tools(GastroStacks.BLENDER.item())
+            .container(GastroStacks.STEEL_BOWL.item().clone())
+            .tools(GastroStacks.BLENDER.item().clone())
             .register(gn);
 
         if (egAvailable)
@@ -2237,16 +2248,16 @@ public class ItemSetup {
                 .type(GastroRecipeType.CULINARY_WORKBENCH)
                 .item(GastroStacks.STRAWBERRY_SHAVED_ICE)
                 .ingredients(ICE, STRAWBERRY)
-                .container(GastroStacks.STEEL_BOWL.item())
-                .tools(GastroStacks.BLENDER.item())
+                .container(GastroStacks.STEEL_BOWL.item().clone())
+                .tools(GastroStacks.BLENDER.item().clone())
                 .register(gn);
 
         new GastroFoodBuilder()
             .type(GastroRecipeType.CULINARY_WORKBENCH)
             .item(GastroStacks.BANANA_SHAVED_ICE)
             .ingredients(ICE, GastroStacks.BANANA)
-            .container(GastroStacks.STEEL_BOWL.item())
-            .tools(GastroStacks.BLENDER.item())
+            .container(GastroStacks.STEEL_BOWL.item().clone())
+            .tools(GastroStacks.BLENDER.item().clone())
             .register(gn);
 
         if (egAvailable)
@@ -2254,8 +2265,8 @@ public class ItemSetup {
                 .type(GastroRecipeType.CULINARY_WORKBENCH)
                 .item(GastroStacks.LEMON_SHAVED_ICE)
                 .ingredients(ICE, LEMON)
-                .container(GastroStacks.STEEL_BOWL.item())
-                .tools(GastroStacks.BLENDER.item())
+                .container(GastroStacks.STEEL_BOWL.item().clone())
+                .tools(GastroStacks.BLENDER.item().clone())
                 .register(gn);
 
         new GastroFoodBuilder()
@@ -2273,7 +2284,7 @@ public class ItemSetup {
                 .type(GastroRecipeType.MULTI_STOVE)
                 .item(GastroStacks.DONUT)
                 .ingredients(GastroStacks.DOUGH, YEAST, MILK_BUCKET, SlimefunItems.BUTTER, SUGAR, PINK_DYE)
-                .tools(GastroStacks.BAKING_TRAY.item())
+                .tools(GastroStacks.BAKING_TRAY.item().clone())
                 .amount(2)
                 .register(gn);
 
@@ -2281,7 +2292,7 @@ public class ItemSetup {
                 .type(GastroRecipeType.MULTI_STOVE)
                 .item(GastroStacks.HONEY_DIP_DONUT)
                 .ingredients(GastroStacks.DOUGH, YEAST, MILK_BUCKET, SlimefunItems.BUTTER, SUGAR, HONEY_BOTTLE)
-                .tools(GastroStacks.BAKING_TRAY.item())
+                .tools(GastroStacks.BAKING_TRAY.item().clone())
                 .amount(2)
                 .register(gn);
 
@@ -2290,7 +2301,7 @@ public class ItemSetup {
                 .item(GastroStacks.GOLDEN_CHOCOLATE_DONUT)
                 .ingredients(GastroStacks.DOUGH, YEAST, MILK_BUCKET, SlimefunItems.BUTTER, SUGAR, HONEY_BOTTLE,
                     COCOA_BEANS)
-                .tools(GastroStacks.BAKING_TRAY.item())
+                .tools(GastroStacks.BAKING_TRAY.item().clone())
                 .amount(2)
                 .register(gn);
 
@@ -2299,14 +2310,14 @@ public class ItemSetup {
                 .item(GastroStacks.STRAWBERRY_CHEESECAKE)
                 .ingredients(GastroStacks.DOUGH, YEAST, MILK_BUCKET, SlimefunItems.BUTTER, SUGAR, SlimefunItems.CHEESE,
                     STRAWBERRY)
-                .tools(GastroStacks.BAKING_TRAY.item())
+                .tools(GastroStacks.BAKING_TRAY.item().clone())
                 .register(gn);
 
             new GastroFoodBuilder()
                 .type(GastroRecipeType.MULTI_STOVE)
                 .item(GastroStacks.STRAWBERRY_CUPCAKE)
                 .ingredients(GastroStacks.DOUGH, YEAST, MILK_BUCKET, SlimefunItems.BUTTER, SUGAR, STRAWBERRY)
-                .tools(GastroStacks.BAKING_TRAY.item())
+                .tools(GastroStacks.BAKING_TRAY.item().clone())
                 .amount(2)
                 .register(gn);
 
@@ -2314,7 +2325,7 @@ public class ItemSetup {
                 .type(GastroRecipeType.MULTI_STOVE)
                 .item(GastroStacks.LEMON_TART)
                 .ingredients(LEMON, SUGAR, EGG)
-                .tools(GastroStacks.BAKING_TRAY.item())
+                .tools(GastroStacks.BAKING_TRAY.item().clone())
                 .amount(3)
                 .register(gn);
         }
@@ -2323,28 +2334,28 @@ public class ItemSetup {
             .type(GastroRecipeType.MULTI_STOVE)
             .item(GastroStacks.CHORUS_PIE)
             .ingredients(CHORUS_FRUIT, SUGAR, EGG)
-            .tools(GastroStacks.BAKING_TRAY.item())
+            .tools(GastroStacks.BAKING_TRAY.item().clone())
             .register(gn);
 
         new GastroFoodBuilder()
             .type(GastroRecipeType.MULTI_STOVE)
             .item(GastroStacks.POPPED_SORGHUM)
             .ingredients(GastroStacks.SORGHUM)
-            .tools(GastroStacks.BAKING_TRAY.item())
+            .tools(GastroStacks.BAKING_TRAY.item().clone())
             .register(gn);
 
         new GastroFoodBuilder()
             .type(GastroRecipeType.CULINARY_WORKBENCH)
             .item(GastroStacks.ENCHANTED_GOLDEN_CARROT)
             .shape(RecipeShape.SHAPED)
-            .ingredients(RecipeUtil.cyclic(SlimefunItems.GOLD_24K_BLOCK.item(), CARROT))
+            .ingredients(RecipeUtil.cyclic(SlimefunItems.GOLD_24K_BLOCK.item().clone(), CARROT))
             .register(gn);
 
         new GastroFoodBuilder()
             .type(GastroRecipeType.CULINARY_WORKBENCH)
             .item(GastroStacks.ENCHANTED_GLISTERING_MELON_SLICE)
             .shape(RecipeShape.SHAPED)
-            .ingredients(RecipeUtil.cyclic(SlimefunItems.GOLD_24K_BLOCK.item(), MELON_SLICE))
+            .ingredients(RecipeUtil.cyclic(SlimefunItems.GOLD_24K_BLOCK.item().clone(), MELON_SLICE))
             .register(gn);
 
         if (egAvailable) {
@@ -2354,8 +2365,8 @@ public class ItemSetup {
                 .shape(RecipeShape.SHAPELESS)
                 .ingredients(TOMATO, CARROT, GastroStacks.CELERY, BEETROOT, LETTUCE, GastroStacks.PARSLEY,
                     GastroStacks.SPINACH)
-                .tools(GastroStacks.BLENDER.item())
-                .container(SlimefunItems.TIN_CAN.item())
+                .tools(GastroStacks.BLENDER.item().clone())
+                .container(SlimefunItems.TIN_CAN.item().clone())
                 .register(gn);
 
             new GastroFoodBuilder()
@@ -2374,7 +2385,7 @@ public class ItemSetup {
                 .ingredients(
                     TEA_LEAF, APPLE, GastroStacks.TAPIOCA_PEARLS, GastroStacks.LYCHEE)
                 .container(GLASS_BOTTLE)
-                .tools(GastroStacks.BLENDER.item(), GastroStacks.KITCHEN_KNIFE.item())
+                .tools(GastroStacks.BLENDER.item().clone(), GastroStacks.KITCHEN_KNIFE.item().clone())
                 .register(gn);
 
             new GastroFoodBuilder()
@@ -2384,7 +2395,7 @@ public class ItemSetup {
                 .ingredients(
                     TEA_LEAF, GastroStacks.CANTALOUPE, GastroStacks.TAPIOCA_PEARLS, GastroStacks.LYCHEE)
                 .container(GLASS_BOTTLE)
-                .tools(GastroStacks.BLENDER.item(), GastroStacks.KITCHEN_KNIFE.item())
+                .tools(GastroStacks.BLENDER.item().clone(), GastroStacks.KITCHEN_KNIFE.item().clone())
                 .register(gn);
 
             new GastroFoodBuilder()
@@ -2394,7 +2405,7 @@ public class ItemSetup {
                 .ingredients(
                     TEA_LEAF, GastroStacks.HONEYDEW_MELON, GastroStacks.TAPIOCA_PEARLS, GastroStacks.LYCHEE)
                 .container(GLASS_BOTTLE)
-                .tools(GastroStacks.BLENDER.item(), GastroStacks.KITCHEN_KNIFE.item())
+                .tools(GastroStacks.BLENDER.item().clone(), GastroStacks.KITCHEN_KNIFE.item().clone())
                 .register(gn);
 
             new GastroFoodBuilder()
@@ -2403,7 +2414,7 @@ public class ItemSetup {
                 .shape(RecipeShape.SHAPED)
                 .container(GLASS_BOTTLE)
                 .ingredients(GRAPE, YEAST)
-                .tools(GastroStacks.DISTILLATION_CHAMBER.item())
+                .tools(GastroStacks.DISTILLATION_CHAMBER.item().clone())
                 .register(gn);
 
             new GastroFoodBuilder()
@@ -2412,7 +2423,7 @@ public class ItemSetup {
                 .shape(RecipeShape.SHAPED)
                 .container(GLASS_BOTTLE)
                 .ingredients(GastroStacks.BARLEY, YEAST)
-                .tools(GastroStacks.DISTILLATION_CHAMBER.item())
+                .tools(GastroStacks.DISTILLATION_CHAMBER.item().clone())
                 .register(gn);
 
             new GastroFoodBuilder()
@@ -2421,7 +2432,7 @@ public class ItemSetup {
                 .shape(RecipeShape.SHAPED)
                 .container(GLASS_BOTTLE)
                 .ingredients(APPLE, YEAST)
-                .tools(GastroStacks.DISTILLATION_CHAMBER.item())
+                .tools(GastroStacks.DISTILLATION_CHAMBER.item().clone())
                 .register(gn);
 
             new GastroFoodBuilder()
@@ -2430,7 +2441,7 @@ public class ItemSetup {
                 .shape(RecipeShape.SHAPED)
                 .container(GLASS_BOTTLE)
                 .ingredients(GastroStacks.RICE, YEAST)
-                .tools(GastroStacks.DISTILLATION_CHAMBER.item())
+                .tools(GastroStacks.DISTILLATION_CHAMBER.item().clone())
                 .register(gn);
 
             new GastroFoodBuilder()
@@ -2439,7 +2450,7 @@ public class ItemSetup {
                 .shape(RecipeShape.SHAPED)
                 .container(GLASS_BOTTLE)
                 .ingredients(POTATO, YEAST)
-                .tools(GastroStacks.DISTILLATION_CHAMBER.item())
+                .tools(GastroStacks.DISTILLATION_CHAMBER.item().clone())
                 .register(gn);
 
             new GastroFoodBuilder()
@@ -2448,7 +2459,7 @@ public class ItemSetup {
                 .shape(RecipeShape.SHAPED)
                 .container(GLASS_BOTTLE)
                 .ingredients(SUGAR, YEAST)
-                .tools(GastroStacks.DISTILLATION_CHAMBER.item())
+                .tools(GastroStacks.DISTILLATION_CHAMBER.item().clone())
                 .register(gn);
 
             new GastroFoodBuilder()
@@ -2457,7 +2468,7 @@ public class ItemSetup {
                 .shape(RecipeShape.SHAPED)
                 .container(GLASS_BOTTLE)
                 .ingredients(GastroStacks.RYE, YEAST)
-                .tools(GastroStacks.DISTILLATION_CHAMBER.item())
+                .tools(GastroStacks.DISTILLATION_CHAMBER.item().clone())
                 .register(gn);
         }
     }

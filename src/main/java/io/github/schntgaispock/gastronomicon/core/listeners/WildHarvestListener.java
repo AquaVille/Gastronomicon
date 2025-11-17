@@ -121,7 +121,7 @@ public class WildHarvestListener implements Listener {
 
         final ItemStack weapon = p.getInventory().getItemInMainHand();
         final int fortune = weapon == null ? 0
-            : weapon.getEnchantmentLevel(Enchantment.LOOTING);
+            : weapon.getEnchantmentLevel(Enchantment.FORTUNE);
         if (NumberUtil.flip(getDropChance(b.getType()) * (1 + fortune * 0.5))) {
             final ItemStack drop = drops.generate();
             if (drop == null) {
@@ -159,108 +159,108 @@ public class WildHarvestListener implements Listener {
         worldsDisabledIn.addAll(Gastronomicon.getInstance().getConfig().getStringList("drops.disabled-in"));
 
         final LootTable<ItemStack> DRY_CLIMATE_GRASS_DROPS = LootTable.builder()
-            .addItems(GastroStacks.CASSAVA.item(),
-                GastroStacks.LENTILS.item(),
-                GastroStacks.CUMIN_SEEDS.item(),
-                GastroStacks.HONEYDEW_MELON_SEEDS.item(),
-                GastroStacks.SORGHUM_SEEDS.item())
+            .addItems(GastroStacks.CASSAVA.item().clone(),
+                GastroStacks.LENTILS.item().clone(),
+                GastroStacks.CUMIN_SEEDS.item().clone(),
+                GastroStacks.HONEYDEW_MELON_SEEDS.item().clone(),
+                GastroStacks.SORGHUM_SEEDS.item().clone())
             .build();
         final LootTable<ItemStack> TEMPERATE_CLIMATE_GRASS_DROPS = LootTable.builder()
             .addItems(6,
-                GastroStacks.RICE.item(),
-                GastroStacks.OATS.item(),
-                GastroStacks.SOYBEANS.item(),
-                GastroStacks.BARLEY_SEEDS.item(),
-                GastroStacks.RYE_SEEDS.item(),
-                GastroStacks.SORGHUM_SEEDS.item())
+                GastroStacks.RICE.item().clone(),
+                GastroStacks.OATS.item().clone(),
+                GastroStacks.SOYBEANS.item().clone(),
+                GastroStacks.BARLEY_SEEDS.item().clone(),
+                GastroStacks.RYE_SEEDS.item().clone(),
+                GastroStacks.SORGHUM_SEEDS.item().clone())
             .addItems(4,
-                GastroStacks.TURNIP_SEEDS.item(),
-                GastroStacks.RED_BEANS.item(),
-                GastroStacks.CANTALOUPE_SEEDS.item(),
-                GastroStacks.HONEYDEW_MELON_SEEDS.item(),
-                GastroStacks.SESAME_SEEDS.item(),
-                GastroStacks.PEANUTS.item(),
-                GastroStacks.BEANS.item(),
-                GastroStacks.PEAS.item())
+                GastroStacks.TURNIP_SEEDS.item().clone(),
+                GastroStacks.RED_BEANS.item().clone(),
+                GastroStacks.CANTALOUPE_SEEDS.item().clone(),
+                GastroStacks.HONEYDEW_MELON_SEEDS.item().clone(),
+                GastroStacks.SESAME_SEEDS.item().clone(),
+                GastroStacks.PEANUTS.item().clone(),
+                GastroStacks.BEANS.item().clone(),
+                GastroStacks.PEAS.item().clone())
             .addItems(3,
-                GastroStacks.BOK_CHOY_SEEDS.item(),
-                GastroStacks.CUCUMBER_SEEDS.item(),
-                GastroStacks.BASIL_SEEDS.item(),
-                GastroStacks.SPINACH_SEEDS.item(),
-                GastroStacks.MINT_SEEDS.item(),
-                GastroStacks.CHILI_PEPPER_SEEDS.item(),
-                GastroStacks.PARSLEY_SEEDS.item(),
-                GastroStacks.CASSAVA.item(),
-                GastroStacks.LENTILS.item(),
-                GastroStacks.ASPARAGUS_SEEDS.item(),
-                GastroStacks.GREEN_ONION_SEEDS.item(),
-                GastroStacks.CAULIFLOWER_SEEDS.item(),
-                GastroStacks.AVOCADO_PIT.item(),
-                GastroStacks.TURMERIC.item(),
-                GastroStacks.CUMIN_SEEDS.item(),
-                GastroStacks.VANILLA_PLANT.item())
+                GastroStacks.BOK_CHOY_SEEDS.item().clone(),
+                GastroStacks.CUCUMBER_SEEDS.item().clone(),
+                GastroStacks.BASIL_SEEDS.item().clone(),
+                GastroStacks.SPINACH_SEEDS.item().clone(),
+                GastroStacks.MINT_SEEDS.item().clone(),
+                GastroStacks.CHILI_PEPPER_SEEDS.item().clone(),
+                GastroStacks.PARSLEY_SEEDS.item().clone(),
+                GastroStacks.CASSAVA.item().clone(),
+                GastroStacks.LENTILS.item().clone(),
+                GastroStacks.ASPARAGUS_SEEDS.item().clone(),
+                GastroStacks.GREEN_ONION_SEEDS.item().clone(),
+                GastroStacks.CAULIFLOWER_SEEDS.item().clone(),
+                GastroStacks.AVOCADO_PIT.item().clone(),
+                GastroStacks.TURMERIC.item().clone(),
+                GastroStacks.CUMIN_SEEDS.item().clone(),
+                GastroStacks.VANILLA_PLANT.item().clone())
             .addItems(2,
-                GastroStacks.LYCHEE_SAPLING.item(),
-                GastroStacks.BANANA_SAPLING.item())
+                GastroStacks.LYCHEE_SAPLING.item().clone(),
+                GastroStacks.BANANA_SAPLING.item().clone())
             .build();
         final LootTable<ItemStack> COLD_CLIMATE_GRASS_DROPS = LootTable.builder()
             .addItems(6,
-                GastroStacks.QUINOA.item(),
-                GastroStacks.OATS.item(),
-                GastroStacks.RYE_SEEDS.item())
+                GastroStacks.QUINOA.item().clone(),
+                GastroStacks.OATS.item().clone(),
+                GastroStacks.RYE_SEEDS.item().clone())
             .addItems(4,
-                GastroStacks.TURNIP_SEEDS.item(),
-                GastroStacks.SQUASH_SEEDS.item(),
-                GastroStacks.PEAS.item())
+                GastroStacks.TURNIP_SEEDS.item().clone(),
+                GastroStacks.SQUASH_SEEDS.item().clone(),
+                GastroStacks.PEAS.item().clone())
             .addItems(3,
-                GastroStacks.CELERY.item(),
-                GastroStacks.BROCCOLI_SEEDS.item(),
-                GastroStacks.BRUSSLES_SPROUTS.item())
+                GastroStacks.CELERY.item().clone(),
+                GastroStacks.BROCCOLI_SEEDS.item().clone(),
+                GastroStacks.BRUSSLES_SPROUTS.item().clone())
             .addItems(2,
-                GastroStacks.LYCHEE_SAPLING.item())
+                GastroStacks.LYCHEE_SAPLING.item().clone())
             .build();
         final LootTable<ItemStack> SNOWY_CLIMATE_GRASS_DROPS = LootTable.builder()
-            .addItems(GastroStacks.RYE_SEEDS.item())
+            .addItems(GastroStacks.RYE_SEEDS.item().clone())
             .build();
         final LootTable<ItemStack> FERN_DROPS = LootTable.builder()
-            .addItems(GastroStacks.FIDDLEHEADS.item())
+            .addItems(GastroStacks.FIDDLEHEADS.item().clone())
             .build();
         final LootTable<ItemStack> DIRT_DROPS = LootTable.builder()
-            .addItems(GastroStacks.ENOKI_MUSHROOMS.item(),
-                GastroStacks.KING_OYSTER_MUSHROOM.item(),
-                GastroStacks.BUTTON_MUSHROOM.item())
+            .addItems(GastroStacks.ENOKI_MUSHROOMS.item().clone(),
+                GastroStacks.KING_OYSTER_MUSHROOM.item().clone(),
+                GastroStacks.BUTTON_MUSHROOM.item().clone())
             .build();
         final LootTable<ItemStack> PODZOL_DROPS = LootTable.builder()
             .addItems(4,
-                GastroStacks.ENOKI_MUSHROOMS.item(),
-                GastroStacks.KING_OYSTER_MUSHROOM.item(),
-                GastroStacks.BUTTON_MUSHROOM.item())
-            .addItems(GastroStacks.TRUFFLE.item())
+                GastroStacks.ENOKI_MUSHROOMS.item().clone(),
+                GastroStacks.KING_OYSTER_MUSHROOM.item().clone(),
+                GastroStacks.BUTTON_MUSHROOM.item().clone())
+            .addItems(GastroStacks.TRUFFLE.item().clone())
             .build();
         final LootTable<ItemStack> SEAGRASS_DROPS = LootTable.builder()
-            .addItems(GastroStacks.CLAM.item())
+            .addItems(GastroStacks.CLAM.item().clone())
             .build();
 
         final LootTable<ItemStack> SQUID_DROPS = LootTable.builder()
-            .addItems(GastroStacks.RAW_SQUID.item())
+            .addItems(GastroStacks.RAW_SQUID.item().clone())
             .build();
         final LootTable<ItemStack> GUARDIAN_DROPS = LootTable.builder()
-            .addItems(GastroStacks.GUARDIAN_FIN.item())
+            .addItems(GastroStacks.GUARDIAN_FIN.item().clone())
             .build();
         final LootTable<ItemStack> GOAT_DROPS = LootTable.builder()
-            .addItems(GastroStacks.RAW_CHEVON.item())
+            .addItems(GastroStacks.RAW_CHEVON.item().clone())
             .build();
         final LootTable<ItemStack> SALMON_DROPS = LootTable.builder()
-            .addItems(GastroStacks.SALMON_ROE.item())
+            .addItems(GastroStacks.SALMON_ROE.item().clone())
             .build();
 
-        WildHarvestListener.registerBlockDrops(Material.SHORT_GRASS, DRY_CLIMATE_GRASS_DROPS, Climate.DRY);
+        WildHarvestListener.registerBlockDrops(Material.GRASS_BLOCK, DRY_CLIMATE_GRASS_DROPS, Climate.DRY);
         WildHarvestListener.registerBlockDrops(Material.TALL_GRASS, DRY_CLIMATE_GRASS_DROPS, Climate.DRY);
-        WildHarvestListener.registerBlockDrops(Material.SHORT_GRASS, TEMPERATE_CLIMATE_GRASS_DROPS, Climate.TEMPERATE);
+        WildHarvestListener.registerBlockDrops(Material.GRASS_BLOCK, TEMPERATE_CLIMATE_GRASS_DROPS, Climate.TEMPERATE);
         WildHarvestListener.registerBlockDrops(Material.TALL_GRASS, TEMPERATE_CLIMATE_GRASS_DROPS, Climate.TEMPERATE);
-        WildHarvestListener.registerBlockDrops(Material.SHORT_GRASS, COLD_CLIMATE_GRASS_DROPS, Climate.COLD);
+        WildHarvestListener.registerBlockDrops(Material.GRASS_BLOCK, COLD_CLIMATE_GRASS_DROPS, Climate.COLD);
         WildHarvestListener.registerBlockDrops(Material.TALL_GRASS, COLD_CLIMATE_GRASS_DROPS, Climate.COLD);
-        WildHarvestListener.registerBlockDrops(Material.SHORT_GRASS, SNOWY_CLIMATE_GRASS_DROPS, Climate.SNOWY);
+        WildHarvestListener.registerBlockDrops(Material.GRASS_BLOCK, SNOWY_CLIMATE_GRASS_DROPS, Climate.SNOWY);
         WildHarvestListener.registerBlockDrops(Material.TALL_GRASS, SNOWY_CLIMATE_GRASS_DROPS, Climate.SNOWY);
         WildHarvestListener.registerBlockDrops(Material.FERN, FERN_DROPS);
         WildHarvestListener.registerBlockDrops(Material.LARGE_FERN, FERN_DROPS);

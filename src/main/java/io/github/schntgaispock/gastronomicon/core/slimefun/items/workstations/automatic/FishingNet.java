@@ -25,7 +25,6 @@ import me.mrCookieSlime.Slimefun.Objects.handlers.BlockTicker;
 import me.mrCookieSlime.Slimefun.api.BlockStorage;
 import me.mrCookieSlime.Slimefun.api.inventory.BlockMenu;
 import me.mrCookieSlime.Slimefun.api.inventory.BlockMenuPreset;
-import org.jetbrains.annotations.NotNull;
 
 @Getter
 @SuppressWarnings("deprecation")
@@ -39,15 +38,15 @@ public class FishingNet extends SlimefunItem implements InventoryBlock, MachineP
     public static final int[] OUTPUT_BORDER = new int[] { 3, 12, 21 };
     public static final int STATUS_SLOT = 10;
     public static final ItemStack[] FISH = {
-        GastroStacks.RAW_BASS.item(),
-        GastroStacks.RAW_CARP.item(),
-        GastroStacks.RAW_EEL.item(),
-        GastroStacks.RAW_MACKEREL.item(),
-        GastroStacks.RAW_PIKE.item(),
-        GastroStacks.RAW_SQUID.item(),
-        GastroStacks.RAW_TROUT.item(),
-        GastroStacks.RAW_TUNA.item(),
-        GastroStacks.SHRIMP.item(),
+        GastroStacks.RAW_BASS.item().clone(),
+        GastroStacks.RAW_CARP.item().clone(),
+        GastroStacks.RAW_EEL.item().clone(),
+        GastroStacks.RAW_MACKEREL.item().clone(),
+        GastroStacks.RAW_PIKE.item().clone(),
+        GastroStacks.RAW_SQUID.item().clone(),
+        GastroStacks.RAW_TROUT.item().clone(),
+        GastroStacks.RAW_TUNA.item().clone(),
+        GastroStacks.SHRIMP.item().clone(),
         new ItemStack(Material.COD),
         new ItemStack(Material.SALMON),
         new ItemStack(Material.PUFFERFISH),
@@ -90,7 +89,7 @@ public class FishingNet extends SlimefunItem implements InventoryBlock, MachineP
 
         addItemHandler(new SimpleBlockBreakHandler() {
             @Override
-            public void onBlockBreak(@NotNull Block b) {
+            public void onBlockBreak(Block b) {
                 final BlockMenu inv = BlockStorage.getInventory(b);
                 if (inv != null)
                     inv.dropItems(b.getLocation(), getOutputSlots());
@@ -126,7 +125,7 @@ public class FishingNet extends SlimefunItem implements InventoryBlock, MachineP
                     getMachineProcessor().updateProgressBar(inv, STATUS_SLOT, currentOperation);
                     currentOperation.addProgress(1);
                 } else {
-                    inv.replaceExistingItem(STATUS_SLOT, new SlimefunItemStack("STATUS_SLOT",Material.BLACK_STAINED_GLASS_PANE, " ").item());
+                    inv.replaceExistingItem(STATUS_SLOT, new CustomItemStack(Material.BLACK_STAINED_GLASS_PANE, " "));
                     for (ItemStack output : currentOperation.getResults()) {
                         inv.pushItem(output.clone(), getOutputSlots());
                     }

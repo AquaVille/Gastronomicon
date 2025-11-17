@@ -5,7 +5,6 @@ import java.util.Set;
 
 import javax.annotation.Nonnull;
 
-import org.bukkit.Bukkit;
 import org.bukkit.Sound;
 import org.bukkit.SoundCategory;
 import org.bukkit.entity.Player;
@@ -22,20 +21,24 @@ import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
 import io.github.thebusybiscuit.slimefun4.api.researches.Research;
 import io.github.thebusybiscuit.slimefun4.core.handlers.ItemUseHandler;
 import lombok.Getter;
+import net.kyori.adventure.text.Component;
 
 public class GastroFood extends SimpleGastroFood {
 
     private static final @Getter Set<String> gastroFoodIds = new HashSet<>();
 
-    private final @Getter FoodItemStack itemFood;
     private final @Getter boolean perfect;
     private final ItemStack recipeDisplayOutput;
+    private final FoodItemStack foodItem;
 
-    public GastroFood(Research research, ItemGroup group, FoodItemStack item, GastroRecipe recipe,
-        ItemStack topRightDisplayItem, ItemStack recipeDisplayOutput, boolean perfect) {
+    public FoodItemStack getFoodItem() {
+        return foodItem;
+    }
+
+    public GastroFood(Research research, ItemGroup group, FoodItemStack item, GastroRecipe recipe, ItemStack topRightDisplayItem, ItemStack recipeDisplayOutput, boolean perfect) {
         super(research, group, item, recipe, topRightDisplayItem, recipeDisplayOutput, !perfect);
 
-        this.itemFood = item;
+        this.foodItem = item;
         this.perfect = perfect;
         this.recipeDisplayOutput = recipeDisplayOutput;
     }
@@ -61,27 +64,28 @@ public class GastroFood extends SimpleGastroFood {
 
             final PlayerGastroFoodConsumeEvent consumeEvent = new PlayerGastroFoodConsumeEvent(e.getPlayer(), food,
                 e.getItem(), e.getHand());
-            Bukkit.getPluginManager().callEvent(consumeEvent);
+            consumeEvent.callEvent();
             if (consumeEvent.isCancelled()) {
                 if (consumeEvent.getMessage() != null)
-                    e.getPlayer().sendMessage(consumeEvent.getMessage());
+                    e.getPlayer().sendMessage(Component.text(consumeEvent.getMessage()));
                 return;
             }
 
             final Player p = e.getPlayer();
-            for (FoodEffect effect : food.getItemFood().getEffects()) {
+            final FoodItemStack fi = food.getFoodItem();
+
+            for (FoodEffect effect : fi.getEffects()) {
                 effect.apply(p, food.isPerfect());
             }
-            p.setFoodLevel(Math.min(p.getFoodLevel() + food.getItemFood().getHunger(), 20));
-            p.setSaturation((float) Math.min(p.getSaturation() + food.getItemFood().getSaturation(),
-                p.getFoodLevel()));
+            p.setFoodLevel(Math.min(p.getFoodLevel() + fi.getHunger(), 20));
+            p.setSaturation((float) Math.min(p.getSaturation() + fi.getSaturation(), p.getFoodLevel()));
             if (getGastroRecipe().getInputs().getContainer().getComponent() instanceof final ItemStack stack) {
                 p.getInventory().addItem(stack); // It should always be an itemstack anyways
             }
             p.getWorld().playSound(p.getLocation(), Sound.ENTITY_PLAYER_BURP, SoundCategory.PLAYERS, 1, 1);
         }
 
-        e.getItem().setAmount(e.getItem().getAmount() - 1);
+        e.getItem().subtract();
     }
 
     /**
@@ -92,7 +96,7 @@ public class GastroFood extends SimpleGastroFood {
         super.register(addon);
         if (!isPerfect()) {
             getGastroFoodIds().add(getId());
-            new GastroFood(getResearch(), getItemGroup(), itemFood.asPerfect(), getGastroRecipe(), topRightDisplayItem,
+            new GastroFood(getResearch(), getItemGroup(), foodItem.asPerfect(), getGastroRecipe(), topRightDisplayItem,
                 recipeDisplayOutput, true).hide()
                     .register(addon);
         }

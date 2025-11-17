@@ -1,10 +1,10 @@
 package io.github.schntgaispock.gastronomicon.core.slimefun;
 
-import io.github.schntgaispock.gastronomicon.core.group.MultiGroup;
-import io.github.schntgaispock.gastronomicon.core.group.SubGroup;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 
+import io.github.mooy1.infinitylib.groups.MultiGroup;
+import io.github.mooy1.infinitylib.groups.SubGroup;
 import lombok.experimental.UtilityClass;
 
 @UtilityClass

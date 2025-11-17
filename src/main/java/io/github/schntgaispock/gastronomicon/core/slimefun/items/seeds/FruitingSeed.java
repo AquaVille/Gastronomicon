@@ -36,7 +36,7 @@ public class FruitingSeed extends SimpleSeed {
 
         switch (displayBlock) {
             case PUMPKIN_STEM, MELON_STEM -> {}
-            default -> Gastronomicon.getInstance().getLogger().log(Level.WARNING, "Registering a FruitingSeed that isn't a pumpkin or melon seed!");
+            default -> Gastronomicon.log(Level.WARNING, "Registering a FruitingSeed that isn't a pumpkin or melon seed!");
         }
 
         this.fruitingBody = SlimefunItem.getById(fruitingBodyId);
@@ -44,12 +44,12 @@ public class FruitingSeed extends SimpleSeed {
 
     @ParametersAreNonnullByDefault
     public FruitingSeed(SlimefunItemStack item, @Nullable Material displayBlock, SlimefunItemStack harvestSource, String fruitingBodyId) {
-        this(item, displayBlock, RecipeUtil.singleCenter(harvestSource.item()), fruitingBodyId);
+        this(item, displayBlock, RecipeUtil.singleCenter(harvestSource.item().clone()), fruitingBodyId);
     }
 
     @ParametersAreNonnullByDefault
     public FruitingSeed(SlimefunItemStack item, SlimefunItemStack harvestSource, String fruitingBodyId) {
-        this(item, null, RecipeUtil.singleCenter(harvestSource.item()), fruitingBodyId);
+        this(item, null, RecipeUtil.singleCenter(harvestSource.item().clone()), fruitingBodyId);
     }
     
     @Override

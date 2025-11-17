@@ -1,12 +1,9 @@
 package io.github.schntgaispock.gastronomicon.core.slimefun.items.workstations.manual;
 
 import java.util.Arrays;
-import java.util.List;
 
 import javax.annotation.Nonnull;
 
-import io.github.schntgaispock.gastronomicon.core.GastroConfig;
-import io.github.schntgaispock.gastronomicon.core.menu.MenuBlock;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.inventory.ItemStack;
@@ -14,6 +11,8 @@ import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
 
+import io.github.mooy1.infinitylib.core.AddonConfig;
+import io.github.mooy1.infinitylib.machines.MenuBlock;
 import io.github.schntgaispock.gastronomicon.Gastronomicon;
 import io.github.schntgaispock.gastronomicon.core.slimefun.GastroGroups;
 import io.github.schntgaispock.gastronomicon.core.slimefun.GastroStacks;
@@ -30,7 +29,6 @@ import lombok.Getter;
 import me.mrCookieSlime.Slimefun.api.BlockStorage;
 import me.mrCookieSlime.Slimefun.api.inventory.BlockMenu;
 import me.mrCookieSlime.Slimefun.api.inventory.BlockMenuPreset;
-import org.jetbrains.annotations.NotNull;
 
 @Getter
 public class ChefAndroidTrainer extends MenuBlock {
@@ -59,7 +57,7 @@ public class ChefAndroidTrainer extends MenuBlock {
         return new SimpleBlockBreakHandler() {
 
             @Override
-            public void onBlockBreak(@NotNull Block b) {
+            public void onBlockBreak(Block b) {
                 BlockMenu inv = BlockStorage.getInventory(b);
 
                 if (inv != null) {
@@ -73,7 +71,7 @@ public class ChefAndroidTrainer extends MenuBlock {
     }
 
     @Override
-    protected void setup(@NotNull BlockMenuPreset preset) {
+    protected void setup(BlockMenuPreset preset) {
         preset.drawBackground(BACKGROUND_ITEM, BACKGROUND_SLOTS);
         preset.drawBackground(GastroStacks.MENU_ANDROID_BORDER, INPUT_BORDER_SLOTS);
         preset.drawBackground(OUTPUT_BORDER, OUTPUT_BORDER_SLOTS);
@@ -83,7 +81,7 @@ public class ChefAndroidTrainer extends MenuBlock {
 
     @Override
     @SuppressWarnings("deprecation")
-    protected void onNewInstance(@NotNull BlockMenu menu, @NotNull Block b) {
+    protected void onNewInstance(BlockMenu menu, Block b) {
         super.onNewInstance(menu, b);
 
         menu.addMenuClickHandler(TRAIN_SLOT, (player, slot, item, action) -> {
@@ -122,10 +120,10 @@ public class ChefAndroidTrainer extends MenuBlock {
                         name = food.getItemName();
                         id = food.getId();
                     }
-                    final GastroConfig playerData = Gastronomicon.getInstance().getPlayerData();
+                    final AddonConfig playerData = Gastronomicon.getInstance().getPlayerData();
                     final String proficiencyPath = player.getUniqueId() + ".proficiencies." + id;
                     final int proficiency = playerData.getInt(proficiencyPath, 0);
-                    final int threshold = Gastronomicon.getInstance().getConfig().getInt("proficiency-threshold");
+                    final int threshold = Gastronomicon.config().getInt("proficiency-threshold");
 
                     if (proficiency < threshold) {
                         Gastronomicon.sendMessage(player, "&eYou are not proficient enough in this recipe! Required: " + proficiency + "/" + threshold);
@@ -135,15 +133,13 @@ public class ChefAndroidTrainer extends MenuBlock {
                     name = food.getItemName();
                     id = food.getId();
                 }
-                final ItemStack modified = input.clone();
-                modified.setAmount(1);
+                final ItemStack modified = input.asOne();
+                input.subtract(1);
+                modified.setLore(Arrays.asList("§7" + ChatUtils.removeColorCodes(name)));
                 final ItemMeta meta = modified.getItemMeta();
-                if (meta != null) {
-                    meta.setLore(List.of("§7" + ChatUtils.removeColorCodes(name)));
-                    final PersistentDataContainer pdc = meta.getPersistentDataContainer();
-                    pdc.set(GastroKeys.CHEF_ANDROID_FOOD, PersistentDataType.STRING, id);
-                    modified.setItemMeta(meta);
-                }
+                final PersistentDataContainer pdc = meta.getPersistentDataContainer();
+                pdc.set(GastroKeys.CHEF_ANDROID_FOOD, PersistentDataType.STRING, id);
+                modified.setItemMeta(meta);
                 menu.pushItem(modified, getOutputSlots());
             }
 

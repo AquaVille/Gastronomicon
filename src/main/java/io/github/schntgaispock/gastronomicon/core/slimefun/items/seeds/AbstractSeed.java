@@ -15,7 +15,6 @@ import io.github.schntgaispock.gastronomicon.core.slimefun.recipes.GastroRecipeT
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
 import io.github.thebusybiscuit.slimefun4.core.handlers.BlockBreakHandler;
-import org.jetbrains.annotations.NotNull;
 
 public abstract class AbstractSeed extends SlimefunItem {
 
@@ -29,13 +28,13 @@ public abstract class AbstractSeed extends SlimefunItem {
         addItemHandler(new BlockBreakHandler(false, true) {
 
             @Override
-            public void onExplode(@NotNull Block b, @NotNull List<ItemStack> drops) {
+            public void onExplode(Block b, List<ItemStack> drops) {
                 drops.clear();
                 drops.addAll(getHarvestDrops(b.getState(), new ItemStack(Material.AIR), false));
             }
 
             @Override
-            public void onPlayerBreak(@NotNull BlockBreakEvent e, @NotNull ItemStack item, @NotNull List<ItemStack> drops) {
+            public void onPlayerBreak(BlockBreakEvent e, ItemStack item, List<ItemStack> drops) {
                 if (!dropsOnPlayerBreak()) return;
                 
                 drops.clear();

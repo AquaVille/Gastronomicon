@@ -2,7 +2,6 @@ package io.github.schntgaispock.gastronomicon.api.recipes.components;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.Objects;
 import java.util.Set;
 
 import javax.annotation.Nullable;
@@ -11,8 +10,10 @@ import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.inventory.ItemStack;
 
+import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
+import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
 import lombok.Getter;
-import org.bukkit.inventory.meta.ItemMeta;
+import net.kyori.adventure.text.Component;
 
 /**
  * For recipe slots that have multiple acceptable items.
@@ -41,7 +42,7 @@ public class GroupRecipeComponent extends RecipeComponent<Set<ItemStack>> {
     }
 
     public GroupRecipeComponent(NamespacedKey id, Material... component) {
-        this(id, Set.of(Arrays.stream(component).map(ItemStack::new).toArray(ItemStack[]::new)));
+        this(id, Set.of(Arrays.stream(component).map(material -> new ItemStack(material)).toArray(ItemStack[]::new)));
     }
 
     @Override
@@ -50,7 +51,12 @@ public class GroupRecipeComponent extends RecipeComponent<Set<ItemStack>> {
             return false;
         } else {
             for (final ItemStack groupItem : component) {
-                return item.isSimilar(groupItem);
+                final SlimefunItem sfGroup = SlimefunItem.getByItem(groupItem);
+                if (sfGroup != null) {
+                    return sfGroup.isItem(item);
+                } else {
+                    return item.isSimilar(groupItem);
+                }
             }
         }
 
@@ -59,21 +65,15 @@ public class GroupRecipeComponent extends RecipeComponent<Set<ItemStack>> {
 
     @Override
     public ItemStack getDisplayItem() {
-        if (component.stream().findFirst().isPresent()) {
-            final ItemStack displayItem = component.stream().findFirst().get().clone();
-            final List<String> lore = displayItem.getItemMeta().getLore();
-            if (lore != null) {
-                lore.add("");
-                for (final ItemStack itemStack : component) {
-                    lore.add("§8‑ §f" + Objects.requireNonNull(itemStack.getItemMeta().getDisplayName()));
-                }
-                ItemMeta meta = displayItem.getItemMeta();
-                meta.setLore(lore);
-                displayItem.setItemMeta(meta);
-            }
-            return displayItem;
+        final ItemStack displayitem = component.stream().findFirst().get().clone();
+        final List<Component> lore = displayitem.lore();
+        lore.add(Component.text(""));
+        for (final ItemStack itemStack : component) {
+            lore.add(Component.text("§8‑ §f").append(itemStack.getItemMeta().displayName()));
         }
-        return null;
+        displayitem.lore(lore);
+
+        return displayitem;
     }
 
     @Override

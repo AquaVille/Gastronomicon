@@ -12,7 +12,6 @@ import org.bukkit.command.TabCompleter;
 import org.bukkit.entity.Player;
 
 import io.github.schntgaispock.gastronomicon.core.slimefun.items.food.GastroFood;
-import org.jetbrains.annotations.NotNull;
 
 /**
  * Tab completion for the '/gastronomicon' command
@@ -22,13 +21,15 @@ public class GastroTabCompleter implements TabCompleter {
     public static final List<String> nums = Arrays.asList("1", "2", "5", "10", "20", "50", "100", "200");
 
     @Override
-    public List<String> onTabComplete(@NotNull CommandSender sender, @NotNull Command command, @NotNull String alias, String[] args) {
+    public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {
 
         if (!(sender instanceof final Player player)) {
             return null;
         }
 
         switch (args.length) {
+            case 0:
+                break;
 
             case 1:
                 return filter(args[0], "help", "profile", "proficiency", "credits");
@@ -38,7 +39,7 @@ public class GastroTabCompleter implements TabCompleter {
                     case "skills", "profile":
                         return Bukkit.getServer().getOnlinePlayers().stream().map((Player p) -> {
                             return p.getName();
-                        }).sorted(String::compareTo).toList();
+                        }).sorted((s1, s2) -> s1.compareTo(s2)).toList();
 
                     case "proficiency":
                         return filter(args[1], Arrays.asList("get", "set", "add", "remove"));
@@ -48,36 +49,50 @@ public class GastroTabCompleter implements TabCompleter {
                 }
 
             case 3:
-                if (args[0].equals("proficiency")) {
-                    switch (args[1]) {
-                        case "set", "modify", "remove", "get":
-                            return GastroFood.getGastroFoodIds().stream()
+                switch (args[0]) {
+                    case "proficiency":
+                        switch (args[1]) {
+                            case "set", "modify", "remove", "get":
+                                return GastroFood.getGastroFoodIds().stream()
                                     .filter(id -> !id.startsWith("GN_PERFECT") && id.contains(args[2]))
                                     .toList();
 
-                        default:
-                            break;
-                    }
+                            default:
+                                break;
+                        }
+                        break;
+
+                    default:
+                        break;
                 }
                 break;
 
+            default:
+                break;
+
             case 4:
-                if (args[0].equals("proficiency")) {
-                    switch (args[1]) {
-                        case "set", "add", "remove":
-                            return filter(args[3], nums);
+                switch (args[0]) {
+                    case "proficiency":
+                        switch (args[1]) {
+                            case "set", "add", "remove":
+                                return filter(args[3], nums);
 
-                        case "get":
-                            return filter(args[3], Bukkit.getOnlinePlayers().stream().map(p -> p.getName()));
+                            case "get":
+                                return filter(args[3], Bukkit.getOnlinePlayers().stream().map(p -> p.getName()));
 
-                        default:
-                            break;
-                    }
+                            default:
+                                break;
+                        }
+                        break;
+
+                    default:
+                        break;
                 }
                 break;
             
             case 5:
-                if (args[0].equals("proficiency")) {
+            switch (args[0]) {
+                case "proficiency":
                     switch (args[1]) {
                         case "set", "modify", "remove":
                             return filter(args[4], Bukkit.getOnlinePlayers().stream().map(p -> p.getName()));
@@ -85,11 +100,12 @@ public class GastroTabCompleter implements TabCompleter {
                         default:
                             break;
                     }
-                }
-            break;
-            default:
-                break;
+                    break;
 
+                default:
+                    break;
+            }
+            break;
         }
 
         return null;

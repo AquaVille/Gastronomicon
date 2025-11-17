@@ -47,7 +47,6 @@ import me.mrCookieSlime.Slimefun.api.inventory.BlockMenu;
 import me.mrCookieSlime.Slimefun.api.inventory.BlockMenuPreset;
 import me.mrCookieSlime.Slimefun.api.inventory.DirtyChestMenu;
 import me.mrCookieSlime.Slimefun.api.item_transport.ItemTransportFlow;
-import org.jetbrains.annotations.NotNull;
 
 @Getter
 @SuppressWarnings("deprecation")
@@ -117,7 +116,7 @@ public class ElectricKitchen extends AContainer {
             }
 
             @Override
-            public boolean canOpen(@NotNull Block b, @NotNull Player p) {
+            public boolean canOpen(Block b, Player p) {
                 if (p.hasPermission("slimefun.inventory.bypass")) {
                     return true;
                 } else {
@@ -142,7 +141,7 @@ public class ElectricKitchen extends AContainer {
         return new SimpleBlockBreakHandler() {
 
             @Override
-            public void onBlockBreak(@NotNull Block b) {
+            public void onBlockBreak(Block b) {
                 BlockMenu inv = BlockStorage.getInventory(b);
 
                 if (inv != null) {
@@ -258,8 +257,7 @@ public class ElectricKitchen extends AContainer {
             if (pair.first() == null) continue;
 
             final ItemStack input = menu.getItemInSlot(pair.first());
-            final ItemStack clone = input.clone();
-            clone.setAmount(pair.second());
+            final ItemStack clone = input.asQuantity(pair.second());
             inputs.add(clone);
             ItemUtil.consumeItem(input, pair.second(), true).ifPresent(mat -> {
                 outputs.add(new ItemStack(mat));
@@ -285,7 +283,7 @@ public class ElectricKitchen extends AContainer {
                     getMachineProcessor().updateProgressBar(inv, STATUS_SLOT, currentOperation);
                     currentOperation.addProgress(1);
                 } else {
-                    inv.replaceExistingItem(STATUS_SLOT, new SlimefunItemStack("STATUS_SLOT",Material.BLACK_STAINED_GLASS_PANE, " ").item());
+                    inv.replaceExistingItem(STATUS_SLOT, new CustomItemStack(Material.BLACK_STAINED_GLASS_PANE, " "));
 
                     for (ItemStack output : currentOperation.getResults()) {
                         inv.pushItem(output.clone(), getOutputSlots());

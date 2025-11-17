@@ -28,7 +28,7 @@ public class SlimeHUDSetup {
             if (item == null) return "&7No android";
             final SlimefunItem sfItem = SlimefunItem.getByItem(item);
             if (sfItem == null || !sfItem.getId().equals("GN_CHEF_ANDROID")) return "&7No android";
-            final List<String> lore = item.getItemMeta().getLore();
+            final List<String> lore = item.getLore();
             if (lore == null || lore.size() < 1) return "";
             return "&7" + lore.get(0);
         });

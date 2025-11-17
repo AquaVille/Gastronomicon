@@ -14,7 +14,6 @@ import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
 import lombok.Getter;
 import me.mrCookieSlime.Slimefun.api.inventory.BlockMenu;
 import me.mrCookieSlime.Slimefun.api.inventory.BlockMenuPreset;
-import org.jetbrains.annotations.NotNull;
 
 @Getter
 public class Fermenter extends GastroWorkstation {
@@ -30,19 +29,19 @@ public class Fermenter extends GastroWorkstation {
     }
 
     @Override
-    protected void onBreak(@NotNull BlockBreakEvent e, @NotNull BlockMenu menu) {
+    protected void onBreak(BlockBreakEvent e, BlockMenu menu) {
         super.onBreak(e, menu);
         ChunkPDC.remove(e.getBlock(), GastroKeys.FERMENTER_WATER);
     }
 
     @Override
-    protected void onPlace(@NotNull BlockPlaceEvent e, @NotNull Block b) {
+    protected void onPlace(BlockPlaceEvent e, Block b) {
         super.onPlace(e, b);
         ChunkPDC.set(b, GastroKeys.FERMENTER_WATER, 0);
     }
 
     @Override
-    protected void setup(@NotNull BlockMenuPreset preset) {
+    protected void setup(BlockMenuPreset preset) {
         super.setup(preset);
         preset.drawBackground(BACKGROUND_ITEM, new int[] { 52 });
     }

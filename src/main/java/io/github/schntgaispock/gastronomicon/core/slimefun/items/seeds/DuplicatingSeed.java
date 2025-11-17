@@ -16,7 +16,6 @@ import io.github.schntgaispock.gastronomicon.util.RecipeUtil;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
 import io.github.thebusybiscuit.slimefun4.core.handlers.BlockPlaceHandler;
 import me.mrCookieSlime.Slimefun.api.BlockStorage;
-import org.jetbrains.annotations.NotNull;
 
 /**
  * A DuplicatingSeed grows upward.
@@ -32,20 +31,20 @@ public class DuplicatingSeed extends AbstractSeed {
 
         switch (item.getType()) {
             case CACTUS, SUGAR_CANE -> {}
-            default -> Gastronomicon.getInstance().getLogger().log(Level.WARNING, "Registering a DuplicatingSeed that isn't a cactus or sugar cane!");
+            default -> Gastronomicon.log(Level.WARNING, "Registering a DuplicatingSeed that isn't a cactus or sugar cane!");
         }
     }
 
     @ParametersAreNonnullByDefault
     public DuplicatingSeed(SlimefunItemStack item, SlimefunItemStack harvestSource) {
-        this(item, RecipeUtil.singleCenter(harvestSource.item()));
+        this(item, RecipeUtil.singleCenter(harvestSource.item().clone()));
     }
 
     @Override
     public void preRegister() {
         addItemHandler(new BlockPlaceHandler(true) {
             @Override
-            public void onPlayerPlace(@NotNull BlockPlaceEvent e) {
+            public void onPlayerPlace(BlockPlaceEvent e) {
                 if (e.getBlock().getState().getLightLevel() <= 7) {
                     e.setCancelled(true);
                     BlockStorage.clearBlockInfo(e.getBlock(), true);

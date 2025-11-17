@@ -1,3 +1,6 @@
+options:
+  auto-update: true
+
 # Disable recipes that require ExoticGarden items.
 disable-exotic-garden-recipes: false
 

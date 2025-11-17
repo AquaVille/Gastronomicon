@@ -43,7 +43,9 @@ public class RecipeUtil {
         final ItemStack[] recipe = new ItemStack[9];
 
         int l = Math.min(items.length, maxLength);
-        if (l >= 0) System.arraycopy(items, 0, recipe, 0, l);
+        for (int i = 0; i < l; i++) {
+            recipe[i] = items[i];
+        }
         return recipe;
     }
 

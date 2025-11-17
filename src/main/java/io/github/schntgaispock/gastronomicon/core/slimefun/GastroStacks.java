@@ -22,6 +22,7 @@ import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
 import io.github.thebusybiscuit.slimefun4.core.attributes.MachineTier;
 import io.github.thebusybiscuit.slimefun4.core.attributes.MachineType;
 import io.github.thebusybiscuit.slimefun4.implementation.Slimefun;
+import io.github.bakedlibs.dough.items.CustomItemStack;
 import io.github.thebusybiscuit.slimefun4.utils.HeadTexture;
 import io.github.thebusybiscuit.slimefun4.utils.LoreBuilder;
 import lombok.experimental.UtilityClass;
@@ -42,187 +43,163 @@ public class GastroStacks {
 
     // ---- Guide Only Items ----
 
-    public static final ItemStack GUIDE_ITEM_TOOLS = new SlimefunItemStack(
-            "GUIDE_ITEM_TOOLS",
+    public static final ItemStack GUIDE_ITEM_TOOLS = new CustomItemStack(
         Material.IRON_HOE,
-        GastroTheme.TOOL.getColor() + "Tools").item();
+        GastroTheme.TOOL.getColor() + "Tools");
 
-    public static final ItemStack GUIDE_ITEM_BASIC_MACHINES = new SlimefunItemStack(
-            "GUIDE_ITEM_BASIC_MACHINES",
+    public static final ItemStack GUIDE_ITEM_BASIC_MACHINES = new CustomItemStack(
         Material.CRAFTING_TABLE,
-        GastroTheme.MECHANICAL.getColor() + "Basic Machines").item();
+        GastroTheme.MECHANICAL.getColor() + "Basic Machines");
 
-    public static final ItemStack GUIDE_ITEM_ELECTRIC_MACHINES = new SlimefunItemStack(
-            "GUIDE_ITEM_ELECTRIC_MACHINES",
+    public static final ItemStack GUIDE_ITEM_ELECTRIC_MACHINES = new CustomItemStack(
         Material.FURNACE,
-        GastroTheme.ELECTRIC.getColor() + "Electric Machines").item();
+        GastroTheme.ELECTRIC.getColor() + "Electric Machines");
 
-    public static final ItemStack GUIDE_ITEM_RAW_INGREDIENTS = new SlimefunItemStack(
-            "GUIDE_ITEM_RAW_INGREDIENTS",
+    public static final ItemStack GUIDE_ITEM_RAW_INGREDIENTS = new CustomItemStack(
         Material.SUGAR,
-        GastroTheme.INGREDIENT.getColor() + "Raw Ingredients").item();
+        GastroTheme.INGREDIENT.getColor() + "Raw Ingredients");
 
-    public static final ItemStack GUIDE_ITEM_FOOD = new SlimefunItemStack(
-            "GUIDE_ITEM_FOOD",
+    public static final ItemStack GUIDE_ITEM_FOOD = new CustomItemStack(
         Material.COOKED_BEEF,
-        GastroTheme.REGULAR_FOOD.getColor() + "Food").item();
+        GastroTheme.REGULAR_FOOD.getColor() + "Food");
 
-    public static final ItemStack GUIDE_ITEM_MAIN = new SlimefunItemStack(
-            "GUIDE_ITEM_MAIN",
+    public static final ItemStack GUIDE_ITEM_MAIN = new CustomItemStack(
         Material.COOKED_BEEF,
-        GastroTheme.PERFECT_FOOD.getColor() + "Gastronomicon").item();
+        GastroTheme.PERFECT_FOOD.getColor() + "Gastronomicon");
 
-    public static final ItemStack GUIDE_RECIPE_BREAK = new SlimefunItemStack(
-            "GUIDE_RECIPE_BREAK",
+    public static final ItemStack GUIDE_RECIPE_BREAK = new CustomItemStack(
         Material.IRON_PICKAXE,
         "&bBreaking Blocks",
         "&7This item is obtained by",
         "&7breaking the displayed",
-        "&7blocks.").item();
+        "&7blocks.");
 
-    public static final ItemStack GUIDE_RECIPE_HARVEST = new SlimefunItemStack(
-            "GUIDE_RECIPE_HARVEST",
+    public static final ItemStack GUIDE_RECIPE_HARVEST = new CustomItemStack(
         Material.IRON_HOE,
         "&bHarvesting Crops",
         "&7This item is obtained by",
         "&7harvesting the displayed",
-        "&7crops.").item();
+        "&7crops.");
 
-    public static final ItemStack GUIDE_RECIPE_KILL = new SlimefunItemStack(
-            "GUIDE_RECIPE_KILL",
+    public static final ItemStack GUIDE_RECIPE_KILL = new CustomItemStack(
         Material.IRON_SWORD,
         "&bMob Drops",
         "&7This item is dropped by",
-        "&7the displayed mobs.").item();
+        "&7the displayed mobs.");
 
-    public static final ItemStack GUIDE_RECIPE_TRAP = new SlimefunItemStack(
-            "GUIDE_RECIPE_TRAP",
+    public static final ItemStack GUIDE_RECIPE_TRAP = new CustomItemStack(
         Material.COBWEB,
         "&bTrapping",
         "&7This item is obtained by",
         "&7catching it in the displayed",
-        "&7trap.").item();
+        "&7trap.");
 
-    public static final ItemStack GUIDE_RECIPE_CULINARY_WORKBENCH = new SlimefunItemStack(
-            "GUIDE_RECIPE_CULINARY_WORKBENCH",
+    public static final ItemStack GUIDE_RECIPE_CULINARY_WORKBENCH = new CustomItemStack(
         Material.CRAFTING_TABLE,
         "&bCulinary Workbench",
         "&7Craft this item as shown in a",
         "&7Culinary Workbench with the tool(s)",
-        "&7listed below.").item();
+        "&7listed below.");
 
-    public static final ItemStack GUIDE_RECIPE_MULTI_STOVE = new SlimefunItemStack(
-            "GUIDE_RECIPE_MULTI_STOVE",
+    public static final ItemStack GUIDE_RECIPE_MULTI_STOVE = new CustomItemStack(
         Material.BLAST_FURNACE,
         "&bMulti-Stove",
         "&7Craft this item as shown in a",
         "&7Multi-Stove with the tool(s)",
-        "&7listed below.").item();
+        "&7listed below.");
 
-    public static final ItemStack GUIDE_RECIPE_REFRIGERATOR = new SlimefunItemStack(
-            "GUIDE_RECIPE_REFRIGERATOR",
+    public static final ItemStack GUIDE_RECIPE_REFRIGERATOR = new CustomItemStack(
         Material.IRON_BLOCK,
         "&bRefrigerator",
         "&7Craft this item as shown in a",
         "&7Refrigerator with the tool(s)",
-        "&7listed below.").item();
+        "&7listed below.");
 
-    public static final ItemStack GUIDE_RECIPE_MILL = new SlimefunItemStack(
-            "GUIDE_RECIPE_MILL",
+    public static final ItemStack GUIDE_RECIPE_MILL = new CustomItemStack(
         Material.CAULDRON,
         "&bMill",
         "&7Craft this item as shown in a",
         "&7Grain Mill with the tool(s)",
-        "&7listed below.").item();
+        "&7listed below.");
 
-    public static final ItemStack GUIDE_RECIPE_FERMENTER = new SlimefunItemStack(
-            "GUIDE_RECIPE_FERMENTER",
+    public static final ItemStack GUIDE_RECIPE_FERMENTER = new CustomItemStack(
         Material.BARREL,
         "&bFermenter",
         "&7Craft this item as shown in a",
         "&7Fermenter with the tool(s)",
-        "&7listed below.").item();
+        "&7listed below.");
 
-    public static final ItemStack GUIDE_TOOLS_REQUIRED = new SlimefunItemStack(
-            "GUIDE_TOOLS_REQUIRED",
+    public static final ItemStack GUIDE_TOOLS_REQUIRED = new CustomItemStack(
         Material.BLACK_STAINED_GLASS_PANE,
-        ChatColor.of("#999999") + "Tools Required").item();
+        ChatColor.of("#999999") + "Tools Required");
 
-    public static final ItemStack GUIDE_CONTAINER_REQUIRED = new SlimefunItemStack(
-            "GUIDE_CONTAINER_REQUIRED",
+    public static final ItemStack GUIDE_CONTAINER_REQUIRED = new CustomItemStack(
         Material.PURPLE_STAINED_GLASS_PANE,
-        "&5Container Required").item();
+        "&5Container Required");
 
-    public static final ItemStack GUIDE_BIOME_REQUIRED = new SlimefunItemStack(
-            "GUIDE_BIOME_REQUIRED",
+    public static final ItemStack GUIDE_BIOME_REQUIRED = new CustomItemStack(
         Material.LIME_STAINED_GLASS_PANE,
-        "&aBiome Required").item();
+        "&aBiome Required");
 
-    public static final ItemStack GUIDE_CLIMATE_REQUIRED = new SlimefunItemStack(
-            "GUIDE_CLIMATE_REQUIRED",
+    public static final ItemStack GUIDE_CLIMATE_REQUIRED = new CustomItemStack(
         Material.LIGHT_BLUE_STAINED_GLASS_PANE,
-        "&bClimate Required").item();
+        "&bClimate Required");
 
-    public static final ItemStack GUIDE_NONE = new SlimefunItemStack(
-            "GUIDE_NONE",
+    public static final ItemStack GUIDE_NONE = new CustomItemStack(
         Material.BARRIER,
-        "&cNone").item();
+        "&cNone");
 
-    public static final ItemStack GUIDE_KILL_GOAT = new SlimefunItemStack(
-            "GUIDE_KILL_GOAT",
+    public static final ItemStack GUIDE_KILL_GOAT = new CustomItemStack(
         Material.GOAT_SPAWN_EGG,
-        "&fGoat").item();
+        "&fGoat");
 
-    public static final ItemStack GUIDE_KILL_SALMON = new SlimefunItemStack(
-            "GUIDE_KILL_SALMON",
+    public static final ItemStack GUIDE_KILL_SALMON = new CustomItemStack(
         Material.SALMON_SPAWN_EGG,
-        "&fSalmon").item();
+        "&fSalmon");
 
-    public static final ItemStack GUIDE_KILL_GUARDIAN = new SlimefunItemStack(
-            "GUIDE_KILL_GUARDIAN",
+    public static final ItemStack GUIDE_KILL_GUARDIAN = new CustomItemStack(
         Material.GUARDIAN_SPAWN_EGG,
-        "&fGuardian").item();
+        "&fGuardian");
 
-    public static final ItemStack GUIDE_KILL_SQUID = new SlimefunItemStack(
-            "GUIDE_KILL_SQUID",
+    public static final ItemStack GUIDE_KILL_SQUID = new CustomItemStack(
         Material.SQUID_SPAWN_EGG,
-        "&fSquid").item();
+        "&fSquid");
 
     // ---- Menu Only ----
 
-    public static final ItemStack MENU_BACKGROUND_ITEM = new SlimefunItemStack("MENU_BACKGROUND_ITEM",Material.GRAY_STAINED_GLASS_PANE, "").item();
-    public static final ItemStack MENU_INGREDIENT_BORDER = new SlimefunItemStack("MENU_INGREDIENT_BORDER",Material.BLUE_STAINED_GLASS_PANE,
-        "&9Ingredients").item();
-    public static final ItemStack MENU_CONTAINER_BORDER = new SlimefunItemStack("MENU_CONTAINER_BORDER",Material.PURPLE_STAINED_GLASS_PANE,
-        "&5Container").item();
-    public static final ItemStack MENU_TOOL_BORDER = new SlimefunItemStack("MENU_TOOL_BORDER",Material.BLACK_STAINED_GLASS_PANE,
-        ChatColor.of("#999999") + "Tools").item();
-    public static final ItemStack MENU_OUTPUT_BORDER = new SlimefunItemStack("MENU_OUTPUT_BORDER",Material.ORANGE_STAINED_GLASS_PANE,
-        "&6Output").item();
-    public static final ItemStack MENU_CRAFT_BUTTON = new SlimefunItemStack("MENU_CRAFT_BUTTON",Material.LIME_STAINED_GLASS_PANE,
-        "&aClick to craft").item();
+    public static final ItemStack MENU_BACKGROUND_ITEM = new CustomItemStack(Material.GRAY_STAINED_GLASS_PANE, "");
+    public static final ItemStack MENU_INGREDIENT_BORDER = new CustomItemStack(Material.BLUE_STAINED_GLASS_PANE,
+        "&9Ingredients");
+    public static final ItemStack MENU_CONTAINER_BORDER = new CustomItemStack(Material.PURPLE_STAINED_GLASS_PANE,
+        "&5Container");
+    public static final ItemStack MENU_TOOL_BORDER = new CustomItemStack(Material.BLACK_STAINED_GLASS_PANE,
+        ChatColor.of("#999999") + "Tools");
+    public static final ItemStack MENU_OUTPUT_BORDER = new CustomItemStack(Material.ORANGE_STAINED_GLASS_PANE,
+        "&6Output");
+    public static final ItemStack MENU_CRAFT_BUTTON = new CustomItemStack(Material.LIME_STAINED_GLASS_PANE,
+        "&aClick to craft");
     public static final ItemStack MENU_PROGRESS_BAR = new ItemStack(Material.FLINT_AND_STEEL);
-    public static final ItemStack MENU_FOOD_BORDER = new SlimefunItemStack("MENU_FOOD_BORDER",Material.CYAN_STAINED_GLASS_PANE,
-        "&fFood Slot", "", "&7Place food in the slot below").item();
-    public static final ItemStack MENU_TRAIN_BUTTON = new SlimefunItemStack("MENU_TRAIN_BUTTON",Material.LIME_STAINED_GLASS_PANE,
-        "&aClick to train").item();
-    public static final ItemStack MENU_INPUT_BORDER = new SlimefunItemStack("MENU_INPUT_BORDER",Material.BLUE_STAINED_GLASS_PANE,
-        "&9Input").item();
-    public static final ItemStack MENU_ANDROID_BORDER = new SlimefunItemStack("MENU_ANDROID_BORDER",Material.LIGHT_BLUE_STAINED_GLASS_PANE,
-        GastroTheme.ELECTRIC.getColor() + "Chef Android").item();
-    public static final ItemStack MENU_NOT_ENOUGH_ENERGY = new SlimefunItemStack("MENU_NOT_ENOUGH_ENERGY",Material.RED_STAINED_GLASS_PANE,
-        "&cNot enough energy").item();
-    public static final ItemStack MENU_NO_ANDROID = new SlimefunItemStack("MENU_NO_ANDROID",Material.RED_STAINED_GLASS_PANE,
-        "&cNo android detected").item();
-    public static final ItemStack MENU_INCORRECT_RECIPE = new SlimefunItemStack("MENU_INCORRECT_RECIPE",Material.RED_STAINED_GLASS_PANE,
-        "&cIncorrect recipe").item();
-    public static final ItemStack MENU_NOT_WATERLOGGED = new SlimefunItemStack("MENU_NOT_WATERLOGGED",Material.RED_STAINED_GLASS_PANE,
-        "&cNot in water").item();
+    public static final ItemStack MENU_FOOD_BORDER = new CustomItemStack(Material.CYAN_STAINED_GLASS_PANE,
+        "&fFood Slot", "", "&7Place food in the slot below");
+    public static final ItemStack MENU_TRAIN_BUTTON = new CustomItemStack(Material.LIME_STAINED_GLASS_PANE,
+        "&aClick to train");
+    public static final ItemStack MENU_INPUT_BORDER = new CustomItemStack(Material.BLUE_STAINED_GLASS_PANE,
+        "&9Input");
+    public static final ItemStack MENU_ANDROID_BORDER = new CustomItemStack(Material.LIGHT_BLUE_STAINED_GLASS_PANE,
+        GastroTheme.ELECTRIC.getColor() + "Chef Android");
+    public static final ItemStack MENU_NOT_ENOUGH_ENERGY = new CustomItemStack(Material.RED_STAINED_GLASS_PANE,
+        "&cNot enough energy");
+    public static final ItemStack MENU_NO_ANDROID = new CustomItemStack(Material.RED_STAINED_GLASS_PANE,
+        "&cNo android detected");
+    public static final ItemStack MENU_INCORRECT_RECIPE = new CustomItemStack(Material.RED_STAINED_GLASS_PANE,
+        "&cIncorrect recipe");
+    public static final ItemStack MENU_NOT_WATERLOGGED = new CustomItemStack(Material.RED_STAINED_GLASS_PANE,
+        "&cNot in water");
 
     // ---- Dummy ----
 
-    public static final ItemStack DUMMY_FISHING_NET = new SlimefunItemStack("DUMMY_FISHING_NET",Material.IRON_BARS,
-        GastroTheme.ELECTRIC.getColor() + "Fishing Net").item();
+    public static final ItemStack DUMMY_FISHING_NET = new CustomItemStack(Material.IRON_BARS,
+        GastroTheme.ELECTRIC.getColor() + "Fishing Net");
 
     // ---- Tools ----
 
@@ -2055,7 +2032,7 @@ public class GastroStacks {
         )
         .build();
     static {
-        ENCHANTED_GOLDEN_CARROT.addUnsafeEnchantment(Enchantment.DENSITY, 1);
+        ENCHANTED_GOLDEN_CARROT.addUnsafeEnchantment(Enchantment.UNBREAKING, 1);
         ENCHANTED_GOLDEN_CARROT.addItemFlags(ItemFlag.HIDE_ENCHANTS);
     }
 
@@ -2070,7 +2047,7 @@ public class GastroStacks {
             FoodEffect.positivePotionEffect(PotionEffectType.REGENERATION, 120))
         .build();
     static {
-        ENCHANTED_GLISTERING_MELON_SLICE.addUnsafeEnchantment(Enchantment.DENSITY, 1);
+        ENCHANTED_GLISTERING_MELON_SLICE.addUnsafeEnchantment(Enchantment.UNBREAKING, 1);
         ENCHANTED_GLISTERING_MELON_SLICE.addItemFlags(ItemFlag.HIDE_ENCHANTS);
     }
 

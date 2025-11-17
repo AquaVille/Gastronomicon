@@ -27,7 +27,6 @@ import io.github.thebusybiscuit.slimefun4.implementation.Slimefun;
 import io.github.thebusybiscuit.slimefun4.libraries.dough.protection.Interaction;
 import lombok.Getter;
 import me.mrCookieSlime.Slimefun.api.BlockStorage;
-import org.jetbrains.annotations.NotNull;
 
 /**
  * A SimpleSeed only drops itself when harvested.
@@ -59,7 +58,7 @@ public class SimpleSeed extends AbstractSeed {
         if (ItemUtil.isSeed(getItem().getType())) {
             addItemHandler(new BlockPlaceHandler(true) {
                 @Override
-                public void onBlockPlacerPlace(@NotNull BlockPlacerPlaceEvent e) {
+                public void onBlockPlacerPlace(BlockPlacerPlaceEvent e) {
                     if (e.getBlock().getState().getLightLevel() <= 7) {
                         e.setCancelled(true);
                         BlockStorage.clearBlockInfo(e.getBlock(), true);
@@ -69,7 +68,7 @@ public class SimpleSeed extends AbstractSeed {
                 }
 
                 @Override
-                public void onPlayerPlace(@NotNull BlockPlaceEvent e) {
+                public void onPlayerPlace(BlockPlaceEvent e) {
                     if (e.getBlock().getState().getLightLevel() <= 7 ||
                         !e.canBuild()) {
                         e.setCancelled(true);
@@ -114,7 +113,7 @@ public class SimpleSeed extends AbstractSeed {
 
                 above.setType(getDisplayBlock());
                 BlockStorage.addBlockInfo(above, "id", getId());
-                event.getItem().setAmount(event.getItem().getAmount() - 1);
+                event.getItem().subtract();
 
             });
         }
@@ -132,11 +131,11 @@ public class SimpleSeed extends AbstractSeed {
         }
 
         final int sickleTier = ItemUtil.getSickleTier(item);
-        final int fortuneLevel = item.getEnchantmentLevel(Enchantment.LOOTING);
+        final int fortuneLevel = item.getEnchantmentLevel(Enchantment.FORTUNE);
 
         final ItemStack seed = getItem().clone();
         seed.setAmount(NumberUtil.getFortuneAmount(fortuneLevel, sickleTier, 2));
-        return List.of(seed);
+        return Arrays.asList(seed);
     }
 
     @Override

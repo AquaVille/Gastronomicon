@@ -8,7 +8,6 @@ import io.github.schntgaispock.gastronomicon.core.slimefun.recipes.GastroRecipeT
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
 import me.mrCookieSlime.Slimefun.api.inventory.BlockMenu;
 import me.mrCookieSlime.Slimefun.api.inventory.BlockMenuPreset;
-import org.jetbrains.annotations.NotNull;
 
 public class GrainMill extends GastroWorkstation {
 
@@ -17,7 +16,7 @@ public class GrainMill extends GastroWorkstation {
     }
 
     @Override
-    protected void setup(@NotNull BlockMenuPreset preset) {
+    protected void setup(BlockMenuPreset preset) {
         super.setup(preset);
         preset.drawBackground(BACKGROUND_ITEM, new int[] { 52 });
     }

@@ -3,8 +3,8 @@ package io.github.schntgaispock.gastronomicon.api.trees;
 import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 
+import io.github.schntgaispock.gastronomicon.util.Util;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
@@ -16,11 +16,12 @@ import com.fasterxml.jackson.databind.SerializationFeature;
 import io.github.schntgaispock.gastronomicon.Gastronomicon;
 import io.github.schntgaispock.gastronomicon.util.NumberUtil;
 import io.github.schntgaispock.gastronomicon.util.item.HeadTextures;
-import io.github.thebusybiscuit.slimefun4.libraries.dough.skins.PlayerHead;
-import io.github.thebusybiscuit.slimefun4.libraries.dough.skins.PlayerSkin;
 import lombok.Getter;
 import lombok.ToString;
 import me.mrCookieSlime.Slimefun.api.BlockStorage;
+import org.bukkit.block.Skull;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.SkullMeta;
 
 @Getter
 @ToString
@@ -33,12 +34,12 @@ public final class TreeStructure {
 
     public static void loadTrees() {
         final File treePath = new File(TREE_SCHEMATIC_PATH);
-        for (File treeFile : Objects.requireNonNull(treePath.listFiles())) {
+        for (File treeFile : treePath.listFiles()) {
             try {
                 final TreeStructure tree = JSONObjectMapper.readValue(treeFile, TreeStructure.class);
                 loadedTrees.put(tree.getSapling(), tree);
             } catch (Exception e) {
-                Gastronomicon.error(e.getMessage());
+                e.printStackTrace();
             }
         }
 
@@ -90,7 +91,16 @@ public final class TreeStructure {
                         case 1:
                             Block b = l.getWorld().getBlockAt(newX, newY, newZ);
                             b.setType(Material.PLAYER_HEAD);
-                            if (fruitTexture != null) PlayerHead.setSkin(b, PlayerSkin.fromBase64(fruitTexture), false);
+                            if (fruitTexture != null) {
+                                //PlayerHead.setSkin(b, PlayerSkin.fromBase64(fruitTexture), false);
+                                ItemStack head = Util.fromBase64Hash(fruitTexture);
+
+                                b.setType(Material.PLAYER_HEAD, false);
+                                Skull skull = (Skull) b.getState();
+                                SkullMeta meta = (SkullMeta) head.getItemMeta();
+                                skull.setOwnerProfile(meta.getOwnerProfile());
+                                skull.update(true, false);
+                            }
                             BlockStorage.store(b, getFruit());
                             break;
                         default:
