@@ -27,6 +27,7 @@ import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
 import io.github.thebusybiscuit.slimefun4.api.researches.Research;
 import io.github.thebusybiscuit.slimefun4.libraries.commons.lang.Validate;
 import lombok.ToString;
+import org.bukkit.inventory.meta.ItemMeta;
 
 @ToString
 public class GastroFoodBuilder extends SimpleGastroFoodBuilder {
@@ -132,7 +133,11 @@ public class GastroFoodBuilder extends SimpleGastroFoodBuilder {
         final GastroRecipe recipe;
         if (recipeType == GastroRecipeType.MULTI_STOVE) {
             topRightDisplayItem = temperature.getItem().clone();
-            topRightDisplayItem.setLore(Collections.emptyList());
+            ItemMeta meta = topRightDisplayItem.getItemMeta();
+            if (meta != null) {
+                meta.setLore(Collections.emptyList());
+                topRightDisplayItem.setItemMeta(meta);
+            }
             recipe = new MultiStoveRecipe(ingredients, container, tools, outputs, temperature);
         } else {
             topRightDisplayItem = new ItemStack(Material.AIR);

@@ -114,7 +114,7 @@ public class SimpleSeed extends AbstractSeed {
 
                 above.setType(getDisplayBlock());
                 BlockStorage.addBlockInfo(above, "id", getId());
-                event.getItem().subtract();
+                event.getItem().setAmount(event.getItem().getAmount() - 1);
 
             });
         }

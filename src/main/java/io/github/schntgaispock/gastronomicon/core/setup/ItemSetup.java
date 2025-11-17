@@ -48,6 +48,8 @@ import io.github.thebusybiscuit.slimefun4.implementation.SlimefunItems;
 import io.github.thebusybiscuit.slimefun4.implementation.items.blocks.UnplaceableBlock;
 import lombok.experimental.UtilityClass;
 
+import static org.bukkit.block.Biome.*;
+
 @UtilityClass
 public class ItemSetup {
 
@@ -325,10 +327,8 @@ public class ItemSetup {
 
             @Override
             protected boolean canCatch(Location l) {
-                return switch (l.getBlock().getBiome()) {
-                    case RIVER, BEACH, OCEAN, COLD_OCEAN, DEEP_OCEAN, WARM_OCEAN, FROZEN_OCEAN, LUKEWARM_OCEAN, DEEP_COLD_OCEAN, DEEP_FROZEN_OCEAN, DEEP_LUKEWARM_OCEAN -> true;
-                    default -> false;
-                };
+                Biome biome = l.getBlock().getBiome();
+                return biome.equals(RIVER) || biome.equals(BEACH) || biome.equals(OCEAN) || biome.equals(COLD_OCEAN) || biome.equals(DEEP_OCEAN) || biome.equals(WARM_OCEAN) || biome.equals(FROZEN_OCEAN) || biome.equals(LUKEWARM_OCEAN) || biome.equals(DEEP_COLD_OCEAN) || biome.equals(DEEP_FROZEN_OCEAN) || biome.equals(DEEP_LUKEWARM_OCEAN);
             }
         }.register(gn);
 

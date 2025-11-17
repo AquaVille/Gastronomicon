@@ -12,13 +12,12 @@ import org.bukkit.block.BlockFace;
 import org.bukkit.block.data.Directional;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.block.BlockFromToEvent;
 import org.bukkit.event.block.BlockGrowEvent;
 import org.bukkit.event.block.BlockSpreadEvent;
 import org.bukkit.event.entity.EntityChangeBlockEvent;
 import org.bukkit.inventory.ItemStack;
-
-import com.destroystokyo.paper.event.block.BlockDestroyEvent;
 
 import io.github.schntgaispock.gastronomicon.Gastronomicon;
 import io.github.schntgaispock.gastronomicon.core.slimefun.items.seeds.AbstractSeed;
@@ -79,11 +78,11 @@ public class SeedListener implements Listener {
     }
 
     @EventHandler
-    public void onCropDestroy(BlockDestroyEvent e) {
+    public void onCropDestroy(BlockBreakEvent e) {
         final AbstractSeed seed = getGastroSeed(e.getBlock());
 
         if (seed != null) {
-            e.setWillDrop(false);
+            e.setDropItems(false);
             seed.getHarvestDrops(e.getBlock().getState(), new ItemStack(Material.AIR), false).forEach(
                 drop -> e.getBlock().getWorld().dropItemNaturally(e.getBlock().getLocation(), drop));
             BlockStorage.clearBlockInfo(e.getBlock(), true);

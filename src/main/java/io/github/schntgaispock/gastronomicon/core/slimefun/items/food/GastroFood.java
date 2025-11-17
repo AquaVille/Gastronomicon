@@ -5,6 +5,7 @@ import java.util.Set;
 
 import javax.annotation.Nonnull;
 
+import org.bukkit.Bukkit;
 import org.bukkit.Sound;
 import org.bukkit.SoundCategory;
 import org.bukkit.entity.Player;
@@ -21,7 +22,6 @@ import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
 import io.github.thebusybiscuit.slimefun4.api.researches.Research;
 import io.github.thebusybiscuit.slimefun4.core.handlers.ItemUseHandler;
 import lombok.Getter;
-import net.kyori.adventure.text.Component;
 
 public class GastroFood extends SimpleGastroFood {
 
@@ -61,10 +61,10 @@ public class GastroFood extends SimpleGastroFood {
 
             final PlayerGastroFoodConsumeEvent consumeEvent = new PlayerGastroFoodConsumeEvent(e.getPlayer(), food,
                 e.getItem(), e.getHand());
-            consumeEvent.callEvent();
+            Bukkit.getPluginManager().callEvent(consumeEvent);
             if (consumeEvent.isCancelled()) {
                 if (consumeEvent.getMessage() != null)
-                    e.getPlayer().sendMessage(Component.text(consumeEvent.getMessage()));
+                    e.getPlayer().sendMessage(consumeEvent.getMessage());
                 return;
             }
 
@@ -81,7 +81,7 @@ public class GastroFood extends SimpleGastroFood {
             p.getWorld().playSound(p.getLocation(), Sound.ENTITY_PLAYER_BURP, SoundCategory.PLAYERS, 1, 1);
         }
 
-        e.getItem().subtract();
+        e.getItem().setAmount(e.getItem().getAmount() - 1);
     }
 
     /**

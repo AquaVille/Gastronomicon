@@ -11,10 +11,8 @@ import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.inventory.ItemStack;
 
-import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
-import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
 import lombok.Getter;
-import net.kyori.adventure.text.Component;
+import org.bukkit.inventory.meta.ItemMeta;
 
 /**
  * For recipe slots that have multiple acceptable items.
@@ -63,13 +61,15 @@ public class GroupRecipeComponent extends RecipeComponent<Set<ItemStack>> {
     public ItemStack getDisplayItem() {
         if (component.stream().findFirst().isPresent()) {
             final ItemStack displayItem = component.stream().findFirst().get().clone();
-            final List<Component> lore = displayItem.lore();
+            final List<String> lore = displayItem.getItemMeta().getLore();
             if (lore != null) {
-                lore.add(Component.text(""));
+                lore.add("");
                 for (final ItemStack itemStack : component) {
-                    lore.add(Component.text("§8‑ §f").append(Objects.requireNonNull(itemStack.getItemMeta().displayName())));
+                    lore.add("§8‑ §f" + Objects.requireNonNull(itemStack.getItemMeta().getDisplayName()));
                 }
-                displayItem.lore(lore);
+                ItemMeta meta = displayItem.getItemMeta();
+                meta.setLore(lore);
+                displayItem.setItemMeta(meta);
             }
             return displayItem;
         }

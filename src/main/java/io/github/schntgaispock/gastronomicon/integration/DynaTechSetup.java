@@ -21,13 +21,16 @@ public class DynaTechSetup {
         try {
             final Method register = gc.getClass().getMethod(
                 "registerRecipe", int.class, ItemStack[].class, ItemStack[].class);
-
-            register.invoke(gc, seconds, new ItemStack[] { outputs[0].asOne() }, outputs);
+            ItemStack clone = outputs[0].clone();
+            clone.setAmount(1);
+            register.invoke(gc, seconds, new ItemStack[] { clone }, outputs);
             register.invoke(gc2, seconds,
-            new ItemStack[] { outputs[0].asOne() },
-            Arrays.stream(outputs).map(itemStack -> itemStack.asQuantity(itemStack.getAmount() * 3))
-                .toArray(ItemStack[]::new));
-            
+            new ItemStack[] { clone },
+            Arrays.stream(outputs).map(itemStack -> {
+                ItemStack is = itemStack.clone();
+                is.setAmount(itemStack.getAmount() * 3);
+                return is;
+            }).toArray(ItemStack[]::new));
         } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
             return;
         }

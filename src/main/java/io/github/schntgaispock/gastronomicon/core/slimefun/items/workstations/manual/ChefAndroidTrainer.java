@@ -1,6 +1,7 @@
 package io.github.schntgaispock.gastronomicon.core.slimefun.items.workstations.manual;
 
 import java.util.Arrays;
+import java.util.List;
 
 import javax.annotation.Nonnull;
 
@@ -134,13 +135,15 @@ public class ChefAndroidTrainer extends MenuBlock {
                     name = food.getItemName();
                     id = food.getId();
                 }
-                final ItemStack modified = input.asOne();
-                input.subtract(1);
-                modified.setLore(Arrays.asList("§7" + ChatUtils.removeColorCodes(name)));
+                final ItemStack modified = input.clone();
+                modified.setAmount(1);
                 final ItemMeta meta = modified.getItemMeta();
-                final PersistentDataContainer pdc = meta.getPersistentDataContainer();
-                pdc.set(GastroKeys.CHEF_ANDROID_FOOD, PersistentDataType.STRING, id);
-                modified.setItemMeta(meta);
+                if (meta != null) {
+                    meta.setLore(List.of("§7" + ChatUtils.removeColorCodes(name)));
+                    final PersistentDataContainer pdc = meta.getPersistentDataContainer();
+                    pdc.set(GastroKeys.CHEF_ANDROID_FOOD, PersistentDataType.STRING, id);
+                    modified.setItemMeta(meta);
+                }
                 menu.pushItem(modified, getOutputSlots());
             }
 

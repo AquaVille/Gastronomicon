@@ -18,7 +18,7 @@ import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
 import io.github.thebusybiscuit.slimefun4.core.handlers.BlockBreakHandler;
 import io.github.thebusybiscuit.slimefun4.core.handlers.BlockPlaceHandler;
-import io.github.thebusybiscuit.slimefun4.libraries.dough.items.CustomItemStack;
+import io.github.bakedlibs.dough.items.CustomItemStack;
 import io.github.thebusybiscuit.slimefun4.utils.ChestMenuUtils;
 import me.mrCookieSlime.Slimefun.api.BlockStorage;
 import me.mrCookieSlime.Slimefun.api.inventory.BlockMenu;
@@ -29,12 +29,12 @@ import me.mrCookieSlime.Slimefun.api.item_transport.ItemTransportFlow;
 @ParametersAreNonnullByDefault
 public abstract class MenuBlock extends SlimefunItem {
 
-    public static final ItemStack PROCESSING_ITEM = CustomItemStack.create(Material.LIME_STAINED_GLASS_PANE, "&aProcessing...");
-    public static final ItemStack NO_ENERGY_ITEM = CustomItemStack.create(Material.RED_STAINED_GLASS_PANE, "&cNot enough energy!");
-    public static final ItemStack IDLE_ITEM = CustomItemStack.create(Material.BLACK_STAINED_GLASS_PANE, "&8Idle");
-    public static final ItemStack NO_ROOM_ITEM = CustomItemStack.create(Material.ORANGE_STAINED_GLASS_PANE, "&6Not enough room!");
-    public static final ItemStack OUTPUT_BORDER = CustomItemStack.create(ChestMenuUtils.getOutputSlotTexture(), "&6Output");
-    public static final ItemStack INPUT_BORDER = CustomItemStack.create(ChestMenuUtils.getInputSlotTexture(), "&9Input");
+    public static final ItemStack PROCESSING_ITEM = new CustomItemStack(Material.LIME_STAINED_GLASS_PANE, "&aProcessing...");
+    public static final ItemStack NO_ENERGY_ITEM = new CustomItemStack(Material.RED_STAINED_GLASS_PANE, "&cNot enough energy!");
+    public static final ItemStack IDLE_ITEM = new CustomItemStack(Material.BLACK_STAINED_GLASS_PANE, "&8Idle");
+    public static final ItemStack NO_ROOM_ITEM = new CustomItemStack(Material.ORANGE_STAINED_GLASS_PANE, "&6Not enough room!");
+    public static final ItemStack OUTPUT_BORDER = new CustomItemStack(ChestMenuUtils.getOutputSlotTexture(), "&6Output");
+    public static final ItemStack INPUT_BORDER = new CustomItemStack(ChestMenuUtils.getInputSlotTexture(), "&9Input");
     public static final ItemStack BACKGROUND_ITEM = ChestMenuUtils.getBackground();
 
     public MenuBlock(ItemGroup category, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe) {

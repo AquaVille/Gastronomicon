@@ -34,7 +34,7 @@ import io.github.thebusybiscuit.slimefun4.core.networks.energy.EnergyNetComponen
 import io.github.thebusybiscuit.slimefun4.implementation.Slimefun;
 import io.github.thebusybiscuit.slimefun4.implementation.handlers.SimpleBlockBreakHandler;
 import io.github.thebusybiscuit.slimefun4.implementation.operations.CraftingOperation;
-import io.github.thebusybiscuit.slimefun4.libraries.dough.items.CustomItemStack;
+import io.github.bakedlibs.dough.items.CustomItemStack;
 import io.github.thebusybiscuit.slimefun4.libraries.dough.protection.Interaction;
 import io.github.thebusybiscuit.slimefun4.utils.ChestMenuUtils;
 import lombok.Getter;
@@ -258,7 +258,8 @@ public class ElectricKitchen extends AContainer {
             if (pair.first() == null) continue;
 
             final ItemStack input = menu.getItemInSlot(pair.first());
-            final ItemStack clone = input.asQuantity(pair.second());
+            final ItemStack clone = input.clone();
+            clone.setAmount(pair.second());
             inputs.add(clone);
             ItemUtil.consumeItem(input, pair.second(), true).ifPresent(mat -> {
                 outputs.add(new ItemStack(mat));
