@@ -9,6 +9,7 @@ import java.util.Set;
 import javax.annotation.Nullable;
 import javax.annotation.ParametersAreNonnullByDefault;
 
+import io.github.bakedlibs.dough.collections.Pair;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -30,7 +31,6 @@ import io.github.schntgaispock.gastronomicon.core.slimefun.GastroStacks;
 import io.github.schntgaispock.gastronomicon.core.slimefun.recipes.GastroRecipeType;
 import io.github.schntgaispock.gastronomicon.util.NumberUtil;
 import io.github.schntgaispock.gastronomicon.util.RecipeUtil;
-import io.github.schntgaispock.gastronomicon.util.collections.Pair;
 import io.github.schntgaispock.gastronomicon.util.item.ItemUtil;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
@@ -150,9 +150,9 @@ public abstract class GastroWorkstation extends MenuBlock {
             }
 
             final GastroRecipe recipe;
-            if (hashRecipePair.first() == hash && hashRecipePair.second() != null) {
+            if (hashRecipePair.getFirstValue() == hash && hashRecipePair.getSecondValue() != null) {
                 // Can skip searching if hashes are the same
-                recipe = hashRecipePair.second();
+                recipe = hashRecipePair.getSecondValue();
             } else {
                 // Otherwise start search
                 recipe = findRecipe(ingredients, containers, tools, player, menu);
@@ -160,8 +160,8 @@ public abstract class GastroWorkstation extends MenuBlock {
                     Gastronomicon.sendMessage(player, "&eUnknown recipe!");
                     return false;
                 } else if (lastInputHashAndRecipe.containsKey(menu.getLocation())) {
-                    lastInputHashAndRecipe.get(menu.getLocation()).first(hash);
-                    lastInputHashAndRecipe.get(menu.getLocation()).second(recipe);
+                    lastInputHashAndRecipe.get(menu.getLocation()).setFirstValue(hash);
+                    lastInputHashAndRecipe.get(menu.getLocation()).setSecondValue(recipe);
                 } else {
                     lastInputHashAndRecipe.put(menu.getLocation(), new Pair<>(hash, recipe));
                 }
@@ -214,8 +214,8 @@ public abstract class GastroWorkstation extends MenuBlock {
             });
             for (final int containerSlot : getContainerSlots()) {
                 final ItemStack i = menu.getItemInSlot(containerSlot);
-                if (i != null && hashRecipePair.second() != null
-                    && hashRecipePair.second().getInputs().getContainer().matches(i)) {
+                if (i != null && hashRecipePair.getSecondValue() != null
+                    && hashRecipePair.getSecondValue().getInputs().getContainer().matches(i)) {
                     i.subtract();
                     break;
                 }

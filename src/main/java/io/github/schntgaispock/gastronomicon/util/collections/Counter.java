@@ -8,6 +8,7 @@ import java.util.stream.Stream;
 
 import javax.annotation.Nullable;
 
+import io.github.bakedlibs.dough.collections.Pair;
 import io.github.thebusybiscuit.slimefun4.libraries.commons.lang.Validate;
 import lombok.Getter;
 
@@ -46,9 +47,9 @@ public class Counter<T> {
 
         if (min == null || min == hash) {
             Pair<Integer, Integer> maxMin = findMaxMin();
-            max = maxMin.first();
-            min = maxMin.second();
-        } else if (get(hash) >= max().second()) {
+            max = maxMin.getFirstValue();
+            min = maxMin.getSecondValue();
+        } else if (get(hash) >= max().getSecondValue()) {
             max = hash;
         }
 
@@ -72,9 +73,9 @@ public class Counter<T> {
 
             if (max == hash || max == null) {
                 Pair<Integer, Integer> maxMin = findMaxMin();
-                max = maxMin.first();
-                min = maxMin.second();
-            } else if (get(hash) <= min().second()) {
+                max = maxMin.getFirstValue();
+                min = maxMin.getSecondValue();
+            } else if (get(hash) <= min().getSecondValue()) {
                 min = hash;
             } 
             
@@ -91,7 +92,7 @@ public class Counter<T> {
     }
 
     private int get(Integer hash) {
-        return map.containsKey(hash) ? map.get(hash).second() : 0;
+        return map.containsKey(hash) ? map.get(hash).getSecondValue() : 0;
     }
 
     public int get(T item) {
@@ -100,7 +101,7 @@ public class Counter<T> {
 
     private void set(int hash, int amount) {
         Validate.isTrue(amount > 0, "amount must be greater than zero");
-        map.get(hash).second(amount);
+        map.get(hash).setSecondValue(amount);
     }
 
     private void remove(int hash) {
@@ -109,8 +110,8 @@ public class Counter<T> {
 
         if (min == hash || max == hash) {
             Pair<Integer, Integer> maxMin = findMaxMin();
-            max = maxMin.first();
-            min = maxMin.second();
+            max = maxMin.getFirstValue();
+            min = maxMin.getSecondValue();
         }
     }
 
@@ -136,14 +137,14 @@ public class Counter<T> {
         }
 
         for (Map.Entry<Integer, Pair<T, Integer>> entry : map.entrySet()) {
-            if (entry.getValue().second() >= maxAmount) {
+            if (entry.getValue().getSecondValue() >= maxAmount) {
                 maxHash = entry.getKey();
-                maxAmount = entry.getValue().second();
+                maxAmount = entry.getValue().getSecondValue();
             }
             
-            if (entry.getValue().second() <= minAmount) {
+            if (entry.getValue().getSecondValue() <= minAmount) {
                 minHash = entry.getKey();
-                minAmount = entry.getValue().second();
+                minAmount = entry.getValue().getSecondValue();
             }
         }
 
@@ -166,7 +167,7 @@ public class Counter<T> {
     public String toString() {
         final StringBuilder string = new StringBuilder("{");
         for (Map.Entry<Integer, Pair<T, Integer>> key : map.entrySet()) {
-            string.append(key.getValue().first() + ": " + key.getValue().second() + ", ");
+            string.append(key.getValue().getFirstValue() + ": " + key.getValue().getSecondValue() + ", ");
         }
         string.delete(string.length() - 2, string.length()).append("}");
         return string.toString();

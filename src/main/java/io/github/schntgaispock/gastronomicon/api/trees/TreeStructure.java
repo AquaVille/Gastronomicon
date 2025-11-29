@@ -4,7 +4,8 @@ import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 
-import io.github.schntgaispock.gastronomicon.util.Util;
+import io.github.bakedlibs.dough.skins.PlayerHead;
+import io.github.bakedlibs.dough.skins.PlayerSkin;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
@@ -19,9 +20,6 @@ import io.github.schntgaispock.gastronomicon.util.item.HeadTextures;
 import lombok.Getter;
 import lombok.ToString;
 import me.mrCookieSlime.Slimefun.api.BlockStorage;
-import org.bukkit.block.Skull;
-import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.SkullMeta;
 
 @Getter
 @ToString
@@ -92,14 +90,7 @@ public final class TreeStructure {
                             Block b = l.getWorld().getBlockAt(newX, newY, newZ);
                             b.setType(Material.PLAYER_HEAD);
                             if (fruitTexture != null) {
-                                //PlayerHead.setSkin(b, PlayerSkin.fromBase64(fruitTexture), false);
-                                ItemStack head = Util.fromBase64Hash(fruitTexture);
-
-                                b.setType(Material.PLAYER_HEAD, false);
-                                Skull skull = (Skull) b.getState();
-                                SkullMeta meta = (SkullMeta) head.getItemMeta();
-                                skull.setOwnerProfile(meta.getOwnerProfile());
-                                skull.update(true, false);
+                                PlayerHead.setSkin(b, PlayerSkin.fromBase64(fruitTexture), false);
                             }
                             BlockStorage.store(b, getFruit());
                             break;

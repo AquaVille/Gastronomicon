@@ -6,7 +6,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
-import io.github.schntgaispock.gastronomicon.util.collections.Pair;
+import io.github.bakedlibs.dough.collections.Pair;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.ToString;
@@ -58,29 +58,29 @@ public class LootTable<T> {
             for (int chance : weightedDrops.values()) {
                 chance *= length;
                 if (chance < totalWeight) {
-                    small.push(Pair.of(chance, i));
+                    small.push(new Pair<>(chance, i));
                 } else {
-                    large.push(Pair.of(chance, i));
+                    large.push(new Pair<>(chance, i));
                 }
                 i++;
             }
             while (!small.isEmpty() && !large.isEmpty()) {
                 final Pair<Integer, Integer> l = small.pop();
                 final Pair<Integer, Integer> g = large.pop();
-                prob[l.second()] = l.first();
-                alias[l.second()] = g.second();
-                g.first(g.first() + l.first() - totalWeight);
-                if (g.first() < totalWeight) {
+                prob[l.getSecondValue()] = l.getFirstValue();
+                alias[l.getSecondValue()] = g.getSecondValue();
+                g.setFirstValue(g.getFirstValue() + l.getFirstValue() - totalWeight);
+                if (g.getFirstValue() < totalWeight) {
                     small.push(g);
                 } else {
                     large.push(g);
                 }
             }
             while (!large.isEmpty()) {
-                prob[large.pop().second()] = totalWeight;
+                prob[large.pop().getSecondValue()] = totalWeight;
             }
             while (!small.isEmpty()) {
-                prob[small.pop().second()] = totalWeight;
+                prob[small.pop().getSecondValue()] = totalWeight;
             }
 
             return new LootTable<T>(weightedDrops.keySet().stream().toList(), totalWeight, prob, alias);

@@ -8,6 +8,7 @@ import java.util.function.Consumer;
 
 import javax.annotation.Nonnull;
 
+import io.github.bakedlibs.dough.collections.Pair;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
@@ -22,7 +23,6 @@ import io.github.schntgaispock.gastronomicon.core.slimefun.GastroGroups;
 import io.github.schntgaispock.gastronomicon.core.slimefun.GastroStacks;
 import io.github.schntgaispock.gastronomicon.core.slimefun.items.food.SimpleGastroFood;
 import io.github.schntgaispock.gastronomicon.util.collections.Counter;
-import io.github.schntgaispock.gastronomicon.util.collections.Pair;
 import io.github.schntgaispock.gastronomicon.util.item.GastroKeys;
 import io.github.schntgaispock.gastronomicon.util.item.ItemUtil;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
@@ -105,8 +105,8 @@ public class ElectricKitchen extends AContainer {
                 if (flow == ItemTransportFlow.INSERT) {
                     final int[] slots = Arrays.stream(getInputSlots())
                         .mapToObj(slot -> new Pair<>(slot, menu.getItemInSlot(slot))) // get pairs of (slot, item in slot)
-                        .filter(pair -> pair.second() != null && pair.second().getType() == item.getType()) // get all the slots/items which are the same type as the requested item
-                        .mapToInt(pair -> pair.first()) // return only those slots
+                        .filter(pair -> pair.getSecondValue() != null && pair.getSecondValue().getType() == item.getType()) // get all the slots/items which are the same type as the requested item
+                        .mapToInt(pair -> pair.getFirstValue()) // return only those slots
                         .toArray();
 
                     return slots.length == 0 ? getInputSlots() : slots; // length of 0 means the item isn't in the current input slots
@@ -223,8 +223,8 @@ public class ElectricKitchen extends AContainer {
         }
 
         final Counter<Integer> found;
-        if (hashRecipePair.first() == hash) {
-            found = hashRecipePair.second();
+        if (hashRecipePair.getFirstValue() == hash) {
+            found = hashRecipePair.getSecondValue();
         } else {
             found = new Counter<>();
             for (RecipeComponent<?> component : recipe.getInputs().getAll()) {
@@ -245,8 +245,8 @@ public class ElectricKitchen extends AContainer {
                 }
             }
 
-            hashRecipePair.first(hash);
-            hashRecipePair.second(found);
+            hashRecipePair.setFirstValue(hash);
+            hashRecipePair.setSecondValue(found);
         }
 
         final ArrayList<ItemStack> inputs = new ArrayList<>();
