@@ -85,21 +85,14 @@
         <dependency>
             <groupId>io.papermc.paper</groupId>
             <artifactId>paper-api</artifactId>
-            <version>1.21.10-R0.1-SNAPSHOT</version>
+            <version>1.21.11-R0.1-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
 
         <dependency>
-            <groupId>com.github.SlimeFun-Lab</groupId>
+            <groupId>com.github.AquaVille</groupId>
             <artifactId>Slimefun4</artifactId>
             <version>experimental-SNAPSHOT</version>
-            <scope>provided</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>com.github.SlimeFun-Lab</groupId>
-            <artifactId>SlimeHUD</artifactId>
-            <version>master-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
 

@@ -16,7 +16,6 @@ import io.github.schntgaispock.gastronomicon.core.setup.ListenerSetup;
 import io.github.schntgaispock.gastronomicon.core.setup.ResearchSetup;
 import io.github.schntgaispock.gastronomicon.core.setup.ItemSetup;
 import io.github.schntgaispock.gastronomicon.integration.DynaTechSetup;
-import io.github.schntgaispock.gastronomicon.integration.SlimeHUDSetup;
 import io.github.schntgaispock.gastronomicon.util.StringUtil;
 import io.github.thebusybiscuit.slimefun4.libraries.dough.updater.BlobBuildUpdater;
 import lombok.Getter;
@@ -58,17 +57,6 @@ public class Gastronomicon extends AbstractAddon {
         ResearchSetup.setup();
         ListenerSetup.setup();
         CommandSetup.setup();
-
-        if (isPluginEnabled("SlimeHUD")) {
-            try {
-                info("SlimeHUD was found on this server!");
-                info("Setting up Gastronomicon for SlimeHUD...");
-                SlimeHUDSetup.setup();
-            } catch (NoClassDefFoundError e) {
-                warn("This server is using an incompatitable version of SlimeHUD");
-                warn("Please update SlimeHUD to version 1.2.0 or higher!");
-            }
-        }
         
         // If disable-exotic-garden-recipes is true "!" will change it to false and the rest of the code won't run.
         // If disable-exotic-garden-recipes is false "!" will change it to true and the rest of the code will run checking for ExoticGarden.
