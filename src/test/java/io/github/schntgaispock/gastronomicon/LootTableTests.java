@@ -21,7 +21,7 @@ public class LootTableTests {
         for (int i = 0; i < 20000000; i++) {
             generated.add(table.generate());
         }
-        generated.stream().forEach(pair -> System.out.println(pair.first() + ": " + Math.round(200 * pair.second() / (double) generated.getTotal())));
+        generated.stream().forEach(pair -> System.out.println(pair.getFirstValue() + ": " + Math.round(200 * pair.getSecondValue() / (double) generated.getTotal())));
     }
     
 }

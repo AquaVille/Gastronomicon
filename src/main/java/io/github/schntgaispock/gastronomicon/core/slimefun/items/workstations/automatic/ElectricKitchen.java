@@ -254,12 +254,12 @@ public class ElectricKitchen extends AContainer {
         outputs.add(recipe.getOutputs()[0]);
 
         for (final var pair : found.entries()) {
-            if (pair.first() == null) continue;
+            if (pair.getFirstValue() == null) continue;
 
-            final ItemStack input = menu.getItemInSlot(pair.first());
-            final ItemStack clone = input.asQuantity(pair.second());
+            final ItemStack input = menu.getItemInSlot(pair.getFirstValue());
+            final ItemStack clone = input.asQuantity(pair.getSecondValue());
             inputs.add(clone);
-            ItemUtil.consumeItem(input, pair.second(), true).ifPresent(mat -> {
+            ItemUtil.consumeItem(input, pair.getSecondValue(), true).ifPresent(mat -> {
                 outputs.add(new ItemStack(mat));
             });
         }
