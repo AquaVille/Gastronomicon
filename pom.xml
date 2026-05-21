@@ -117,7 +117,7 @@
         <dependency>
             <groupId>com.github.StarWishsama</groupId>
             <artifactId>dough</artifactId>
-            <version>0a06f6fcaef863c97e3c036ef2406e15691bae16</version> <!-- or a tag or commit hash -->
+            <version>7468b0cb97ad23332980767d0df9c5894e048c1a</version> <!-- or a tag or commit hash -->
         </dependency>
         <!-- Temporary fix for Dough skin issue (November 2025) : END -->
 

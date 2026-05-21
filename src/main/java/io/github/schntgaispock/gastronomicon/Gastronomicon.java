@@ -47,9 +47,6 @@ public class Gastronomicon extends AbstractAddon {
         if (getConfig().getBoolean("options.auto-update")) {
             if (getDescription().getVersion().startsWith("Dev - ")) {
                 new BlobBuildUpdater(this, getFile(), "Gastronomicon", "Dev").start();
-            } else {
-                info("This is an unofficial build of Gastronomicon, so auto updates are disabled!");
-                info("You can download the official build here: https://blob.build/project/Gastronomicon");
             }
         }
 

@@ -17,7 +17,6 @@ import io.github.schntgaispock.gastronomicon.api.items.GastroTheme;
 import io.github.schntgaispock.gastronomicon.api.items.ThemedItemStack;
 import io.github.schntgaispock.gastronomicon.util.StringUtil;
 import io.github.schntgaispock.gastronomicon.util.item.HeadTextures;
-import io.github.thebusybiscuit.slimefun4.api.MinecraftVersion;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
 import io.github.thebusybiscuit.slimefun4.core.attributes.MachineTier;
 import io.github.thebusybiscuit.slimefun4.core.attributes.MachineType;
@@ -539,7 +538,7 @@ public class GastroStacks {
 
     public static final SlimefunItemStack BOK_CHOY = ThemedItemStack.ingredient(
         "GN_BOK_CHOY",
-        Slimefun.getMinecraftVersion().isAtLeast(MinecraftVersion.MINECRAFT_1_19) ? Material.MANGROVE_PROPAGULE : Material.BIRCH_SAPLING,
+         Material.MANGROVE_PROPAGULE,
         "Bok Choy");
 
     public static final SlimefunItemStack BOK_CHOY_SEEDS = ThemedItemStack.ingredient(
@@ -659,7 +658,7 @@ public class GastroStacks {
 
     public static final SlimefunItemStack GREEN_ONION = ThemedItemStack.ingredient(
         "GN_GREEN_ONION",
-        Slimefun.getMinecraftVersion().isAtLeast(MinecraftVersion.MINECRAFT_1_19) ? Material.MANGROVE_PROPAGULE : Material.SUGAR_CANE,
+        Material.MANGROVE_PROPAGULE,
         "Green Onion");
 
     public static final SlimefunItemStack GREEN_ONION_SEEDS = ThemedItemStack.ingredient(
@@ -2020,15 +2019,10 @@ public class GastroStacks {
         .material(Material.GOLDEN_CARROT)
         .name("Enchanted Golden Carrot")
         .hunger(8, 0.5)
-        .effects(Slimefun.getMinecraftVersion().isAtLeast(MinecraftVersion.MINECRAFT_1_19)
-            ? new FoodEffect[] {
+        .effects(
                 FoodEffect.removePotionEffect(PotionEffectType.DARKNESS),
                 FoodEffect.removePotionEffect(PotionEffectType.BLINDNESS),
                 FoodEffect.positivePotionEffect(PotionEffectType.NIGHT_VISION, 900)
-            } : new FoodEffect[] {
-                FoodEffect.removePotionEffect(PotionEffectType.BLINDNESS),
-                FoodEffect.positivePotionEffect(PotionEffectType.NIGHT_VISION, 900)
-            }
         )
         .build();
     static {
